@@ -1,0 +1,5 @@
+&input
+	fildyn = 'aluminium.dyn',
+	zasr = 'simple',
+	flfrc = 'aluminium.121212.fc',
+/

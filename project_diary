@@ -1,0 +1,196 @@
+17/10/30
+
+Calculating aluminium phonon things
+Did tests on the aluminium for a cut off to work with, came up with ecut=30
+Using a k-points grid of 12x12x12
+
+Performing for cell dimension 7.6456
+
+On calculating the displacement responses, using a 4x4x4 grid first, will see if this is enough by comparing the results of matdyn.x for an off-grid phonon to one from ph.x
+If this is not enough, will bump the value up.
+
+Calculating the constants with ph.x for a value of q, off-grid from the first 4x4x4 calculation (q=[0.6, 0.8, 0.3])
+Will calculate this same point with matdyn.x and check too see if frequencies are similar.
+
+Calculate phonon density of states once the force constants are calculated well enough.
+
+The differences in diagonalisation are within 0.1, looks good enough???
+Will go ahead and try to calculate phonon density of states.
+
+17/10/31
+
+Performed a new calculation for the phonon response grid at 12x12x12 q-points.
+Then used matdyn.x to calculated density of states at a number of different resolutions.
+
+The resolution 12x12x12 could be the best, as the higher the number of k-points in this calculation, the smoother the density of states gets. This is probably not wanted.
+
+
+Performing the same calculations for aluminium in BCC. Minimum lattice parameter at 6.124
+
+When calculating density of states with matdyn at 12x12x12, get negative frequencies.
+Negative frequencies for lower values too.
+
+--------------------------------------------------
+
+Calculating again with k=20x20x20, q=12x12x12, ecutoff=40 for bcc because of the negative frequencies
+
+17/11/01
+
+This gives negative frequencies again... 
+Looked online and saw some things saying that fqha.f90 is old, and the line checking w<-1 can be commented out, so the code only integrates over positive frequencies.
+Trying this out.
+
+--------------------------------------------------
+The negative frequencies come from the fact that aluminium bcc is unstable. No amount of increasing the q-points/k-points can change this.
+
+17/11/08
+
+Need to calculate free energy of silicon, and alpha/beta tin and create a diagram.
+Calculate at different values of V, then calculate T using the fqha.x to integrate the density of states. Once the density of states is integrated, we will have F as a function of V and T in certain points.
+
+We really want energy as a function of Temperature and Pressure, so do a Legendre transform of F -> G (dF=-SdT-PdV) -> (dG=-SdT+VdP)
+
+---maybe not true--- Want to find a way to interpolate F first, to get a continuous function of V, T then differentiate this to get P.
+
+---probably true--- Look at the Murnaghan equation of state or the Birch Murnaghan equation of state for relation of P/V then invert to get V as a function of P
+
+Interpolate the energy some way (using fourier interpolation/bicubic splines) Bicubic splines is probably the best method, as this is to be defined in a domain, and not a repeating function.
+
+
+Using the condensed matter cluster can do the computations. Go to the ed wiki (wiki.ed.ac.uk) and search SGE to find a page with instructions.
+Will need to ssh in ($ ssh -X s1333534@ph-cplab.ph.ed.ac.uk) then use qcommands to submit a job.
+
+Can run smaller jobs on the cplab computers (ssh in to the main computer, then ssh into each smaller one) - this should be suitable for silicon.
+
+Read Miguel's paper on Lithium.
+
+Also, changing fqha.x to just ignore negative energy states was a bad idea - changing it back.
+
+Check the convergence with Erho, and not just ecutwfc when using a non- norm conserving pseudopotential. It should be 8*the value rather than 4* with a norm-conserving.
+
+--------------------------------------------------
+
+Written a shell script to generate the phonons for a number of different values for silicon, and get the free energies.
+The structure is unstable after lat_param = 10.37, and gives negative frequencies, so will only look up to then.
+
+Writing a python script to plot the free energies as a function of temperature and volume(lattice parameter)
+
+Need to include the electrons energy into the calculation of energy in the fe-calc.py script
+
+Going to perform a much larger phonon run for silicon in the range 10.32-10.36 with a step of 0.001 (get 40 values)
+
+Now have values that can be accessed with arange(10.2, 10.5, 0.01) ++ arange(10.32, 10.36, 0.001)
+
+Added in the electrons energy, but the graph doesn't look converged enough.
+Going to look into the density of states for each, as in the free energy graph for T=0, there is a jump at a=10.340->a=10.341 
+Going to run phonon calculations in this small section to see what's going on.
+
+Maybe plot the density of states here.
+
+The discontinuity is still there for a=10.340->a=10.341 even with matdyn k=30x30x30.
+The electron contribution to the energy has a minimum around 10.4, so I will expand around there to check the phonon contributions.
+
+It's weird - the density of states is the same for 10.34->10.3403 then it jumps and stays the same until 10.341. Might be a problem with the simulation not being close enough to the lattice parameter.
+
+
+Going to perform a new simulation around the minimum lattice parameter for the electron energy, at 10.4.
+
+Values from 10.39 -> 10.41 with a spacing of 0.001.
+
+These new values that I took now give negative frequencies in the density, but this is likely caused by too small a q-points value (I used 4x4x4) The values are n=-8 at maximum, and they are only at w slightly below 0, so I will discard these when I calculate the density of states.
+
+--------------------------------------------------
+17/11/10
+--------------------------------------------------
+
+Modifying fqha.f90 and changing the line:
+$ if ( nu(i) < -1.d0 ) then
+to
+$ if ( nu(i) < -1.d1 ) then
+
+Hopefully this should be alright...
+
+Recompiled this file
+
+Silicon at 10.397 has negative frequency less than -1.d1 (by like 0.00001), moving the limit down to -11.d0
+
+These plots still give nonsense around this minimum - in just the electron energy there's a large discontinuity. Going to play with the e_rho cutoff value, change it to 8x rather than 4x, and also change the k-points and q-points grids to 6x6x6, 6x6x6. (matdyn is probably still fine at 30x30x30)
+
+Done tests with this pseudopotential at k=8x8x8, ecutwfc=18, ecutrho =144 and still not looking nice.
+
+Need to perform convergence tests on this pseudopotential (si_pbe_v1.uspp.F.UPF.txt)
+
+Steps:
+1) Find the minimum by varying lattice parameter, holding constant ecutwfc=30, ecutrho=240, k=6x6x6
+2) Vary ecutwfc at this minimum, keeping ecutrho as 8 x ecutwfc
+Minimum found at a=10.333
+
+Varying ecutwfc now.
+
+At ecutwfc=30, the energy has converged to within 10e-4 rydbergs 
+The pressure has converged to 10e-1kbar
+
+Just doing a run for this with k=4x4x4 to check if the convergence is still there.
+It is.
+Will now do a little run around the minimum (10.333) for k=4x4x4 at ecutwfc=30, ecutrho=8*ecutwfc to check if the parabola is still nice, then time for a phonons run.
+
+Yeah, it still works around k=4x4x4. Going to do more phonon runs, but instead up the E_rho to 8*ecutwfc. That was probably the mistake in the first place... 
+Also a mistake was to not do it around the centre.
+
+Split into chunks to do across different computers:
+From a=10.28 -> 10.38 (step 0.002)
+Lengths for different computers:
+
+1 10.28 10.294
+2 10.296 10.31
+3 10.312 10.326
+4 10.328 10.342
+5 10.344 10.358
+6 10.36 10.374
+7 10.376 10.38
+
+8 calculations for each
+
+Connected to computers: -045- -047- -049- -053- -055- -058- -065-
+
+Analysis for this shows that the free energies aren't too smooth around the equilibrium point. This could be due to the small q-points use around the minimum. Could run again with a larger q-points grid, larger matdyn grid (30x30x30 is the current) or just roll with it.
+
+Instead of redoing the simulations, can fit a parabola at every value for T, to get a function F(V, T)=a(x-b)^2+c|T then generate a grid using this, and interpolate this new grid with splines. This will smooth out the bumps in the smaller grid and should give an alright energy surface.
+
+Performing the free energy calculation for temperatures from T=0K to T=700K in 2K steps. (Melting point of Si is ~1400K, so performing integration up to 1/2 Tm_si is sensible)
+
+Now have the helmholtz free energy F(T, V), free energy as a function of temperature and volume made with bicubic spline interpolation.
+
+Want to get gibbs free energy G(T, P), free energy as a function of temperature and pressure.
+
+--------------------------------------------------
+17/11/11
+--------------------------------------------------
+
+
+Calculating the equilibrium lattice parameter of alpha tin. 
+
+Using ultrasoft pseudo potential GBRV 1.4: sn_pbe_v1.4.uspp.F.UPF, so always setting ecutrho=8*ecutwfc
+
+Alpha tin has a diamond structure - will perform scf calculations around the experimental lattice constant (6.4A~12Bohr)
+
+|||||Need to add electron smearing to the beta tin simulation
+
+For calculating the alpha tin, finding the lattice equilibrium with k=8x8x8, Ecutwfc=50
+
+Done calculations around the lattice parameter for 12x12x12, ecut=50
+This is not a smooth graph around the minimum - ecutwfc is probably not converged. Check convergence of this tomorrow.
+
+--------------------------------------------------
+17/11/12
+--------------------------------------------------
+
+Using the variation of lattice parameter around k=8x8x8 with ecutwfc=50, fitted a parabola to get a minimum at a=12.565 Bohr
+
+Will check convergence of ecutwfc at this lattice parameter using a kpoints grid of 8x8x8
+
+Convergence to within 1e-2 Ry at ecutwfc=50, ecutrho=400 for alpha tin at a=12.565 bohr.
+
+Time to try out beta tin.
+
+Using the sample input Miguel sent me as a starting point for the vc-relax simulation.

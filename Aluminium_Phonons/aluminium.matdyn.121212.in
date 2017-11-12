@@ -1,0 +1,11 @@
+&input
+	asr = 'simple',
+	flfrc = 'aluminium.121212.fc',
+	dos = .true.,
+	nk1 = 12,
+	nk2 = 12,
+	nk3 = 12,
+	fldos = 'aluminium.121212.dos',
+	flfrq = 'aluminium.121212.freq',
+	flvec = 'aluminium.121212.modes',
+/

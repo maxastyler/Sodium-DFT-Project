@@ -1,0 +1,9 @@
+Phonon Calculation for Aluminium
+ &inputph
+	prefix = 'aluminium',
+	ldisp = .true.,
+	nq1 = 12,
+	nq2 = 12,
+	nq3 = 12,
+	fildyn = 'aluminium.dyn',
+/

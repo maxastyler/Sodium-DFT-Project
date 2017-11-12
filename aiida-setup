@@ -1,0 +1,69 @@
+Installing aiida.
+
+These are the steps taken to install aiida on my local machine.
+
+Install postgresql first: 
+$ pacaur -s postgresql
+
+$ sudo -u postgres -i
+[postgres]$ initdb --locale $LANG -E UTF8 -D '/var/lib/postgres/data'
+
+This sets up postgresql for use.
+Enable and start the daemon:
+
+$ sudo systemctl enable postgresql
+$ sudo systemctl start postgresql
+
+Log back in to postgres shell, and create the aiida user
+
+[postgres]$ createuser --interactive
+
+Create the aiidadb database:
+
+[postgres]$ createdb aiidadb
+
+-------------------------------------------------
+
+Install aiida for python2:
+$ git clone https://github.com/aiidateam/aiida-core
+
+cd into the folder and use
+$ pip2 install -e .
+
+Install quantumespresso aiida plugin:
+
+$ git clone https://github.com/aiidateam/aiida-quantumespresso
+
+$ pip2 install -e .
+
+Might need to edit the aiida-core version in setup.json?
+
+Now do verdi setup
+
+Use the same username and password and database name as set up in postgresql
+
+--------------------------------------------------
+
+Need to add the quantum espresso binaries and pseudopotentials with the verdi command:
+
+-- Adding binaries (eg pw.x)
+
+Move the pw.x binary to a folder that needs to be copied to the computer the thing's running on, and add with:
+
+$ verdi code setup
+
+Move a family of pseudopotentials that you want to use into a folder and add with:
+
+$ verdi data upf uploadfamily <folder of potentials> <potential family name> "Description"
+
+--------------------------------------------------
+Need to add a computer now
+
+Verdi computer setup
+
+Use direct scheduling
+
+This should do
+
+--------------------------------------------------
+

@@ -1,0 +1,6 @@
+Phonon Calculation for Aluminium
+ &inputph
+	prefix = 'aluminium',
+	fildyn = 'aluminium.single.dyn',
+/
+0.6 0.8 0.3 

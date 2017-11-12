@@ -1,0 +1,8 @@
+To get phonon calculations:
+Get the self consistent electron density for the ground state.
+
+Use ph.x to calculate phonons
+
+Use q2r to get real space values
+
+Use matdyn
