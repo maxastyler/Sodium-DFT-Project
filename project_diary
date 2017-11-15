@@ -200,3 +200,14 @@ Using the sample input Miguel sent me as a starting point for the vc-relax simul
 --------------------------------------------------
 
 Running scfs on -003- -005- -006- -007- from 10.5 -> 11.5 with 10x10x16 k-grid for beta tin
+
+--------------------------------------------------
+17/11/14
+--------------------------------------------------
+
+Calculating phonons for alpha tin.
+Performing calculations at ecutwfc=50, ecutrho=400, k grid = 10x10x10, q grid = 8x8x8, m grid = 30x30x30, lats = 12.5 -> 12.7 in 0.01 steps
+
+running on computers: 091 
+
+Keep running into trouble with storage - the directories are ~ 1GB for each phonon calculation. Running multiple at once fills up far too much.
