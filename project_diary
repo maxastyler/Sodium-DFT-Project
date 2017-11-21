@@ -211,3 +211,33 @@ Performing calculations at ecutwfc=50, ecutrho=400, k grid = 10x10x10, q grid = 
 running on computers: 091 
 
 Keep running into trouble with storage - the directories are ~ 1GB for each phonon calculation. Running multiple at once fills up far too much.
+
+--------------------------------------------------
+17/11/15
+--------------------------------------------------
+
+Done some sorting out of the graphs in Silicon-PT and Tin-PT.
+
+Meeting with Miguel
+
+- Show the silicon simulations (4x4x4 around min, varying ecut, free energies at different temperatures, zpe difference)
+- Show the Alpha tin minimum find - gets stuck because not enough space on the server
+- Show beta tin vc-relax (did I do this right?), can't find minimum, think I need a higher res grid, would need more space on the server.
+- Groups command doesn't show that I'm on the cm server?
+- I like the idea of fitting the birch murnaghan equation with bicubic spline interpolation between the points once this is fit.
+- How to fit to B' in the birch murnaghan equation?
+
+Things to do:
+
+Use 86x86x60 input for the beta tin relaxation nr grid (both have common multiples)
+USE 80x80x80 for relaxation
+
+--------------------------------------------------
+2017-11-21
+--------------------------------------------------
+
+Running beta tin relax with 80x80x80 relaxation fourier grid, 12x12x20 k-points on cplab 003
+
+Perform phonon calculations for alpha tin with k=8x8x8, q=8x8x8, m_k=30x30x30 at 5 values between 12.45 and 12.8:
+	   [ 12.45  ,  12.5375,  12.625 ,  12.7125,  12.8   ] {linspace(12.45, 12.8, 5)}
+on cplabs: [ 004    ,  005    ,  009    ,  010    ,  012    ]
