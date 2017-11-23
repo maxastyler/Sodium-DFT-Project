@@ -240,4 +240,50 @@ Running beta tin relax with 80x80x80 relaxation fourier grid, 12x12x20 k-points 
 
 Perform phonon calculations for alpha tin with k=8x8x8, q=8x8x8, m_k=30x30x30 at 5 values between 12.45 and 12.8:
 	   [ 12.45  ,  12.5375,  12.625 ,  12.7125,  12.8   ] {linspace(12.45, 12.8, 5)}
-on cplabs: [ 004    ,  005    ,  009    ,  010    ,  012    ]
+on cplabs: [ -004-    ,  -005-    ,  -009-    ,  -010-    ,  -012-    ]
+
+FOR CALCULATING BURCH MURNAGHAN FIT:
+Use ev.x. Need to have a set of files, one for each temperature formatted as:
+LATTICE_PARAM 	ENERGY
+
+Do for 5 different lattice params and 5 different temperatures up to ~800K
+
+Phonon calculations are running slowly. Might need to split them up.
+
+Had to stop phonon calculations as other people were using the cplab computers, can restart tonight/later on. They got to ~10/41
+
+If I use 15 computers instead of 5 I could finish them tomorrow?
+Then start using the cluster instead.
+
+
+Have enthalpy vs pressure for different temperatures.
+How to plot the surface?
+Need to perform a cubic spline fit on PvE for each temperature, then calculate the PvT for the same pressures.
+
+--------------------------------------------------
+Meeting - 2017-11-22
+--------------------------------------------------
+
+- Look at stress convergence with everything constant, but k-points changing for scf eg. 6^3, 8^3, 10^3- alpha tin
+
+Be careful with the conversion factors
+
+- When probing at the lattice parameter, do more at high pressures rather than lower pressures, as the fits are fitted to high pressures (decompression doesn't behave as nicely)
+
+-Calculate the phonons for alpha and beta tin at their equilibrium parameters, to get transition temperature, F(T), check which F is lower at certain temperatures.
+
+Do vc-relax on beta tin targetting different pressures, around 0, with -0.25, -0.5Kbar minimum, going up in 5Kbars
+
+--------------------------------------------------
+2017-11-23
+--------------------------------------------------
+
+Calculating the convergence of alpha tin with respect to k-point grid size around the (expected) lattice minimum.
+
+Running the calculation at lat_params [12.20 12.28 12.36 12.44 12.52 12.60 12.68] (seq 12.2 0.08 12.7)
+
+On with k values (6 8 10 12 14 16 18 20) 
+
+Running these calculations on the computers:
+[12.20 12.28 12.36 12.44 12.52 12.60 12.68]
+[003,   004, 005,  006,  007,  008,  009]
