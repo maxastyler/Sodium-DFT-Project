@@ -286,4 +286,18 @@ On with k values (6 8 10 12 14 16 18 20)
 
 Running these calculations on the computers:
 [12.20 12.28 12.36 12.44 12.52 12.60 12.68]
-[003,   004, 005,  006,  007,  008,  009]
+[-003-,   -004-, -005-,  -006-,  -007-,  -008-,  009]
+
+
+With these values, plot the minima of abs(pressure)/energy vs lattice parameter for each k value, compare these curves.
+
+Compared the curves and it looks like the pressure and energy have both converged at k=8x8x8, as even up to k=20x20x20 they don't coincide. Should ask miguel about this.
+
+--------------------------------------------------
+2017/11/25
+--------------------------------------------------
+
+Doing phonon calculation for alpha tin as a=12.56 (my calculated minimum) with k=8x8x8, q=8x8x8. There are 29 q-points (with symmetries) splitting this between three computers:
+
+[1-10, 11-20, 21-29]
+[003,  004,   005]
