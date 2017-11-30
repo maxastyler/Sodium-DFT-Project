@@ -1,8 +1,13 @@
 #!/bin/python3
+#Sorts out a list of phonons and a list of computers and pairs them, then outputs to stdin 
+#! compname
+# min_ph max_ph
+# min_ph2 max_ph2...
+#Pipe in a list of computers to run on, put phonons as arguments
 import sys
-args=sys.argv
-phonons=[30, 10, 11, 12, 14, 15, 17, 20, 21, 22, 23, 24, 10, 100, 24, 25, 26, 27, 28]
-comps=[10, 11, 12, 13, 14, 15, 16, 17]
+phonons=[int(i) for i in sys.argv[1:]]
+stdinput=sys.stdin.readlines()
+comps=[int(i) for i in stdinput]
 phonons.sort()
 target_chunk_size=len(phonons)//len(comps)
 
@@ -42,6 +47,12 @@ def find_min_comp(computers):
             min_comp=(key, phon_size)
     return min_comp[0]
 
+def pretty_print_comp_phonon_pairings(comp_phon):
+    for key in comp_phon:   
+        print("! {key:03g}".format(key=key))
+        for phonons in comp_phon[key]:
+            print("{p1} {p2}".format(p1=phonons[0], p2=phonons[-1]))
+
 grouped_phonons=group_into_ascending(phonons)
 sized_phonons=[]
 for group in grouped_phonons:
@@ -54,4 +65,4 @@ for comp in comps:
 for item in sized_phonons:
     comp_to_add=find_min_comp(computer_phonon_pairings)
     computer_phonon_pairings[comp_to_add].append(item)
-print(computer_phonon_pairings)
+pretty_print_comp_phonon_pairings(computer_phonon_pairings)
