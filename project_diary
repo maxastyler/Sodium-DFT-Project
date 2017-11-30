@@ -301,3 +301,20 @@ Doing phonon calculation for alpha tin as a=12.56 (my calculated minimum) with k
 
 [1-10, 11-20, 21-29]
 [003,  004,   005]
+
+--------------------------------------------------
+2017/11/26
+--------------------------------------------------
+
+Phonon calculations done for alpha tin at k=8x8x8,p=8x8x8, will check phonon dispersion curves against literature values.
+
+--------------------------------------------------
+2017/11/29
+--------------------------------------------------
+
+The dispersion curves for 8x8x8 are ok, but there are some discrepancies between them and the literature values, especially between X-K
+Running again at 10x10x10 curves has 47 phonon points.
+
+List of 16 computers running each selection of phonons simulation:
+[1 - 3, 4 - 6, 7 - 9, 10 - 12, 13 - 15, 16 - 18, 19 - 21, 22 - 24, 25 - 27, 28 - 30, 31 - 33, 34 - 36, 37 - 39, 40 - 42, 43 - 45, 46 - 47] 
+[-004- ,-005- ,-006- ,-007-,   -008- ,    -009-,  -010-,   -011- ,  -012- ,  -013- ,  -014-   , 015    , 016    , 017    , -018- , -019-]
