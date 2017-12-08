@@ -1,0 +1,16 @@
+Already have a script to run on a cplab that checks computers to run on (check_comps_ssh) and a python script to split phonons between the computers (chunk_phonons.py)
+
+Need a script which then takes these phonons and free computers and starts tmux sessions on each (with some session name) and runs the phonons. 
+
+The output from chunk_phonons.py has the format
+
+! nnn 
+xx yy
+xx yy
+
+Where ! denote a computer with number nnn
+and xx yy are the start phonon and stop phonon to be run in the ph.x script.
+
+Write a script which runs on each computer, and takes the input list (xx yy, xx yy), calculates the electron density once, then loops through the phonons and calculates each dynamical matrix.
+
+Once phonons are calculated, copy all the *.dyn* files to the folder where the script is located.
