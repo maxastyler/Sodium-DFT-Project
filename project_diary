@@ -377,3 +377,11 @@ Did 2 more relaxations for beta sn using the last parameters calculated. These s
 Get a problem "q mesh breaks symmetry" when running the ph.x simulation. Going to try setting nq1=nq2=nq3=8.
 
 see -> https://www.mail-archive.com/pw_forum@pwscf.org/msg29372.html
+
+--------------------------------------------------
+17/12/12
+--------------------------------------------------
+
+The q-symmetry problem is fine - just running simulations at 8x8x8 q-points.
+
+Finished the script that splits up phonons and runs them on different computers. Finishing the ~40 phonons that the cm machine didn't finish on the computers now
