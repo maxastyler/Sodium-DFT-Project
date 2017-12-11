@@ -1,8 +1,7 @@
 #!/bin/python3
 #Sorts out a list of phonons and a list of computers and pairs them, then outputs to stdin 
 #! compname
-# min_ph max_ph
-# min_ph2 max_ph2...
+# min_ph1 max_ph1 min_ph2 max_ph2 min_ph3 max_ph3...
 #Pipe in a list of computers to run on, put phonons as arguments
 import sys
 phonons=[int(i) for i in sys.argv[1:]]
@@ -51,7 +50,8 @@ def pretty_print_comp_phonon_pairings(comp_phon):
     for key in comp_phon:   
         print("! {key:03g}".format(key=key))
         for phonons in comp_phon[key]:
-            print("{p1} {p2}".format(p1=phonons[0], p2=phonons[-1]))
+            print("{p1} {p2}".format(p1=phonons[0], p2=phonons[-1]), end=" ")
+        print()
 
 grouped_phonons=group_into_ascending(phonons)
 sized_phonons=[]
