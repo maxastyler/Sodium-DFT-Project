@@ -4,6 +4,7 @@ cd `echo $0 | sed 's/\(.*\)\/.*/\1/'` # extract pathname
 MASTER_DIR=`pwd`
 
 CALC_DIR="/scratch/s1333534/b_sn_phon_calc"
+rm -r $CALC_DIR
 mkdir -p $CALC_DIR
 cd $CALC_DIR
 
