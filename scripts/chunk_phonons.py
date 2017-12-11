@@ -51,6 +51,7 @@ def pretty_print_comp_phonon_pairings(comp_phon):
         print("! {key:03g}".format(key=key))
         for phonons in comp_phon[key]:
             print("{p1} {p2}".format(p1=phonons[0], p2=phonons[-1]), end=" ")
+        print()
 
 grouped_phonons=group_into_ascending(phonons)
 sized_phonons=[]
