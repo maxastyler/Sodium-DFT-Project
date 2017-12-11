@@ -51,7 +51,7 @@ mpirun -np 4 pw.x < b.sn.scf.in > b.sn.scf.out
 for ((i=1;i<=$#;i=i+2))
 do
 	j=$((i+1))
-	cat > b.sn.ph.in << EOF
+	cat > b.sn.ph.${!i}.${!j}.in << EOF
 Beta Tin Phonon Calculation for Lat_Param=11.237464
 &inputph
         prefix = 'sn.beta',
@@ -64,6 +64,6 @@ Beta Tin Phonon Calculation for Lat_Param=11.237464
         fildyn = 'sn.beta.dyn',
 /
 EOF
-	mpirun -np 4 ph.x < b.sn.ph.in > b.sn.ph.out
+	mpirun -np 4 ph.x < b.sn.ph.${!i}.${!j}.in > b.sn.ph.${!i}.${!j}.out
 	cp *.dyn* $MASTER_DIR
 done
