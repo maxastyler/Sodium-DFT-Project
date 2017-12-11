@@ -9,7 +9,7 @@ while read -r line; do
 		COMP=${line:2}
 		echo "$COMP"
 	else
-		ssh s1333534@cplab$COMP /bin/bash <<'EOT'
+		ssh s1333534@cplab$COMP /bin/bash <<EOT
 		export TERM=xterm 
 		tmux new-session -A -d -s phonon-session "cd ~/b_sn_eq_ph/rest_of_the_dyns;./run_phonons_b_sn $line"
 EOT
