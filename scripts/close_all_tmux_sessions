@@ -10,6 +10,7 @@ while read -r line; do
         else
                 ssh s1333534@cplab$COMP /bin/bash <<'EOT'
                 export TERM=xterm
+		killall -KILL mpirun
                 tmux kill-server
 EOT
         fi
