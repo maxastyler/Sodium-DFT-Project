@@ -2,6 +2,8 @@
 #This script allows splitting up of a phonon job over multiple computers on the ssh network, so each one does a certain number of the phonons.
 #tmux kill-server kills all tmux sessions
 #this function checks the outputs of a "who -q" command and checks that I'm the only one logged in
+#Input a list of computers to check, eg:
+# $ ./check_comps_ssh "`seq -s " " -f "%03g" 1 1 100`"
 function check_users(){
 	users=(`echo "${1}" | head -1`)
 	u_nums=${#users[@]}

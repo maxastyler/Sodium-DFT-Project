@@ -3,12 +3,16 @@
 #Put in a list of phonons by $./run_phonons_ssh "`cat phon_file`"
 COMPS="$1"
 COMP=0
+echo "$COMPS"
 while read -r line; do
 	if [ "${line:0:1}" = "!" ]; then
 		COMP=${line:2}
 		echo "$COMP"
 	else
-		ssh s1333534@cplab$COMP -t 'tmux new-session -A -d -s phonon-session "cd ~/b_sn_eq_ph/rest_of_the_dyns;echo \"hi\""'
+		ssh s1333534@cplab$COMP /bin/bash <<'EOT'
+		export TERM=xterm 
+		tmux new-session -A -d -s phonon-session "cd ~/b_sn_eq_ph/rest_of_the_dyns;./run_phonons_b_sn $line"
+EOT
 	fi
 
-done <<< $COMPS
+done <<< "$COMPS"
