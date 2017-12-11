@@ -1,5 +1,6 @@
 #!/bin/sh
 #This script allows splitting up of a phonon job over multiple computers on the ssh network, so each one does a certain number of the phonons.
+#Put in a list of phonons by $./run_phonons_ssh "`cat phon_file`"
 COMPS="$1"
 COMP=0
 while read -r line; do
@@ -7,7 +8,7 @@ while read -r line; do
 		COMP=${line:2}
 		echo "$COMP"
 	else
-		echo "$line"
+		ssh s1333534@cplab$COMP -t 'tmux new-session -A -d -s phonon-session "cd ~/b_sn_eq_ph/rest_of_the_dyns;echo \"hi\""'
 	fi
 
 done <<< $COMPS
