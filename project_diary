@@ -385,3 +385,35 @@ see -> https://www.mail-archive.com/pw_forum@pwscf.org/msg29372.html
 The q-symmetry problem is fine - just running simulations at 8x8x8 q-points.
 
 Finished the script that splits up phonons and runs them on different computers. Finishing the ~40 phonons that the cm machine didn't finish on the computers now
+
+--------------------------------------------------
+17/12/13
+--------------------------------------------------
+
+Some phonons didn't finish, and need to be restarted:
+phon-num | comp
+20 | 062
+
+
+Some are still running:
+
+phon-num | comp
+
+27 | 047
+28 | 046
+29 | 044
+30 | 043
+31 | 042
+32 | 041
+34 | 038
+36 | 036
+37 | 035
+43 | 027
+44 | 026
+45 | 022
+46 | 021
+47 | 020
+55 | 009
+56 | 008
+
+Going to resubmit that single phonon (20) to run on the one day queue.
