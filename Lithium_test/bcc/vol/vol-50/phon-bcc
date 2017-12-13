@@ -1,0 +1,30 @@
+#!/bin/bash --login
+#PBS -N li-bcc-50
+#PBS -V
+#PBS -l select=8
+#PBS -l walltime=00:20:00
+
+# Make sure you change this to your budget code
+#PBS -A e89-ed_p
+
+# Make sure any symbolic links are resolved to absolute path
+export PBS_O_WORKDIR=$(readlink -f $PBS_O_WORKDIR)
+
+# Change to the directory that the job was submitted from
+cd $PBS_O_WORKDIR
+
+# Clean temporary files
+#rm -rf tmp/*
+
+# Use the 5.2.1 binaries in $WORK
+export PW=/work/e89/e89/miguelmc/pw.x
+export PH=/work/e89/e89/miguelmc/ph.x
+
+# This line sets the OpenMP thread number
+export OMP_NUM_THREADS=1
+
+# We run the code...
+aprun -n 192 -N 24 $PW -npool 192 < bcc-li.scf >> bcc-li.scf.out
+aprun -n 192 -N 24 $PH -npool 192 < bcc-li.ph  >> bcc-li.ph.out
+
+

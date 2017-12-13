@@ -1,0 +1,81 @@
+
+     Program MATDYN v.5.4.0 starts on 10Aug2016 at 11:57:17 
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+          URL http://www.quantum-espresso.org", 
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI), running on     4 processors
+     R & G space division:  proc/nbgrp/npool/nimage =       4
+ mass for atomic type   1 not given; uses mass from file bcc-li.10x.fc                                                                                                                                                                                                                                                   
+Norm of the difference between old and new effective charges:    0.00000000000000000000
+Norm of the difference between old and new force-constants:   0.00000169191497856364
+     Message from routine matdyn:
+     Z* not found in file bcc-li.10x.fc, TO-LO splitting at q=0 will be absent!
+     A direction for q was not specified:TO-LO splitting will be absent
+
+     MATDYN       :    25.99s CPU        28.21s WALL
+
+
+   This run was terminated on:  11:57:45  10Aug2016            
+
+=------------------------------------------------------------------------------=
+   JOB DONE.
+=------------------------------------------------------------------------------=
+
+     Program MATDYN v.5.4.0 starts on 15Sep2016 at 11: 1:49 
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+          URL http://www.quantum-espresso.org", 
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI), running on     2 processors
+     R & G space division:  proc/nbgrp/npool/nimage =       2
+ mass for atomic type   1 not given; uses mass from file bcc-li.10x.fc                                                                                                                                                                                                                                                   
+Norm of the difference between old and new effective charges:    0.00000000000000000000
+Norm of the difference between old and new force-constants:   0.00000169191497856364
+     Message from routine matdyn:
+     Z* not found in file bcc-li.10x.fc, TO-LO splitting at q=0 will be absent!
+     A direction for q was not specified:TO-LO splitting will be absent
+
+     MATDYN       :  1m29.24s CPU     1m29.52s WALL
+
+
+   This run was terminated on:  11: 3:19  15Sep2016            
+
+=------------------------------------------------------------------------------=
+   JOB DONE.
+=------------------------------------------------------------------------------=
+
+     Program MATDYN v.5.4.0 starts on 15Sep2016 at 11:40:12 
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+          URL http://www.quantum-espresso.org", 
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI), running on     2 processors
+     R & G space division:  proc/nbgrp/npool/nimage =       2
+ mass for atomic type   1 not given; uses mass from file bcc-li.10x.fc                                                                                                                                                                                                                                                   
+Norm of the difference between old and new effective charges:    0.00000000000000000000
+Norm of the difference between old and new force-constants:   0.00000169191497856364
+     Message from routine matdyn:
+     Z* not found in file bcc-li.10x.fc, TO-LO splitting at q=0 will be absent!
+     A direction for q was not specified:TO-LO splitting will be absent
+
+     MATDYN       :  1m32.62s CPU     1m34.28s WALL
+
+
+   This run was terminated on:  11:41:46  15Sep2016            
+
+=------------------------------------------------------------------------------=
+   JOB DONE.
+=------------------------------------------------------------------------------=

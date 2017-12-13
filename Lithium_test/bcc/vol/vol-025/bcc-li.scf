@@ -1,0 +1,24 @@
+ &control
+    calculation='scf'
+    restart_mode='from_scratch',
+    prefix='li-bcc'
+    pseudo_dir = '../',
+    outdir='./tmp/'
+    disk_io = 'low'
+    tstress = .true.
+ /
+ &system
+    ibrav= 3, celldm(1)= 6.531332  , nat= 1, ntyp= 1,
+    ecutwfc = 60.0 , ecutrho = 480.0
+    occupations='smearing', smearing='m-v', degauss=0.02
+ /
+ &electrons
+    conv_thr =  1.0d-11
+    mixing_beta = 0.7
+ /
+ATOMIC_SPECIES
+ Li  6.941   Li.pbe-s-gbrv14.UPF
+ATOMIC_POSITIONS
+ Li 0.00 0.00 0.00
+K_POINTS {automatic}
+ 28 28 28   1 1 1

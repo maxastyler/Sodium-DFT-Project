@@ -1,0 +1,13 @@
+ &input
+    asr='crystal',
+    flfrc='bcc-li.10x.fc', flfrq='newdispersion.freq', 
+    q_in_band_form    = .true.,
+    !q_in_cryst_coord = .true.
+ /
+5
+ 0.0    0.0    0.0    50         ! GM
+ 0.0    1.0    0.0    50         ! H
+ 0.5    0.5    0.5    50         ! P
+ 0.0    0.0    0.0    50         ! GM
+ 0.5    0.5    0.0     1         ! N
+

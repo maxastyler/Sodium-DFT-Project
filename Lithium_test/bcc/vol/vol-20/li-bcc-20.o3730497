@@ -1,0 +1,17 @@
+--------------------------------------------------------------------------------
+*** miguelmc   Job: 3730497.sdb   started: 03/06/16 14:35:31   host: mom3 ***
+*** miguelmc   Job: 3730497.sdb   started: 03/06/16 14:35:31   host: mom3 ***
+*** miguelmc   Job: 3730497.sdb   started: 03/06/16 14:35:31   host: mom3 ***
+*** miguelmc   Job: 3730497.sdb   started: 03/06/16 14:35:31   host: mom3 ***
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+Resources requested: ncpus=288,place=free,walltime=01:00:00
+Resources allocated: cpupercent=0,cput=00:00:04,mem=8360kb,ncpus=288,vmem=156836kb,walltime=00:42:19
+
+*** miguelmc   Job: 3730497.sdb   ended: 03/06/16 15:17:49   queue: standard ***
+*** miguelmc   Job: 3730497.sdb   ended: 03/06/16 15:17:49   queue: standard ***
+*** miguelmc   Job: 3730497.sdb   ended: 03/06/16 15:17:49   queue: standard ***
+*** miguelmc   Job: 3730497.sdb   ended: 03/06/16 15:17:49   queue: standard ***
+--------------------------------------------------------------------------------

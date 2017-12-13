@@ -1,0 +1,19 @@
+--------------------------------------------------------------------------------
+*** miguelmc   Job: 3742781.sdb   started: 07/06/16 09:36:43   host: mom1 ***
+*** miguelmc   Job: 3742781.sdb   started: 07/06/16 09:36:43   host: mom1 ***
+*** miguelmc   Job: 3742781.sdb   started: 07/06/16 09:36:43   host: mom1 ***
+*** miguelmc   Job: 3742781.sdb   started: 07/06/16 09:36:43   host: mom1 ***
+
+--------------------------------------------------------------------------------
+/work/e89/e89/miguelmc/src/espresso/bin/pw.x
+/work/e89/e89/miguelmc/src/espresso/bin/ph.x
+--------------------------------------------------------------------------------
+
+Resources requested: ncpus=384,place=free,walltime=03:00:00
+Resources allocated: cpupercent=4,cput=00:00:05,mem=8360kb,ncpus=384,vmem=156836kb,walltime=01:39:21
+
+*** miguelmc   Job: 3742781.sdb   ended: 07/06/16 11:16:03   queue: standard ***
+*** miguelmc   Job: 3742781.sdb   ended: 07/06/16 11:16:03   queue: standard ***
+*** miguelmc   Job: 3742781.sdb   ended: 07/06/16 11:16:03   queue: standard ***
+*** miguelmc   Job: 3742781.sdb   ended: 07/06/16 11:16:03   queue: standard ***
+--------------------------------------------------------------------------------

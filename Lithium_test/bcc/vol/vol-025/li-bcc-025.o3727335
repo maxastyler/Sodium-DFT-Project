@@ -1,0 +1,17 @@
+--------------------------------------------------------------------------------
+*** miguelmc   Job: 3727335.sdb   started: 01/06/16 12:52:50   host: mom3 ***
+*** miguelmc   Job: 3727335.sdb   started: 01/06/16 12:52:50   host: mom3 ***
+*** miguelmc   Job: 3727335.sdb   started: 01/06/16 12:52:50   host: mom3 ***
+*** miguelmc   Job: 3727335.sdb   started: 01/06/16 12:52:50   host: mom3 ***
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+Resources requested: ncpus=288,place=free,walltime=01:00:00
+Resources allocated: cpupercent=0,cput=00:00:04,mem=8368kb,ncpus=288,vmem=156836kb,walltime=00:25:36
+
+*** miguelmc   Job: 3727335.sdb   ended: 01/06/16 13:18:25   queue: standard ***
+*** miguelmc   Job: 3727335.sdb   ended: 01/06/16 13:18:25   queue: standard ***
+*** miguelmc   Job: 3727335.sdb   ended: 01/06/16 13:18:25   queue: standard ***
+*** miguelmc   Job: 3727335.sdb   ended: 01/06/16 13:18:25   queue: standard ***
+--------------------------------------------------------------------------------

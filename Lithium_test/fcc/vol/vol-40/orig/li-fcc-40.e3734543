@@ -1,0 +1,26 @@
+Rank 98 [Fri Jun  3 17:29:54 2016] [c6-2c1s13n0] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 98
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ph.x               0000000002027669  Unknown               Unknown  Unknown
+ph.x               0000000002025F3E  Unknown               Unknown  Unknown
+ph.x               0000000001FDA652  Unknown               Unknown  Unknown
+ph.x               0000000001F6DE03  Unknown               Unknown  Unknown
+ph.x               0000000001F742C2  Unknown               Unknown  Unknown
+ph.x               0000000001DC5490  Unknown               Unknown  Unknown
+ph.x               0000000001F5947B  Unknown               Unknown  Unknown
+ph.x               000000000203DDE1  Unknown               Unknown  Unknown
+ph.x               0000000001E15D52  Unknown               Unknown  Unknown
+ph.x               0000000001DEDA33  Unknown               Unknown  Unknown
+ph.x               0000000001DF49F5  Unknown               Unknown  Unknown
+ph.x               000000000093327C  mp_mp_mp_abort_           180  mp.f90
+ph.x               00000000008BCAF5  errore_                   110  error_handler.f90
+ph.x               000000000070721A  set_kplusq_                57  set_kplusq.f90
+ph.x               0000000000491A57  setup_nscf_               126  set_defaults_pw.f90
+ph.x               0000000000490A97  run_nscf_                  75  run_nscf.f90
+ph.x               0000000000409C53  do_phonon_                 58  do_phonon.f90
+ph.x               00000000004013D2  MAIN__                     78  phonon.f90
+ph.x               0000000000401326  Unknown               Unknown  Unknown
+ph.x               0000000002037AD1  Unknown               Unknown  Unknown
+ph.x               00000000004011F5  Unknown               Unknown  Unknown
+_pmiu_daemon(SIGCHLD): [NID 04340] [c6-2c1s13n0] [Fri Jun  3 17:29:55 2016] PE RANK 98 exit signal Aborted
+[NID 04340] 2016-06-03 17:29:55 Apid 21911578: initiated application termination

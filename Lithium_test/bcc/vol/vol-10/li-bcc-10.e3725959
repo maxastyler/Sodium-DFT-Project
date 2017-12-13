@@ -1,0 +1,27 @@
+Rank 250 [Tue May 31 22:38:33 2016] [c4-0c0s6n3] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 250
+forrtl: error (76): Abort trap signal
+Image              PC                Routine            Line        Source             
+ph.x               0000000002404439  Unknown               Unknown  Unknown
+ph.x               0000000002402D0E  Unknown               Unknown  Unknown
+ph.x               00000000023B67E2  Unknown               Unknown  Unknown
+ph.x               00000000023499E3  Unknown               Unknown  Unknown
+ph.x               00000000023500C2  Unknown               Unknown  Unknown
+ph.x               000000000233B880  Unknown               Unknown  Unknown
+ph.x               000000000233B83B  Unknown               Unknown  Unknown
+ph.x               000000000241A8F1  Unknown               Unknown  Unknown
+ph.x               00000000021F0FC2  Unknown               Unknown  Unknown
+ph.x               00000000021CA453  Unknown               Unknown  Unknown
+ph.x               00000000021CFC65  Unknown               Unknown  Unknown
+ph.x               000000000093323C  mp_mp_mp_abort_           180  mp.f90
+ph.x               00000000008BCAB5  errore_                   110  error_handler.f90
+ph.x               00000000008F95C9  io_files_mp_seqop         315  io_files.f90
+ph.x               00000000006673D5  openfil_                   54  openfil.f90
+ph.x               000000000063EED2  init_run_                  95  init_run.f90
+ph.x               0000000000490A8E  run_nscf_                  76  run_nscf.f90
+ph.x               0000000000409C93  do_phonon_                 58  do_phonon.f90
+ph.x               0000000000401412  MAIN__                     78  phonon.f90
+ph.x               0000000000401366  Unknown               Unknown  Unknown
+ph.x               00000000024149D1  Unknown               Unknown  Unknown
+ph.x               0000000000401231  Unknown               Unknown  Unknown
+_pmiu_daemon(SIGCHLD): [NID 00795] [c4-0c0s6n3] [Tue May 31 22:38:34 2016] PE RANK 250 exit signal Aborted
+[NID 00795] 2016-05-31 22:38:34 Apid 21880438: initiated application termination
