@@ -51,10 +51,8 @@ for struct in vals:
 
 #checking which enthalpy is lowest at a set of points:
 
-p=np.arange(0, 10, 1)
-t=np.arange(0, 300, 50)
-
-print(fitting["bcc"]["f"](0, 0))
+p=np.arange(0, 10, 0.5)
+t=np.arange(0, 300, 40)
 
 lowest_structure=[]
 for temp in t:
@@ -64,5 +62,12 @@ for temp in t:
             lowest_structure[-1].append(1)
         else:
             lowest_structure[-1].append(0)
+
+i=0
+lowest_structure.reverse()
+print("1=fcc, 0=bcc")
 for line in lowest_structure:
-    print(line)
+    print("{:03g} || {}".format(t[-i-1], line))
+    i+=1
+print("-"*40)
+print("      ", [int(round(i)) for i in p])
