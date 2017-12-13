@@ -424,3 +424,15 @@ Testing out the pt fitting on the lithium data that miguel gave me.
 I've made a directory in sodium_dft_project called Lithium_test which contains the data in bcc and fcc folders containing the ev.x output in files with the temperature in the filename.
 
 Going to put this into a script and fit with bicubic splines.
+
+
+need to add dft energy to the calculations with ev.x
+
+- Finish beta tin - just those volumes
+- Work on the PT code to try to get it working on lithium
+- Initial work on sodium (bcc, fcc at different pressures, -> ~10GPa)
+- Initial work on report
+
+Email miguel next week, just to tell him how it's going
+
+Meet miguel next january (10th or 17th) 
