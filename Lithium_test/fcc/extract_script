@@ -1,0 +1,10 @@
+#!/bin/sh
+MASTER=`pwd`
+echo "$MASTER"
+for f in `ls vol/`; do
+	cd "vol/$f"
+	this_vol=`grep -r "2, celldm(1)=" | awk '{print $5}'`
+	echo $this_vol
+	cd "$MASTER"
+	cp "vol/$f/mass-low-fqha.out" "extracted/fcc.fqha.$this_vol"
+done
