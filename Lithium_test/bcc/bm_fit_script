@@ -1,0 +1,5 @@
+#!/bin/sh
+
+for file in `ls bm_fits`; do
+	echo -e "au\nbcc\n1\nbm_fits/$file\npt_fits/$file.pt" | ev.x
+done;
