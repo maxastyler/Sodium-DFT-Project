@@ -417,3 +417,10 @@ phon-num | comp
 56 | 008
 
 Going to resubmit that single phonon (20) to run on the one day queue.
+
+--------------------------------------------------
+Testing out the pt fitting on the lithium data that miguel gave me.
+
+I've made a directory in sodium_dft_project called Lithium_test which contains the data in bcc and fcc folders containing the ev.x output in files with the temperature in the filename.
+
+Going to put this into a script and fit with bicubic splines.
