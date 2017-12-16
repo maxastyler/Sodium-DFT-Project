@@ -36,6 +36,7 @@ for i in ["bcc", "fcc"]:
 #with x=[] y=[] z=[] all being 1d arrays
 fitting = {}
 for struct in vals:
+    print(struct)
     fitting[struct]={}
     fitting[struct]["e"]=[] #enthalpy
     fitting[struct]["t"]=[] #The different values of temperature
@@ -48,6 +49,8 @@ for struct in vals:
             fitting[struct]["pp"].append(pressure)
             fitting[struct]["e"].append(vals[struct][temp][pressure])
     fitting[struct]["f"]=interp2d(fitting[struct]["pp"], fitting[struct]["tt"], fitting[struct]["e"], kind='cubic')
+for t in range(0, 100):
+    print(fitting["fcc"]["f"](0, t))
 
 #checking which enthalpy is lowest at a set of points:
 
