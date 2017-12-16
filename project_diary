@@ -430,3 +430,11 @@ Meet miguel next january (10th or 17th)
 Beta tin has finally finished, checking the dispersion now.
 
 When using asr='simple' in matdyn.x, get a lot of negative frequencies, and not very nice looking dispersion curves.
+
+--------------------------------------------------
+17/12/16
+--------------------------------------------------
+
+On calculating the sodium phonons:
+
+First need to get a pseudo potential.
