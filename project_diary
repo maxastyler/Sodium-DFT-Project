@@ -443,3 +443,16 @@ Using the SSSP website, downloaded the PBE pseudopotential collection (http://ma
 Using this pseudopotential, first need to check convergence with cutoff energy.
 
 Using the lattice constant of BCC Na, 429.06 pm/8.108 Bohr (http://periodictable.com/Elements/011/data.html)
+
+Using m-v smearing with degaussing of 0.02 Ry
+
+BCC sodium, ibrav = 3,
+1 atom per unit cell,
+1 type of atom
+position is 0 0 0
+
+Using 10^3 k-points.
+
+With this measurement, choosing ecutwfc = 40Ry (ecutrho=320Ry) as the cutoff as the energies and pressures are converged to within (0.003Ry, 1kbar) at this point.
+
+Use a value of k=20^3
