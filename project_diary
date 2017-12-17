@@ -438,3 +438,8 @@ When using asr='simple' in matdyn.x, get a lot of negative frequencies, and not 
 On calculating the sodium phonons:
 
 First need to get a pseudo potential.
+Using the SSSP website, downloaded the PBE pseudopotential collection (http://materialscloud.org/sssp/downloads.html) and will use the Na_pbe_v1.uspp.F.UPF from that collection.
+
+Using this pseudopotential, first need to check convergence with cutoff energy.
+
+Using the lattice constant of BCC Na, 429.06 pm/8.108 Bohr (http://periodictable.com/Elements/011/data.html)
