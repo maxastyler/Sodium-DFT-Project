@@ -1,3 +1,40 @@
 #!/bin/sh
 
+#Script to calculate the convergence of the energy and pressure with changing ecutwfc (and ecutrho)
 
+cd `echo $0 | sed 's/\(.*\)\/.*/\1/'` # extract pathname
+
+for ECUTWFC in `seq 20 10 30`; do
+	ECUTRHO=`expr $ECUTWFC \* 8`
+	cat > na.bcc.scf.$ECUTWFC.in << EOF
+&control
+	calculation = 'scf',
+	tstress = .true.,
+	prefix = 'na.bcc',
+/
+&system
+	ibrav = 3,
+	celldm(1) = 8.108,
+	nat = 1,
+	ntyp = 1,
+	ecutwfc = $ECUTWFC,
+	ecutrho = $ECUTRHO,
+	occupations = 'smearing',
+	smearing = 'm-v',
+	degauss = 0.02,
+/
+&electrons
+	mixing_beta = 0.7,
+	conv_thr = 1.0d-8,
+/
+ATOMIC_SPECIES 
+ Na 22.99 Na_pbe_v1.uspp.F.UPF
+ATOMIC_POSITIONS crystal
+ Na 0 0 0
+K_POINTS automatic
+ 10 10 10  1 1 1 
+EOF
+
+	echo "Running $ECUTWFC"
+	mpirun -np 4 pw.x < na.bcc.scf.$ECUTWFC.in > na.bcc.scf.$ECUTWFC.out
+done
