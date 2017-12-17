@@ -4,7 +4,7 @@
 
 cd `echo $0 | sed 's/\(.*\)\/.*/\1/'` # extract pathname
 
-for ECUTWFC in `seq 20 10 30`; do
+for ECUTWFC in `seq 110 10 150`; do
 	ECUTRHO=`expr $ECUTWFC \* 8`
 	cat > na.bcc.scf.$ECUTWFC.in << EOF
 &control
