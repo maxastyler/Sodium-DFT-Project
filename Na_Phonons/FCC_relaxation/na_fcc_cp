@@ -1,0 +1,22 @@
+#!/bin/sh
+
+cd `echo $0 | sed 's/\(.*\)\/.*/\1/'` # extract pathname
+
+MASTER_DIR=`pwd`
+SCRATCH_DIR="/scratch/s1333534/na_fcc_relax"
+
+mkdir -p $SCRATCH_DIR
+
+for TARGETPRESSURE in `seq -10 10 100`; do #-1 GPa to 10GPa
+
+dir_name="Na_FCC_${TARGETPRESSURE}_KBar"
+
+mkdir -p "$MASTER_DIR/$dir_name"
+echo "$MASTER_DIR/$dir_name"
+
+cd "$SCRATCH_DIR/$dir_name"
+
+
+cp *.in *.out "$MASTER_DIR/$dir_name"
+
+done;
