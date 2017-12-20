@@ -1,0 +1,24 @@
+#!/bin/sh
+
+cd `echo $0 | sed 's/\(.*\)\/.*/\1/'` # extract pathname
+
+run_no=$1
+
+MASTER_DIR=`pwd`
+RUN_DIR="$MASTER_DIR/run_$run_no"
+SCRATCH_DIR="/scratch/s1333534/na_fcc_relax/run_$run_no"
+
+mkdir -p $SCRATCH_DIR
+
+cp $RUN_DIR/*.in $SCRATCH_DIR
+
+cd "$SCRATCH_DIR"
+
+for TARGETPRESSURE in `seq -10 10 100`; do #-1 GPa to 10GPa
+	
+	mpirun -np 4 pw.x < na.fcc.vcrelax.$TARGETPRESSURE.in > na.fcc.vcrelax.$TARGETPRESSURE.out
+	
+
+done;
+
+cp *.out "$RUN_DIR"
