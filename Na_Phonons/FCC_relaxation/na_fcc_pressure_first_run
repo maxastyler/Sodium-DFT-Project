@@ -2,60 +2,58 @@
 
 cd `echo $0 | sed 's/\(.*\)\/.*/\1/'` # extract pathname
 
-run_no=$1
-echo "$run_no"
+run_no=1
 
 MASTER_DIR=`pwd`
-SCRATCH_DIR="/scratch/s1333534/na_fcc_relax"
+RUN_DIR="$MASTER_DIR/run_$run_no"
+SCRATCH_DIR="/scratch/s1333534/na_fcc_relax/run_$run_no"
 
 mkdir -p $SCRATCH_DIR
 
+cd "$SCRATCH_DIR"
+
 for TARGETPRESSURE in `seq -10 10 100`; do #-1 GPa to 10GPa
 
-dir_name="Na_FCC_${TARGETPRESSURE}_KBar"
-
-mkdir -p "$SCRATCH_DIR/$dir_name"
-
-cd "$SCRATCH_DIR/$dir_name"
-
-cat > na.fcc.vcrelax.$TARGETPRESSURE.in << EOF
-&control 
-	calculation = 'vc-relax',
-	prefix = 'na.fcc',
-/
-&system
-	ibrav = 2,
-	celldm(1) = 8,
-	nat = 1,
-	ntyp = 1,
-	ecutwfc = 40,
-	ecutrho = 320,
-	occupations = 'smearing',
-	smearing = 'm-v',
-	degauss = 0.02,
-/
-&electrons
-	mixing_beta = 0.7,
-	conv_thr = 1.0d-8,
-/
-&IONS
-	ion_dynamics = 'bfgs',
-/
-&CELL
-	cell_dynamics = 'bfgs',
-	press = $TARGETPRESSURE,
-/
-ATOMIC_SPECIES
- Na 22.99 Na_pbe_v1.uspp.F.UPF
-ATOMIC_POSITIONS crystal
- Na 0 0 0
-K_POINTS automatic
- 20 20 20 1 1 1
-EOF
-
-mpirun -np 4 pw.x < na.fcc.vcrelax.$TARGETPRESSURE.in > na.fcc.vcrelax.$TARGETPRESSURE.out
-
-mkdir -p "$MASTER_DIR/$dir_name"
-cp *.in *.out "$MASTER_DIR/$dir_name"
+	
+	cat > na.fcc.vcrelax.$TARGETPRESSURE.in << EOF
+	&control 
+		calculation = 'vc-relax',
+		prefix = 'na.fcc',
+	/
+	&system
+		ibrav = 2,
+		celldm(1) = 8,
+		nat = 1,
+		ntyp = 1,
+		ecutwfc = 40,
+		ecutrho = 320,
+		occupations = 'smearing',
+		smearing = 'm-v',
+		degauss = 0.02,
+	/
+	&electrons
+		mixing_beta = 0.7,
+		conv_thr = 1.0d-8,
+	/
+	&IONS
+		ion_dynamics = 'bfgs',
+	/
+	&CELL
+		cell_dynamics = 'bfgs',
+		press = $TARGETPRESSURE,
+	/
+	ATOMIC_SPECIES
+	 Na 22.99 Na_pbe_v1.uspp.F.UPF
+	ATOMIC_POSITIONS crystal
+	 Na 0 0 0
+	K_POINTS automatic
+	 20 20 20 1 1 1
+	EOF
+	
+	mpirun -np 4 pw.x < na.fcc.vcrelax.$TARGETPRESSURE.in > na.fcc.vcrelax.$TARGETPRESSURE.out
+	
 
 done;
+
+mkdir -p "$RUN_DIR"
+cp *.in *.out "$RUN_DIR"
