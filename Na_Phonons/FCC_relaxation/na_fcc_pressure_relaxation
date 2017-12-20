@@ -3,14 +3,17 @@
 cd `echo $0 | sed 's/\(.*\)\/.*/\1/'` # extract pathname
 
 MASTER_DIR=pwd
+SCRATCH_DIR="/scratch/s1333534/na_fcc_relax"
 
-TARGETPRESSURE=0 #In kbar
+mkdir -p $SCRATCH_DIR
+
+for TARGETPRESSURE in `seq -10 10 100`; do #-1 GPa to 10GPa
 
 dir_name="Na_FCC_${TARGETPRESSURE}_KBar"
 
-mkdir -p $dir_name
+mkdir -p "$SCRATCH_DIR/$dir_name"
 
-cd $dir_name
+cd "$SCRATCH_DIR/$dir_name"
 
 cat > na.fcc.vcrelax.$TARGETPRESSURE.in << EOF
 &control 
@@ -49,3 +52,7 @@ EOF
 
 mpirun -np 4 pw.x < na.fcc.vcrelax.$TARGETPRESSURE.in > na.fcc.vcrelax.$TARGETPRESSURE.out
 
+mkdir -p "$MASTER_DIR/$dir_name"
+cp *.in *.out "$MASTER_DIR/$dir_name"
+
+done;
