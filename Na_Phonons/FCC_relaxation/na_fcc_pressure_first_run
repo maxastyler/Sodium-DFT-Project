@@ -2,6 +2,9 @@
 
 cd `echo $0 | sed 's/\(.*\)\/.*/\1/'` # extract pathname
 
+run_no=$1
+echo "$run_no"
+
 MASTER_DIR=`pwd`
 SCRATCH_DIR="/scratch/s1333534/na_fcc_relax"
 
