@@ -40,3 +40,19 @@ K_POINTS automatic
 EOF
 
 mpirun -np 4 pw.x < na.bcc.scf.in > na.bcc.scf.out
+
+cat > na.bcc.ph.in << EOF
+BCC Na Phonon Calculation 
+&inputph
+	prefix = 'na.bcc',
+	ldisp = .true.,
+	nq1 = 8,
+	nq2 = 8,
+	nq3 = 8,
+	fildyn = 'na.bcc.dyn',
+/
+EOF
+
+mpirun -np 4 ph.x < na.bcc.ph.in > na.bcc.ph.out
+
+cp *.dyn* *.in *.out "$MASTER/$dir"
