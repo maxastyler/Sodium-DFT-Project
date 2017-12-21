@@ -1,0 +1,58 @@
+#!/bin/sh
+
+#This script runs a set of phonons for fcc na. Input is the volume to run at
+
+cd `echo $0 | sed 's/\(.*\)\/.*/\1/'` # extract pathname
+MASTER=`pwd`
+dir="$1"
+SCRATCH_DIR="/scratch/s1333534/na_fcc_phon/$dir"
+
+mkdir -p "$SCRATCH_DIR"
+cd "$SCRATCH_DIR"
+
+cat > na.fcc.scf.in << EOF
+&control
+	calculation = 'scf',
+	prefix = 'na.fcc',
+	tstress = .true.,
+/
+&system
+	ibrav = 2,
+	celldm(1) = $dir,
+	nat = 1,
+	ntyp = 1,
+	ecutwfc = 40,
+	ecutrho = 320,
+	occupations = 'smearing',
+	smearing = 'm-v',
+	degauss = 0.02,
+/
+&electrons
+	mixing_beta = 0.7,
+	conv_thr = 1.0d-8,
+/
+ATOMIC_SPECIES
+ Na 22.99 Na_pbe_v1.uspp.F.UPF
+ATOMIC_POSITIONS crystal
+ Na 0 0 0
+K_POINTS automatic
+ 14 14 14 1 1 1
+EOF
+
+mpirun -np 4 pw.x < na.fcc.scf.in > na.fcc.scf.out
+
+cat > na.fcc.ph.in << EOF
+FCC Na Phonon Calculation 
+&inputph
+	prefix = 'na.fcc',
+	ldisp = .true.,
+	nq1 = 8,
+	nq2 = 8,
+	nq3 = 8,
+	fildyn = 'na.fcc.dyn',
+/
+EOF
+
+mpirun -np 4 ph.x < na.fcc.ph.in > na.fcc.ph.out
+
+cp *.dyn* *.in *.out "$MASTER/$dir"
