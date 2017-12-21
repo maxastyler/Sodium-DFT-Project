@@ -1,6 +1,7 @@
 &control
 	calculation = 'scf',
 	prefix = 'na.bcc',
+	tstress = .true.,
 /
 &system
 	ibrav = 3,
