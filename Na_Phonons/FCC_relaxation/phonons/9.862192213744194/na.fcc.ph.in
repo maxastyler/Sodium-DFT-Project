@@ -1,0 +1,9 @@
+FCC Na Phonon Calculation 
+&inputph
+	prefix = 'na.fcc',
+	ldisp = .true.,
+	nq1 = 8,
+	nq2 = 8,
+	nq3 = 8,
+	fildyn = 'na.fcc.dyn',
+/
