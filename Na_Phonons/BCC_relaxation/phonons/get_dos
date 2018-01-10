@@ -24,7 +24,7 @@ EOF
 	nk2 = 30,
 	nk3 = 30,
 	dos = .true.,
-	fldos = 'na.bcc.303030.dos',
+	fldos = 'na.bcc.303030.simple.dos',
 /
 EOF
 	mpirun -np 4 matdyn.x < na.bcc.matdyn.in > na.bcc.matdyn.out

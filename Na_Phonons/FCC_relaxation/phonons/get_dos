@@ -1,0 +1,33 @@
+#!/bin/sh
+
+cd `echo $0 | sed 's/\(.*\)\/.*/\1/'` # extract pathname
+MASTER=`pwd`
+
+for dir in `ls -l | grep '^d' | awk '{print $9 }'`; do
+	echo "$dir"
+	cd "$MASTER/$dir"
+
+	cat > na.fcc.q2r.in << EOF
+&input
+	fildyn = 'na.fcc.dyn',
+	zasr = 'simple',
+	flfrc = 'na.fcc.fc',
+/
+EOF
+	mpirun -np 4 q2r.x < na.fcc.q2r.in > na.fcc.q2r.out
+	cat > na.fcc.matdyn.in << EOF
+&input
+	asr = 'simple',
+	flfrc = 'na.fcc.fc',
+	flfrq = 'na.fcc.freq',
+	nk1 = 30,
+	nk2 = 30,
+	nk3 = 30,
+	dos = .true.,
+	fldos = 'na.fcc.303030.simple.dos',
+/
+EOF
+	mpirun -np 4 matdyn.x < na.fcc.matdyn.in > na.fcc.matdyn.out
+	cd "$MASTER"
+done
+

@@ -1,5 +1,5 @@
 
-     Program MATDYN v.6.1 (svn rev. 13369) starts on 21Dec2017 at 15:18:31 
+     Program MATDYN v.6.1 (svn rev. 13369) starts on 22Dec2017 at 10:29:44 
 
      This program is part of the open-source Quantum ESPRESSO suite
      for quantum simulation of materials; please cite
@@ -15,10 +15,10 @@
      Z* not found in file na.bcc.fc, TO-LO splitting at q=0 will be absent!
      A direction for q was not specified:TO-LO splitting will be absent
 
-     MATDYN       :    33.77s CPU        41.81s WALL
+     MATDYN       :  0m33.81s CPU     1m28.74s WALL
 
 
-   This run was terminated on:  15:19:12  21Dec2017            
+   This run was terminated on:  10:31:13  22Dec2017            
 
 =------------------------------------------------------------------------------=
    JOB DONE.

@@ -1,0 +1,13 @@
+&input
+	asr = 'crystal',
+	flfrc = 'na.bcc.fc',
+	flfrq = 'na.bcc.dispersion.freq',
+	q_in_band_form = .true.,
+	q_in_cryst_coord = .false.,
+/
+5
+N 40
+gG 40
+H 40
+P 40
+gG 1

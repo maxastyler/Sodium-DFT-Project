@@ -1,0 +1,36 @@
+#!/bin/python3
+#Argument should be final run number to extract from
+import sys
+import os
+import pathlib
+
+try:
+    run_no=int(sys.argv[1])
+except:
+    print("No run number as argument!")
+    sys.exit()
+
+def replace_run_pressure(run, pres):
+    run_folder = "run_" + str(run)
+    in_file = "na.fcc.vcrelax." + str(pres) + ".in"
+    out_file = "na.fcc.vcrelax." + str(pres) + ".out"
+    final_coords = False
+    next_line = False
+    with open(os.path.join(run_folder, out_file)) as f:
+        for line in f.readlines():
+            if "End final coordinates" in line:
+                final_coords = False
+            if next_line:
+                next_line = False
+                new_param = original_lat*abs(float(line.split()[0]))/0.5
+            if final_coords:
+                if  "CELL_PARAMETERS" in line: 
+                    next_line = True
+                    original_lat = float(line.split()[2].strip(")"))
+            if "Begin final coordinates" in line:
+                final_coords = True
+
+    pathlib.Path("phonons/{}".format(new_param)).mkdir(parents=True, exist_ok=True)
+
+for p in range(-10, 101, 10):
+    replace_run_pressure(4, p)
