@@ -456,3 +456,63 @@ Using 10^3 k-points.
 With this measurement, choosing ecutwfc = 40Ry (ecutrho=320Ry) as the cutoff as the energies and pressures are converged to within (0.003Ry, 1kbar) at this point.
 
 Use a value of k=20^3
+
+--------------------------------------------------
+2017/12/20
+--------------------------------------------------
+
+Running na_fcc relaxations from -1GPa to 10GPa, and will do the same for bcc na
+
+Running on cplab 034
+
+Wrote some scripts that make iterating vcrelax runs easier.
+
+Running new relaxation runs for fcc on cplab003
+
+--------------------------------------------------
+2017/12/21
+--------------------------------------------------
+
+Running phonon calculations with k=14x14x14, q=8x8x8 
+
+BCC phonons:
+
+Vol | Comp
+7.85809 | 003
+6.681.. | 005
+6.7 | 006
+6.80 | 007
+6.87 | 008
+6.9 | 009
+7.05 | 011
+7.14 | 013
+7.27 | 015
+7.41 | 016
+7.5 | 020
+8.23 | 021
+
+And FCC PHONONS:
+Vol | comp
+022
+024
+026
+027
+028
+029
+031
+032
+034
+036
+037
+038
+
+The phonon calculations are complete for bcc. Just run density of state calculations with matdyn grid of 30x30x30. The phonons where 8.23... is the lattice parameter have negative frequencies. This is the crystal with a pressure of -1GPa. Going to do a new calculation at -0.5GPa and see what the negative phonons here are like.
+
+Running lat param = 8.001... (-0.5GPa) on cplab 003
+At lat param 7.85809 where pressure is -0.4Kbar, doing another phonon run at 7.86759... on cplab 006
+
+--------------------------------------------------
+2017/12/22
+--------------------------------------------------
+
+FCC and BCC have both finished. Using simple acoustic sum rule for matdyn gives a lot of negative frequencies, this problem doesn't go away with crystal asr.
