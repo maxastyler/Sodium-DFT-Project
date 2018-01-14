@@ -8,3 +8,5 @@ project_report/sodium-report.out
 project_report/sodium-report.pdf
 project_report/sodium-report.synctex.gz
 project_report/sodium-report.toc
+project_report/.sodium-report.tex.swp
+.gitignore.swp
