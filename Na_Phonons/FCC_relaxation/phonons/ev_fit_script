@@ -1,0 +1,5 @@
+#!/bin/sh
+
+for file in `ls ev_formatted`; do
+	echo -e "au\nfcc\n1\nev_formatted/$file\npt_fits/$file.pt" | ev.x
+done;
