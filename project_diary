@@ -528,3 +528,25 @@ For temperatures, going from 0K->190K (Half sodium's melting temperature)
 The pt fits with ev.x give relatively big differences between the simulated values for energy and the calculated values, indicating that the phonon simulation is probably not good enough. Going to continue and see if I get anything sensible when comparing FCC and BCC sodium.
 
 Plot does not look nice. Will have to redo phonons at a higher q-point resolution.
+
+--------------------------------------------------
+
+For improving the calculations:
+
+Change the convergence threshold in the scf calculation to ~ 10^-10
+Then change the tr2_ph threshold in the phonon calculation to 10^-16
+If possible, try increasing k-points to 20x20x20
+
+Compute for 0GPa first.
+
+--------------------------------------------------
+Working on beta and alpha tin. Using the k=16x16x16, q=8x8x8 simulation for alpha tin, calculated the density of states. Performing a density of states integration up to 340K
+The current phonons for alpha and beta tin don't work, should redo them.
+
+
+Need to redo relaxation for beta tin and alpha tin to find for pressure = 0. Then calculate phonons at this point. Then look for transition temperature again.
+
+-------------------------
+Started a new repository (https://github.com/mtyler88/Tin-Transition), doing tin again. Relax both alpha and beta tin
+Relaxation for beta running on cplab 005
+alpha relaxation running on cplab 010
