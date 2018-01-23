@@ -26,7 +26,8 @@
 %\usepackage{color}
 %
 % If you want to put figures side by side with separate captions
-\usepackage{subfigure}
+%\usepackage{subfigure}
+\usepackage{subcaption}
 %
 % If you happen to dislike the standard TeX fonts
 %\usepackage{times}
@@ -86,11 +87,27 @@ The Bravais lattice can then be found by addition of these vectors each multipli
 	\caption{A 2-dimensional Bravais lattice.}
 	\label{fig:lattice_basis}
 \end{figure}
-Figure \ref{fig:lattice_basis} shows a 2-dimensional lattice with basis vectors $\mathbf{v}_1$ and $\mathbf{v}_2$. Two Bravais lattices are considered equivalent if they are invariant under the same symmetry group. In 2 dimensions, there are 5 different Bravais lattices and in 3 dimensions, there are 14 \cite{kittel2005introduction}. The choice of a lattice basis is not unique.
-
+Figure \ref{fig:lattice_basis} shows a 2-dimensional lattice with basis vectors $\mathbf{v}_1$ and $\mathbf{v}_2$. Two Bravais lattices are considered equivalent if they are invariant under the same symmetry group. In 2 dimensions, there are 5 different Bravais lattices and in 3 dimensions, there are 14 \cite{kittel2005introduction}. The choice of a lattice basis for a certain Bravais lattice is not unique.
 The Bravais lattice is invariant under translation by any of its basis vectors, meaning it is a periodic structure. 
 
-Physical crystals also have an atomic basis consisting of a set of atoms and positions for these atoms. This atomic basis is repeated at each point on the underlying Bravais lattice and generates the physical crystal. A simple example is NaCl, which has a 
+Physical crystals also have an atomic basis consisting of a set of atoms and positions for these atoms. The atomic basis is repeated at each point on the underlying Bravais lattice and generates the physical crystal. A simple example is NaCl, which has a face-centred cubic Bravais lattice 
+\begin{figure*}[t!]
+    \centering
+    \begin{subfigure}[t]{0.5\textwidth}
+        \includegraphics[width=0.7\textwidth]{./figures/na_cl_basis.png}
+        \caption{The two basis atoms in NaCl}
+	\label{fig:nacl_basis}
+    \end{subfigure}%
+    ~ 
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.6\textwidth]{./figures/na_cl_crosssection.png}
+        \caption{A cross-section of the NaCl crystal, showing two of the three basis vectors}
+	\label{fig:nacl_crosssection}
+    \end{subfigure}
+    \caption{NaCl atomic basis and crystal cross-section}
+\end{figure*}
+
 \subsection{Phonons}
 
 \section{Methods}
