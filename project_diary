@@ -550,3 +550,27 @@ Need to redo relaxation for beta tin and alpha tin to find for pressure = 0. The
 Started a new repository (https://github.com/mtyler88/Tin-Transition), doing tin again. Relax both alpha and beta tin
 Relaxation for beta running on cplab 005
 alpha relaxation running on cplab 010
+
+Performing the tin phonons on the cplab computers.
+
+Phonons left to do:
+1, 17, 25, 27, 28, 29, 30, 31, 32, 34, 36, 37, 43, 44, 45, 46, 47, 52, 55, 56
+
+Ones which are still running:
+
+56, 1 - 004 (maybe start one on another)
+17 - 080 (almost done)
+25 - 055 (almost done)
+27 - 052 (on rep 6)
+29 - 047 (almost done)
+30 - 044 (on rep 6)
+31 - 043 (on rep 6)
+34 - 039 (on rep 5)
+36 - 035 (on rep 6)
+37 - 033 (on rep 5, lots of steps to convergence)
+43 - 026 (on rep 6)
+44 - 021 (on rep 6)
+45 - 020 (on rep 4, loads of steps to convergence)
+46 - 019 (on rep 4, loads of steps to convergence)
+47 - 017 (on rep 5, loads of steps to convergence)
+
