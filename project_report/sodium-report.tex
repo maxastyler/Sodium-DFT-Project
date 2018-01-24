@@ -151,12 +151,61 @@ $C$ being the unit cell, and $V$ its volume.
 
 Since equation \ref{eq:f_fourier_expansion} is true for $\mathbf{B} = \mathbf{0}$, this must mean that $e^{i\mathbf G_k\cdot \mathbf B_n} = 1$, $\forall k, n \in \mathbb{Z} $ and we have that $\mathbf G_k \cdot \mathbf B_n = 2\pi N$, $N\in \mathbb{Z}$. We can generate the dual lattice vectors from the real lattice vectors (using column-vectors for the real basis and row-vectors for the dual basis): 
 \begin{gather}
-	\vec{\omega}_i\cdot \mathbf{v}_j = \delta_{ij}
-
+	\vec{\omega}_i\cdot \mathbf{v}_j = 2\pi\delta_{ij} \\
+	\begin{bmatrix} 
+		\vec{\omega}_1 \\
+		\vec{\omega}_2 \\
+		\vdots \\
+		\vec{\omega}_n \\
+	\end{bmatrix}
+	\begin{bmatrix}
+		\mathbf{v}_1
+		\mathbf{v}_2
+		...
+		\mathbf{v}_n
+	\end{bmatrix} = 2\pi
+	\begin{bmatrix}
+		1 & 0  & ... & 0 \\
+		0 & 1 &  ... & 0  \\
+		\vdots & \vdots & \ddots & \vdots \\
+		0 & 0 & \hdots & 1 
+	\end{bmatrix}
+	\\
+	\begin{bmatrix} 
+		\vec{\omega}_1 \\
+		\vec{\omega}_2 \\
+		\vdots \\
+		\vec{\omega}_n \\
+	\end{bmatrix}
+	= 2\pi
+	\begin{bmatrix}
+		\mathbf{v}_1
+		\mathbf{v}_2
+		...
+		\mathbf{v}_n
+	\end{bmatrix} ^{-1}
 \end{gather}
-
+Since the lattices are related to each other through a fourier transform, the dual lattice to the dual lattice is the original lattice.
+In 3 dimensions, the reciprocal lattice of the simple cubic lattice is the simple cubic lattice 
+(with each vector having a reciprocal length), the reciprocal lattice of the FCC lattice is BCC, and vice versa.
+\subsubsection{Bloch's Theorem}
+The periodicity of the lattice leads to a constraint on the wavefunction of electrons in the crystal:
+\begin{equation}\label{eq:bloch_wave}
+	\psi(\mathbf r) = e^{i\mathbf{k}\cdot \mathbf{r}}u(\mathbf r)
+\end{equation}
+Where $u(\mathbf r)$ has the same period as the crystal the wave is in.
+We can prove this using the translation operator $\hat T_\mathbf B$ where $\hat T_\mathbf B f(\mathbf r) = f(\mathbf r + \mathbf B)$, and $\mathbf B$ is some lattice vector. Let $\psi(\mathbf r)$ be an eigenstate of the translation operator:
+\begin{equation}
+	\hat T_\mathbf B \psi(\mathbf r) = A \psi(\mathbf r)
+\end{equation}
+Since the state is normalised to unity, we can write $A=e^{i\mathbf k \cdot \mathbf B}$. If we define another function, $u(\mathbf r) = e^{-i\mathbf k \cdot \mathbf r}\psi(\mathbf r)$ and then operate on it with the lattice translation operator:
+\begin{equation}\label{eq:bloch_proof}
+\hat T_\mathbf B u(\mathbf r) = u(\mathbf r + \mathbf B) = 
+e^{-i\mathbf k \cdot \mathbf r}e^{-i\mathbf k \cdot \mathbf B} \psi(\mathbf r + \mathbf B) = 
+e^{-i\mathbf k \cdot \mathbf r}e^{i\mathbf k \cdot (\mathbf B - \mathbf B)} \psi(\mathbf r) = u(\mathbf r)
+\end{equation}
+Which shows that $u(\mathbf r)$ has the same periodicity as the lattice. The relation $u(\mathbf r) = e^{-i \mathbf k \cdot \mathbf r}\psi(\mathbf r)$ is then inverted to get the result in equation \ref{eq:bloch_wave}.
 \subsubsection{Electrons in the Lattice}
-The electrons 
 \subsection{Phonons}
 
 \section{Methods}
