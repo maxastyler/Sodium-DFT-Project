@@ -556,6 +556,9 @@ Performing the tin phonons on the cplab computers.
 Phonons left to do:
 1, 17, 25, 27, 28, 29, 30, 31, 32, 34, 36, 37, 43, 44, 45, 46, 47, 52, 55, 56
 
+Ones to do on the cluster:
+1, 28, 32, 52, 55
+
 Ones which are still running:
 
 56, 1 - 004 (maybe start one on another)
