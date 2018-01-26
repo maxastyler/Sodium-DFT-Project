@@ -1,0 +1,33 @@
+&control 
+	calculation = 'vc-relax',
+	prefix = 'na.fcc',
+/
+&system
+	ibrav = 2,
+	celldm(1) = 9.872656557547408,
+	nat = 1,
+	ntyp = 1,
+	ecutwfc = 40,
+	ecutrho = 320,
+	occupations = 'smearing',
+	smearing = 'm-v',
+	degauss = 0.02,
+/
+&electrons
+	mixing_beta = 0.7,
+	conv_thr = 1.0d-10,
+/
+&IONS
+	ion_dynamics = 'bfgs',
+/
+&CELL
+	cell_dynamics = 'bfgs',
+	press = 0,
+	press_conv_thr = 0.3D0,
+/
+ATOMIC_SPECIES
+ Na 22.99 Na_pbe_v1.uspp.F.UPF
+ATOMIC_POSITIONS crystal
+ Na 0 0 0
+K_POINTS automatic
+ 14 14 14 1 1 1
