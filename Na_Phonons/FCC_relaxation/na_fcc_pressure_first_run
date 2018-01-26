@@ -49,7 +49,7 @@ ATOMIC_POSITIONS crystal
  Na 0 0 0
 K_POINTS automatic
  14 14 14 1 1 1
-	EOF
+EOF
 	
 	mpirun -np 4 pw.x < na.fcc.vcrelax.$TARGETPRESSURE.in > na.fcc.vcrelax.$TARGETPRESSURE.out
 	
