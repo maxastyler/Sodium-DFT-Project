@@ -14,7 +14,7 @@ cp $RUN_DIR/*.in $SCRATCH_DIR
 
 cd "$SCRATCH_DIR"
 
-for TARGETPRESSURE in `seq -10 10 100`; do #-1 GPa to 10GPa
+for TARGETPRESSURE in `seq 0 10 0`; do #-1 GPa to 10GPa
 	
 	mpirun -np 4 pw.x < na.fcc.vcrelax.$TARGETPRESSURE.in > na.fcc.vcrelax.$TARGETPRESSURE.out
 	
