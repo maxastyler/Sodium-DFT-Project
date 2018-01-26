@@ -216,7 +216,7 @@ The Hohenberg-Kohn theorems are two theorems which make density functional theor
 	\textbf{Theorem I}: For any system of interacting particles in an external potential $v_\mathrm{ext}(\mathbf r)$, the potential $v_\mathrm{ext}(\mathbf r)$ is determined uniquely, except for a constant, by the ground state particle density $n_0(\mathbf{r})$.
 \\
 	\textbf{Theorem II}: A \textit{universal functional} for the energy $E[n]$ in terms of the density $n(\mathbf r)$ can be defined, valid for any external potential $V_\mathrm{ext}(\mathbf r)$.
-For any particular $V_\mathrm{ext}(\mathbf r)$, the exact ground state energy of the system is the global minimum value of this functional, and the density $n(\mathbf r)$ that minimizes the functional is the exact ground state density $n_0(\mathbf r)$.
+For any particular $V_\mathrm{ext}(\mathbf r)$, the exact ground state energy of the system is the global minimum value of this functional, and the density $n(\mathbf r)$ that minimises the functional is the exact ground state density $n_0(\mathbf r)$.
 \end{displayquote}
 The proofs to these theorems are relatively simple, making use of the quantum variational principle \cite{shankar2012principles}.
 To prove the first theorem, we use proof by contradiction with two different hamiltonians $\hat H_1, \hat H_2$ with ground state wavefunctions $\ket{\psi_1}, \ket{\psi_2}$ which give the respective ground state energies $E^0_n=\braket{\psi_n | \hat H_n | \psi_n}$. 
@@ -243,8 +243,14 @@ Swapping the indices, and rearranging gives:
 \begin{equation}
 E^0_1 - E^0_2 > \int n_0(\mathbf r)(v_{1,\mathrm{ext}}(\mathbf r)-v_{2,\mathrm{ext}}(\mathbf r)) d\mathbf r
 \end{equation}
-Which is in contradiction with equation \ref{eq:contra_1}, and therefore, up to an additive constant, the external potential must be determined uniquely by the ground state electron density and vice versa.
+These equations are in contradiction with each other, and therefore, up to an additive constant, the external potential must be determined uniquely by the ground state electron density and vice versa.
 
+To prove the second theorem, we use an energy functional $E[n(\mathbf r)]$, with some external potential $v_{\mathrm{ext}}$ that is minimised by a density $n_1(\mathbf r)$ and we consider some different density $n_2(\mathbf r)$. 
+By the first theorem, the wavefunctions determined by these densities must be different ($\ket{\psi_1}, \ket{\psi_2}$) and so, using the variational principle we have:
+\begin{equation}\label{eq:hk_2}
+E_1 = \braket{\psi_1 | \hat H _1 | \psi_1} < \braket{\psi_2 | \hat H _1 | \psi_2} = E_2
+\end{equation}
+So the energy functional is minimised by this ground state density.
 \subsection{Phonons}
 
 \section{Methods}
