@@ -213,13 +213,38 @@ Which shows that $u_\mathbf k(\mathbf r)$ has the same periodicity as the lattic
 \subsubsection{The Hohenberg-Kohn Theorems}
 The Hohenberg-Kohn theorems are two theorems which make density functional theory possible. They are stated as \cite{martin_2004}:
 \begin{displayquote}
-	\textbf{Theorem I}: For any system of interacting particles in an external potential $V_\mathrm{ext}(\mathbf r)$, the potential $V_\mathrm{ext}(\mathbf r)$ is determined uniquely, except for a constant, by the ground state particle density $n_0(\mathbf{r})$.
+	\textbf{Theorem I}: For any system of interacting particles in an external potential $v_\mathrm{ext}(\mathbf r)$, the potential $v_\mathrm{ext}(\mathbf r)$ is determined uniquely, except for a constant, by the ground state particle density $n_0(\mathbf{r})$.
 \\
 	\textbf{Theorem II}: A \textit{universal functional} for the energy $E[n]$ in terms of the density $n(\mathbf r)$ can be defined, valid for any external potential $V_\mathrm{ext}(\mathbf r)$.
 For any particular $V_\mathrm{ext}(\mathbf r)$, the exact ground state energy of the system is the global minimum value of this functional, and the density $n(\mathbf r)$ that minimizes the functional is the exact ground state density $n_0(\mathbf r)$.
 \end{displayquote}
 The proofs to these theorems are relatively simple, making use of the quantum variational principle \cite{shankar2012principles}.
-To prove the first theorem, we consider two different hamiltonians $\hat H_1, \hat H_2$ with ground state wavefunctions $\bra{2}$
+To prove the first theorem, we use proof by contradiction with two different hamiltonians $\hat H_1, \hat H_2$ with ground state wavefunctions $\ket{\psi_1}, \ket{\psi_2}$ which give the respective ground state energies $E^0_n=\braket{\psi_n | \hat H_n | \psi_n}$. 
+The hamiltonians can be separated into:
+\begin{equation}
+\hat H_n = \hat F + \hat V_{n, \mathrm{ext}}
+\end{equation}
+Where $\hat F$ contains the electron kinetic energy operator, and the electron-electron interaction operator, and is the same for the different hamiltonians. The potential operator $\hat V_{n, \mathrm{ext}}$ contains the information of the external potential on the electrons (caused by the nuclei, and maybe other factors).
+We then pose that the two different potentials in the hamiltonians give rise to the same ground-state electronic density $n_0(\mathbf r)$.
+The energy of the system can also be written as a functional of the electron density as:
+\begin{equation}\label{eq:energy_functional}
+E[n(\mathbf r)] = F[n(\mathbf r)]+ \int n(\mathbf r)v_{\mathrm{ext}}(\mathbf r)d\mathbf r
+\end{equation}
+Where $F[n(\mathbf r)]$ contains the electron kinetic energy and the electron-electron interaction energy, and $v_{\mathrm{ext}}(\mathbf r)$ is the external potential.
+Using the variational principle, we have:
+\begin{equation} 
+	E^0_1 < \braket{\psi_2 | \hat H_1 | \psi_2} = \braket{\psi_2 | \hat H_2 | \psi_2} + \braket{\psi_2 |\hat H_1 - \hat H_2 |\psi_2}
+\end{equation}
+Using the energy functional from equation \ref{eq:energy_functional}, we can rewrite this as:
+\begin{equation}\label{eq:contra_1}
+E^0_1 - E^0_2 < \int n_0(\mathbf r)(v_{1,\mathrm{ext}}(\mathbf r)-v_{2,\mathrm{ext}}(\mathbf r)) d\mathbf r
+\end{equation}
+Swapping the indices, and rearranging gives:
+\begin{equation}
+E^0_1 - E^0_2 > \int n_0(\mathbf r)(v_{1,\mathrm{ext}}(\mathbf r)-v_{2,\mathrm{ext}}(\mathbf r)) d\mathbf r
+\end{equation}
+Which is in contradiction with equation \ref{eq:contra_1}, and therefore, up to an additive constant, the external potential must be determined uniquely by the ground state electron density and vice versa.
+
 \subsection{Phonons}
 
 \section{Methods}
