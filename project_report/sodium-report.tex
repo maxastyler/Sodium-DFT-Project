@@ -37,6 +37,9 @@
 \usepackage{hyperref}  % This enables hyperlinks but leaves them in black, which is best for printing
 %\usepackage[colorlinks=true]{hyperref} % This colours the hyperlinks, which is better for screen reading
 
+\usepackage{csquotes}
+\usepackage{braket}
+
 \begin{document}
 
 \title{Computing P-T Diagrams from First Principles} % Place your project title in here
@@ -191,22 +194,32 @@ In 3 dimensions, the reciprocal lattice of the simple cubic lattice is the simpl
 \subsubsection{Bloch's Theorem}
 The periodicity of the lattice leads to a constraint on the wavefunction of electrons in the crystal:
 \begin{equation}\label{eq:bloch_wave}
-	\psi(\mathbf r) = e^{i\mathbf{k}\cdot \mathbf{r}}u(\mathbf r)
+	\psi_\mathbf k(\mathbf r) = e^{i\mathbf{k}\cdot \mathbf{r}}u_\mathbf k(\mathbf r)
 \end{equation}
-Where $u(\mathbf r)$ has the same period as the crystal the wave is in.
-We can prove this using the translation operator $\hat T_\mathbf B$ where $\hat T_\mathbf B f(\mathbf r) = f(\mathbf r + \mathbf B)$, and $\mathbf B$ is some lattice vector. Let $\psi(\mathbf r)$ be an eigenstate of the translation operator:
+Where $u_\mathbf k(\mathbf r)$ has the same period as the crystal the wave is in.
+We can prove this using the translation operator $\hat T_\mathbf B$ where $\hat T_\mathbf B f(\mathbf r) = f(\mathbf r + \mathbf B)$, and $\mathbf B$ is some lattice vector. Let $\psi_\mathbf k(\mathbf r)$ be an eigenstate of the translation operator:
 \begin{equation}
-	\hat T_\mathbf B \psi(\mathbf r) = A \psi(\mathbf r)
+	\hat T_\mathbf B \psi_\mathbf k(\mathbf r) = A \psi_\mathbf k(\mathbf r)
 \end{equation}
-Since the state is normalised to unity, we can write $A=e^{i\mathbf k \cdot \mathbf B}$. If we define another function, $u(\mathbf r) = e^{-i\mathbf k \cdot \mathbf r}\psi(\mathbf r)$ and then operate on it with the lattice translation operator:
+Since the state is normalised to unity, we can write $A=e^{i\mathbf k \cdot \mathbf B}$. If we define another function, $u_\mathbf k(\mathbf r) = e^{-i\mathbf k \cdot \mathbf r}\psi_\mathbf k(\mathbf r)$ and then operate on it with the lattice translation operator:
 \begin{equation}\label{eq:bloch_proof}
-\hat T_\mathbf B u(\mathbf r) = u(\mathbf r + \mathbf B) = 
-e^{-i\mathbf k \cdot \mathbf r}e^{-i\mathbf k \cdot \mathbf B} \psi(\mathbf r + \mathbf B) = 
-e^{-i\mathbf k \cdot \mathbf r}e^{i\mathbf k \cdot (\mathbf B - \mathbf B)} \psi(\mathbf r) = u(\mathbf r)
+\hat T_\mathbf B u_\mathbf k(\mathbf r) = u_\mathbf k(\mathbf r + \mathbf B) = 
+e^{-i\mathbf k \cdot \mathbf r}e^{-i\mathbf k \cdot \mathbf B} \psi_\mathbf k(\mathbf r + \mathbf B) = 
+e^{-i\mathbf k \cdot \mathbf r}e^{i\mathbf k \cdot (\mathbf B - \mathbf B)} \psi_\mathbf k(\mathbf r) = u_\mathbf k(\mathbf r)
 \end{equation}
-Which shows that $u(\mathbf r)$ has the same periodicity as the lattice. The relation $u(\mathbf r) = e^{-i \mathbf k \cdot \mathbf r}\psi(\mathbf r)$ is then inverted to get the result in equation \ref{eq:bloch_wave}.
+Which shows that $u_\mathbf k(\mathbf r)$ has the same periodicity as the lattice. The relation $u_\mathbf k(\mathbf r) = e^{-i \mathbf k \cdot \mathbf r}\psi_\mathbf k(\mathbf r)$ is then inverted to get the result in equation \ref{eq:bloch_wave}.
 \subsubsection{Electrons in the Lattice}
 \subsection{Density Functional Theory}
+\subsubsection{The Hohenberg-Kohn Theorems}
+The Hohenberg-Kohn theorems are two theorems which make density functional theory possible. They are stated as \cite{martin_2004}:
+\begin{displayquote}
+	\textbf{Theorem I}: For any system of interacting particles in an external potential $V_\mathrm{ext}(\mathbf r)$, the potential $V_\mathrm{ext}(\mathbf r)$ is determined uniquely, except for a constant, by the ground state particle density $n_0(\mathbf{r})$.
+\\
+	\textbf{Theorem II}: A \textit{universal functional} for the energy $E[n]$ in terms of the density $n(\mathbf r)$ can be defined, valid for any external potential $V_\mathrm{ext}(\mathbf r)$.
+For any particular $V_\mathrm{ext}(\mathbf r)$, the exact ground state energy of the system is the global minimum value of this functional, and the density $n(\mathbf r)$ that minimizes the functional is the exact ground state density $n_0(\mathbf r)$.
+\end{displayquote}
+The proofs to these theorems are relatively simple, making use of the quantum variational principle \cite{shankar2012principles}.
+To prove the first theorem, we consider two different hamiltonians $\hat H_1, \hat H_2$ with ground state wavefunctions $\bra{2}$
 \subsection{Phonons}
 
 \section{Methods}
