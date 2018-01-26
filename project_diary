@@ -581,3 +581,9 @@ Ones which are still running:
 --------------------------------------------------
 
 Some of these phonons finished - going to run the last lot on the sopa 1 day queue. Writing a script (beta-sn-s1333534) in the tin-transition repo to complete the last phonons
+
+--------------------------------------------------
+2017/01/26
+--------------------------------------------------
+
+Running a phonon calculation for fcc sodium again at pressure = 0GPa

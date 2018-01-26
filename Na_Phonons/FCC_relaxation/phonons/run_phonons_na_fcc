@@ -1,0 +1,62 @@
+#!/bin/sh
+
+source ~/.profile
+cd `echo $0 | sed 's/\(.*\)\/.*/\1/'` # extract pathname
+MASTER_DIR=`pwd`
+
+CALC_DIR="/scratch/s1333534/na_fcc_phonons"
+mkdir -p $CALC_DIR
+cd $CALC_DIR
+
+cat > na.fcc.scf.in << EOF
+&control
+        calculation = 'scf',
+        prefix = 'na.fcc',
+        tstress = .true.,
+/
+&system
+        ibrav = 2,
+        celldm(1) = 9.882457429601098,
+        nat = 1,
+        ntyp = 1,
+        ecutwfc = 40,
+        ecutrho = 320,
+        occupations = 'smearing',
+        smearing = 'm-v',
+        degauss = 0.02,
+/
+&electrons
+        mixing_beta = 0.7,
+        conv_thr = 1.0d-10,
+/
+ATOMIC_SPECIES
+ Na 22.99 Na_pbe_v1.uspp.F.UPF
+ATOMIC_POSITIONS crystal
+ Na 0 0 0
+K_POINTS automatic
+ 14 14 14 1 1 1
+EOF
+
+mpirun -np 4 pw.x < na.fcc.scf.in > na.fcc.scf.out
+
+#Go through the inputs, pairing up the phonons (input like p1start p1end p2start p2end...)
+
+for ((i=1;i<=$#;i=i+2))
+do
+	j=$((i+1))
+	cat > na.fcc.ph.${!i}.${!j}.in << EOF
+Na FCC Phonon Calculation
+&inputph
+        prefix = 'na.fcc',
+        ldisp = .true.,
+        nq1 = 8,
+        nq2 = 8,
+        nq3 = 8,
+	start_q = ${!i},
+	last_q = ${!j},
+        fildyn = 'na.fcc.dyn',
+/
+EOF
+	mpirun -np 4 ph.x < na.fcc.ph.${!i}.${!j}.in > na.fcc.ph.${!i}.${!j}.out
+	cp *.dyn* $MASTER_DIR
+done
