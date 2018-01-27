@@ -12,7 +12,7 @@ while read -r line; do
 	else
 		echo "$line"
 		ssh s1333534@cplab$COMP bash <<EOT
-		tmux new-session -A -d -s phonon-session "~/git/Sodium-DFT-Project/Na_Phonons/FCC_relaxation/phonons/run_phonons_na_fcc $line;read"
+		tmux new-session -A -d -s phonon-session "~/git/Sodium-DFT-Project/Na_Phonons/FCC_phonons_0gpa/run_phonons_na_fcc $line;read"
 EOT
 	fi
 
