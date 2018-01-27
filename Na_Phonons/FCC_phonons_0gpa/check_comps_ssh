@@ -1,0 +1,41 @@
+#!/bin/bash
+#This script allows splitting up of a phonon job over multiple computers on the ssh network, so each one does a certain number of the phonons.
+#tmux kill-server kills all tmux sessions
+#this function checks the outputs of a "who -q" command and checks that I'm the only one logged in
+#Input a list of computers to check, eg:
+# $ ./check_comps_ssh "`seq -s " " -f "%03g" 1 1 100`"
+function check_users(){
+	users=(`echo "${1}" | head -1`)
+	u_nums=${#users[@]}
+	if [ "$u_nums" == "1" ]; then
+		return 0
+	else
+		return 1
+	fi
+}
+function check_computer(){
+	who_cmd=`ssh s1333534@cplab"$1" -t 'who -q' 2>/dev/null`
+	if [ "$?" -eq "0" ]; then
+		check_users "$who_cmd"	
+		if [ "$?" -eq "0" ]; then
+			return 0
+		else
+			return 2
+		fi
+	else
+		return 1
+	fi
+}
+function check_good_computers(){
+	for comp in $1; do
+		check_computer $comp
+		if [ "$?" -eq "0" ]; then
+			echo "${comp}"
+		fi
+	done
+}
+#for i in $COMPS; do
+	#ssh s1333534@cplab$i -t 'tmux new-session -A -d -s phonon-session "vim"'
+#	ssh s1333534@cplab$i -t 'who' && echo "Success"
+#done
+check_good_computers "$1"

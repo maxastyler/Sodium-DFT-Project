@@ -1,0 +1,19 @@
+#!/bin/sh
+#This script allows splitting up of a phonon job over multiple computers on the ssh network, so each one does a certain number of the phonons.
+#59 phonons for beta sn
+#Put in a list of phonons by $./run_phonons_ssh "`cat phon_file`"
+COMPS="$1"
+COMP=0
+echo "$COMPS"
+while read -r line; do
+	if [ "${line:0:1}" = "!" ]; then
+		COMP=${line:2}
+		echo "$COMP"
+	else
+		echo "$line"
+		ssh s1333534@cplab$COMP bash <<EOT
+		tmux new-session -A -d -s phonon-session "~/git/Sodium-DFT-Project/Na_Phonons/FCC_relaxation/phonons/run_phonons_na_fcc $line;read"
+EOT
+	fi
+
+done <<< "$COMPS"
