@@ -586,4 +586,7 @@ Some of these phonons finished - going to run the last lot on the sopa 1 day que
 2017/01/26
 --------------------------------------------------
 
-Running a phonon calculation for fcc sodium again at pressure = 0GPa
+Running a phonon calculation for fcc sodium again at pressure = 0GPa, with convergence threshold set to e-10 instead of e-8, same values otherwise (k=14^3, q=8^3)
+Sodium phonons are so much faster than tin... (more symmetry, less modes)
+
+Still substantial negative phonons at 0GPa. Will try running at 20^3 k-points, conv_thresh=10^-10
