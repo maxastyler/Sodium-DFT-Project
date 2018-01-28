@@ -590,3 +590,32 @@ Running a phonon calculation for fcc sodium again at pressure = 0GPa, with conve
 Sodium phonons are so much faster than tin... (more symmetry, less modes)
 
 Still substantial negative phonons at 0GPa. Will try running at 20^3 k-points, conv_thresh=10^-10, tr2_ph 1e-16
+
+Some phonons didn't run on the computers:
+29 
+28
+27
+26
+22
+21
+20
+19
+13
+12
+11
+9
+1
+--------------------------------------------------
+17/01/28
+--------------------------------------------------
+
+Phonons number 23 and 26 give problem too many k points (trying to use k-points 36000, in Modules/parameters.f90, npk is set to 40000, and in the check it breaks if 2*k-points>npk
+Raising npk to be 80000, then recompiling quantum espresso (on the cplab machines).
+
+Right, recompiled now with the greater npk number, trying to run again.
+
+-------------------------
+Going to try to work on sodium 9r. Using the lithium files for guidance - relax at 0GPa the 9r structure and run a phonon calculation to see if it's stable there.
+
+Phonons completed for FCC Na at 0GPa. Upping the convergence threshold for k-points to 1e-10, increasing k-points to 20x20x20 and increasing the convergence for q-points to qe-16 helped. No more negative frequencies, seems to have converged.
+Going to try to do a run at 0gpa with only 6x6x6 q-points, everything else constant. If this works, then I will redo all the fcc calculations with these new values. If 6x6x6 doesn't work, will redo with 8x8x8 q-points.
