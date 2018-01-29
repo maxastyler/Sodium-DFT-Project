@@ -619,3 +619,15 @@ Going to try to work on sodium 9r. Using the lithium files for guidance - relax 
 
 Phonons completed for FCC Na at 0GPa. Upping the convergence threshold for k-points to 1e-10, increasing k-points to 20x20x20 and increasing the convergence for q-points to qe-16 helped. No more negative frequencies, seems to have converged.
 Going to try to do a run at 0gpa with only 6x6x6 q-points, everything else constant. If this works, then I will redo all the fcc calculations with these new values. If 6x6x6 doesn't work, will redo with 8x8x8 q-points.
+
+6x6x6 phonons seem alright. Going to set a few simulations going at different pressures for FCC with these new k-values, convergence values.
+
+Already done 0GPa
+
+Will get 5 values, so 4 more calculations:
+-1GPa, 2.5GPa, 5GPa, 10GPa
+
+The lattice parameters for each of these pressures:
+
+Pressure (GPa) | Lat param (lattice units)
+-1

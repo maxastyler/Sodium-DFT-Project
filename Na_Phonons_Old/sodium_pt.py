@@ -15,8 +15,8 @@ vals={}
 
 for i in ["bcc", "fcc"]:
     temps={}
-    if i == "bcc": folder = "BCC_relaxation/phonons/"
-    else: folder = "FCC_relaxation/phonons/"
+    if i == "bcc": folder = "BCC_relaxation_old/phonons/"
+    else: folder = "FCC_relaxation_old/phonons/"
     for f in listdir(join(folder, "pt_fits")):
         if fnmatch(f, "*.xml"):
             temp = float(f.split(".")[2]+"."+f.split(".")[3])
