@@ -630,4 +630,7 @@ Will get 5 values, so 4 more calculations:
 The lattice parameters for each of these pressures:
 
 Pressure (GPa) | Lat param (lattice units)
--1
+-1 |
+
+FCC done now, and seems to be ok.
+Running simulations for BCC sodium at same 5 pressures (-1, 0, 2.5, 5, 10) (GPa)
