@@ -1,9 +1,0 @@
-# equation of state: birch 1st order.  chisq =          NaN
-# a0 =  0.0000 a.u., k0 =  500 kbar, dk0 =  5.00 d2k0 =  0.000 emin =        NaN
-# a0 =  0.00000 Ang, k0 =  50.0 GPa,  V0 =     0.00 (a.u.)^3,  V0 =    0.00 A^3 
-
-#########################################################################
-# Lat.Par       E_calc        E_fit       E_diff    Pressure      Enthalpy
-# a.u.            Ry           Ry            Ry        GPa           Ry
-#########################################################################
-
