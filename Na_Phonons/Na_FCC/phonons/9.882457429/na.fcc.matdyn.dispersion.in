@@ -1,0 +1,14 @@
+&input
+	asr = 'simple',
+	flfrc = 'na.fcc.fc',
+	flfrq = 'na.fcc.dispersion.freq',
+	q_in_band_form = .true.,
+	q_in_cryst_coord = .false.,
+/
+6
+ L 40
+ gG 40 
+ K 40
+ 1 1 0 40
+ X 40
+ gG 1

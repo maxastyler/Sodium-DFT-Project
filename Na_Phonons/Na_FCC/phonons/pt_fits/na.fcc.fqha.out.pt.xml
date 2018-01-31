@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<?iotk version="1.2.0"?>
+<?iotk file_version="1.0"?>
+<?iotk binary="F"?>
+<?iotk qe_syntax="F"?>
+<Root>
+  <EQUATIONS_OF_STATE>
+    <EQUATION_TYPE type="character" size="1" len="15">
+Birch 1st order
+    </EQUATION_TYPE>
+    <CHI_SQUARE type="real" size="1">
+                    NaN
+    </CHI_SQUARE>
+  </EQUATIONS_OF_STATE>
+  <EQUATIONS_PARAMETERS>
+    <EQUILIBRIUM_VOLUME_AU_A type="real" size="2" columns="2">
+ 5.928787750094959E-321  8.794368495974188E-322
+    </EQUILIBRIUM_VOLUME_AU_A>
+    <BULK_MODULUS_KBAR type="real" size="1">
+ 5.000000000000000E+002
+    </BULK_MODULUS_KBAR>
+    <DERIVATIVE_BULK_MODULUS type="real" size="1">
+ 5.000000000000000E+000
+    </DERIVATIVE_BULK_MODULUS>
+    <SECOND_DERIVATIVE_BULK_MODULUS type="real" size="1">
+ 0.000000000000000E+000
+    </SECOND_DERIVATIVE_BULK_MODULUS>
+    <MINIMUM_ENERGY_RY type="real" size="1">
+                    NaN
+    </MINIMUM_ENERGY_RY>
+    <CELL_FACTOR type="real" size="1">
+ 2.500000000000000E-001
+    </CELL_FACTOR>
+    <CELL_PARAMETER_AU_A type="real" size="2" columns="2">
+ 2.873041933284746E-107  1.520348310417639E-107
+    </CELL_PARAMETER_AU_A>
+  </EQUATIONS_PARAMETERS>
+  <FIT_CHECK>
+    <NUMBER_OF_DATA type="integer" size="1">
+         0
+    </NUMBER_OF_DATA>
+    <VOL_ENE_EFIT_DELTA_P_GIBBS type="real" size="0" columns="6">
+
+    </VOL_ENE_EFIT_DELTA_P_GIBBS>
+  </FIT_CHECK>
+</Root>
+
