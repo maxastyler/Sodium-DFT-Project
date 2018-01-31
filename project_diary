@@ -634,3 +634,10 @@ Pressure (GPa) | Lat param (lattice units)
 
 FCC done now, and seems to be ok.
 Running simulations for BCC sodium at same 5 pressures (-1, 0, 2.5, 5, 10) (GPa)
+
+--------------------------------------------------
+2017/01/30
+--------------------------------------------------
+
+For meeting with Miguel tomorrow - get Tin values up to higher temperature, try to find crossing point of Alpha <-> Beta (Might be high, around 600K?)
+Compare the values for FCC and BCC Na
