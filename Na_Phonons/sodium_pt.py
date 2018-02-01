@@ -7,7 +7,7 @@ from fnmatch import fnmatch
 import matplotlib.pyplot as plt
 
 #The target values to plot over
-p_interp = np.linspace(0, 10, 500)
+p_interp = np.linspace(-1, 10, 500)
 t_interp = np.linspace(0, 180, 500)
 
 #Extracts the values as a dictionary indexed by: vals[structure][temperature][pressure] = enthalpy
