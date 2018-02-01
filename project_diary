@@ -641,3 +641,9 @@ Running simulations for BCC sodium at same 5 pressures (-1, 0, 2.5, 5, 10) (GPa)
 
 For meeting with Miguel tomorrow - get Tin values up to higher temperature, try to find crossing point of Alpha <-> Beta (Might be high, around 600K?)
 Compare the values for FCC and BCC Na
+
+--------------------------------------------------
+2017/01/31
+--------------------------------------------------
+
+Added more phonons (7 different pressures for FCC Na and BCC Na), but the graph is still not looking nice. More error in the pt fits around 0GPa, so will run more phonons at those values.
