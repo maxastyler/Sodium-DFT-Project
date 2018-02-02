@@ -647,3 +647,12 @@ Compare the values for FCC and BCC Na
 --------------------------------------------------
 
 Added more phonons (7 different pressures for FCC Na and BCC Na), but the graph is still not looking nice. More error in the pt fits around 0GPa, so will run more phonons at those values.
+
+--------------------------------------------------
+2017/02/02
+--------------------------------------------------
+
+Even with adding more phonons to the pt fit, it still gives rather large errors.  (Scales with 1/sqrt(N) at best)?
+Might need to find another way.
+
+There doesn't seem to be any transition above ~6GPa. I could try cutting values from there out of the PT fit, and see if the errors are reduced for the other values. Is this due to the breakdown of the quasi-harmonic approximation at those high pressures?
