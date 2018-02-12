@@ -1,5 +1,5 @@
 #!/bin/bash --login
-#$ -N na-fcc-relax-s1333534
+#$ -N na-fcc-phonon-s1333534
 #$ -V
 #$ -pe mpi 64
 #$ -q sopa.1.day
