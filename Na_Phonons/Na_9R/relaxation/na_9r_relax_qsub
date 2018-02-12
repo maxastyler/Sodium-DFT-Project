@@ -1,0 +1,77 @@
+#!/bin/bash --login
+#$ -N na-9r-relax-s1333534
+#$ -V
+#$ -pe mpi 64
+#$ -q sopa.1.day
+#PBS -l l_hrt=23:58:00
+
+hostname
+
+echo $SGE_O_WORKDIR
+
+export SGE_O_WORKDIR=$(readlink -f $SGE_O_WORKDIR)
+
+MASTER_DIR=/home/s1333534/git/Sodium-DFT-Project/Na_Phonons/Na_9R/relaxation/
+cd $MASTER_DIR
+
+pwd
+
+export PW=/home/s1333534/quantum_espresso/qe-6.1/bin/pw.x
+export PH=/home/s1333534/quantum_espresso/qe-6.1/bin/ph.x
+export ESPRESSO_PSEUDO=/home/s1333534/quantum_espresso/qe-6.1/pseudo
+
+export OMP_NUM_THREADS=1
+
+cd `echo $0 | sed 's/\(.*\)\/.*/\1/'` # extract pathname
+
+SCRATCH_DIR="/scratch/s1333534/na_9r_relax/"
+NUMCORES=64
+
+rm -rf $SCRATCH_DIR
+mkdir -p $SCRATCH_DIR
+
+cd "$SCRATCH_DIR"
+
+for TARGETPRESSURE in -6 -3 0 3 6; do #-1 GPa to 10GPa
+cat > na.9r.vcrelax.$TARGETPRESSURE.in << EOF
+&control 
+	calculation = 'vc-relax',
+	prefix = 'na.9r',
+/
+&system
+	ibrav = -5,
+	celldm(1) = 17,
+	celldm(4) = 0.92,
+	nat = 3,
+	ntyp = 1,
+	ecutwfc = 40,
+	ecutrho = 320,
+	occupations = 'smearing',
+	smearing = 'm-v',
+	degauss = 0.02,
+/
+&electrons
+	mixing_beta = 0.7,
+	conv_thr = 1.0d-10,
+/
+&IONS
+	ion_dynamics = 'bfgs',
+/
+&CELL
+	cell_dynamics = 'bfgs',
+	press = $TARGETPRESSURE,
+	press_conv_thr = 0.05D0,
+/
+ATOMIC_SPECIES
+ Na 22.99 Na_pbe_v1.uspp.F.UPF
+ATOMIC_POSITIONS crystal
+ Na 0.72223 0.72223 0.72223
+ Na 0.27777 0.27777 0.27777
+ Na 0.5 0.5 0.5
+K_POINTS automatic
+ 20 20 20 1 1 1
+EOF
+	mpirun -np $NUMCORES $PW -nk 4 < na.9r.vcrelax.$TARGETPRESSURE.in > na.9r.vcrelax.$TARGETPRESSURE.out
+done;
+
+cp *.in *.out "$MASTER_DIR"
