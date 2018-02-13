@@ -31,7 +31,7 @@ rm -rf $SCRATCH_DIR
 mkdir -p $SCRATCH_DIR
 
 
-for LATPARAM in 9.6 9.7; do #-1 GPa to 10GPa
+for LATPARAM in 10.5 9.4; do #-1 GPa to 10GPa
 	cd "$SCRATCH_DIR"
 	mkdir -p "$LATPARAM"
 	cd "$LATPARAM"
