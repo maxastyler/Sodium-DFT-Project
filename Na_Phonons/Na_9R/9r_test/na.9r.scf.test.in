@@ -1,0 +1,36 @@
+&control
+	calculation = 'vc-relax',
+	prefix = 'na.9r',
+/
+&system
+	ibrav=-5,
+	celldm(1) = 14,
+	celldm(4) = 1,
+	nat = 3,
+	ntyp = 1,
+	ecutwfc = 40,
+	ecutrho = 320,
+	occupations = 'smearing',
+	smearing = 'm-v',
+	degauss = 0.02,
+/
+&electrons 
+	mixing_beta=0.7
+	conv_thr = 1.0d-10
+/
+&IONS
+	ion_dynamics = 'bfgs',
+/
+&CELL	
+	cell_dynamics = 'bfgs',
+	press = 0,
+	press_conv_thr = 0.1D0,
+/
+ATOMIC_SPECIES
+ Na 22.99 Na_pbe_v1.uspp.F.UPF
+ATOMIC_POSITIONS crystal
+ Na       0.722230000000000   0.722230000000000   0.722230000000000
+ Na       0.277770000000000   0.277770000000000   0.277770000000000
+ Na       0.500000000000000   0.500000000000000   0.500000000000000
+K_POINTS automatic
+ 20 20 20  1 1 1
