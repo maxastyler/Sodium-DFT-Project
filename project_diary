@@ -664,3 +664,5 @@ There doesn't seem to be any transition above ~6GPa. I could try cutting values 
 Added some more phonon values for the Na FCC-BCC diagram, which improved it quite a lot. Will add more values, one for fcc at a lower pressure (~-0.8GPa) and at around 2GPa. Two more for bcc too, just to keep it even.
 
 Will try plotting the diagram with more dense temperature, values every 10K rather than every 20K
+
+I think the more dense temperature plotting gives a slightly better graph.
