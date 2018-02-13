@@ -656,3 +656,11 @@ Even with adding more phonons to the pt fit, it still gives rather large errors.
 Might need to find another way.
 
 There doesn't seem to be any transition above ~6GPa. I could try cutting values from there out of the PT fit, and see if the errors are reduced for the other values. Is this due to the breakdown of the quasi-harmonic approximation at those high pressures?
+
+--------------------------------------------------
+2017/02/13
+--------------------------------------------------
+
+Added some more phonon values for the Na FCC-BCC diagram, which improved it quite a lot. Will add more values, one for fcc at a lower pressure (~-0.8GPa) and at around 2GPa. Two more for bcc too, just to keep it even.
+
+Will try plotting the diagram with more dense temperature, values every 10K rather than every 20K
