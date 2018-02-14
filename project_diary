@@ -666,3 +666,10 @@ Added some more phonon values for the Na FCC-BCC diagram, which improved it quit
 Will try plotting the diagram with more dense temperature, values every 10K rather than every 20K
 
 I think the more dense temperature plotting gives a slightly better graph.
+
+--------------------------------------------------
+2017/02/14
+--------------------------------------------------
+
+The na PT diagram is looking pretty good now with those added phonons. Have relaxed 9R to 0GPa (~0.01 kbar in the off diagonals in the pressure matrix, but this should be ok?)
+Performing an scf calculation on the structure.
