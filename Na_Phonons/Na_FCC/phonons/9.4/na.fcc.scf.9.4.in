@@ -1,0 +1,26 @@
+&control 
+	calculation = 'scf',
+	prefix = 'na.fcc',
+	tstress = .true.,
+/
+&system
+	ibrav = 2,
+	celldm(1) = 9.4,
+	nat = 1,
+	ntyp = 1,
+	ecutwfc = 40,
+	ecutrho = 320,
+	occupations = 'smearing',
+	smearing = 'm-v',
+	degauss = 0.02,
+/
+&electrons
+	mixing_beta = 0.7,
+	conv_thr = 1.0d-10,
+/
+ATOMIC_SPECIES
+ Na 22.99 Na_pbe_v1.uspp.F.UPF
+ATOMIC_POSITIONS crystal
+ Na 0 0 0
+K_POINTS automatic
+ 20 20 20 1 1 1
