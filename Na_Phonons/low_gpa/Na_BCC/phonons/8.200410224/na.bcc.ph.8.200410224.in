@@ -1,0 +1,10 @@
+Na BCC Phonon Calculation
+&inputph
+	prefix = 'na.bcc',
+	tr2_ph = 1e-16,
+	ldisp = .true.,
+	nq1 = 6,
+	nq2 = 6,
+	nq3 = 6,
+	fildyn = 'na.bcc.dyn',
+/

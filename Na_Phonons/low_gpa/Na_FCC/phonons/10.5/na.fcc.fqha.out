@@ -1,0 +1,11 @@
+File containing the dos >>> Read   108 lines; Delta e (cm^-1) =  1.000000
+Check: 3*Nat =   2.9976     zero-point energy (Ry)=     0.00101796
+Output file for the Free energy >>> Temperature (K) >>> T=    0.00K,  F(T)=      0.00101796 Ry
+Temperature (K) >>> T=   25.00K,  F(T)=      0.00100439 Ry
+Temperature (K) >>> T=   50.00K,  F(T)=      0.00087077 Ry
+Temperature (K) >>> T=   75.00K,  F(T)=      0.00057745 Ry
+Temperature (K) >>> T=  100.00K,  F(T)=      0.00015074 Ry
+Temperature (K) >>> T=  125.00K,  F(T)=     -0.00038394 Ry
+Temperature (K) >>> T=  150.00K,  F(T)=     -0.00100803 Ry
+Temperature (K) >>> T=  175.00K,  F(T)=     -0.00170802 Ry
+Temperature (K) >>> 
