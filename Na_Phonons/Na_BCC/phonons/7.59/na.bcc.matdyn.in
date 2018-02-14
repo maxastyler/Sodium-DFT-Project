@@ -1,0 +1,11 @@
+&input
+        asr = 'simple',
+        flfrc = 'na.bcc.fc',
+        flfrq = 'na.bcc.freq',
+        nk1 = 30,
+        nk2 = 30,
+        nk3 = 30,
+        dos = .true.,
+        fldos = 'na.bcc.303030.simple.dos',
+/
+
