@@ -1,0 +1,81 @@
+#!/bin/bash --login
+#$ -N na-bcc-phonons-s1333534
+#$ -V
+#$ -pe mpi 64
+#$ -q sopa.1.day
+#PBS -l l_hrt=23:58:00
+
+hostname
+
+echo $SGE_O_WORKDIR
+
+export SGE_O_WORKDIR=$(readlink -f $SGE_O_WORKDIR)
+
+MASTER_DIR="/home/s1333534/git/Sodium-DFT-Project/Na_Phonons/Na_BCC/phonons/"
+cd "$MASTER_DIR"
+
+pwd
+
+export PW=/home/s1333534/quantum_espresso/qe-6.1/bin/pw.x
+export PH=/home/s1333534/quantum_espresso/qe-6.1/bin/ph.x
+export ESPRESSO_PSEUDO=/home/s1333534/quantum_espresso/qe-6.1/pseudo
+
+export OMP_NUM_THREADS=1
+
+cd `echo $0 | sed 's/\(.*\)\/.*/\1/'` # extract pathname
+
+SCRATCH_DIR="/scratch/s1333534/na_bcc_phon/"
+NUMCORES=64
+
+rm -rf $SCRATCH_DIR
+mkdir -p $SCRATCH_DIR
+
+for LATPARAM in 7.78 7.2; do #-1 GPa to 10GPa
+	cd "$SCRATCH_DIR"
+	mkdir -p "$LATPARAM"
+	cd "$LATPARAM"
+cat > na.bcc.scf.$LATPARAM.in << EOF
+&control 
+	calculation = 'scf',
+	prefix = 'na.bcc',
+	tstress = .true.,
+/
+&system
+	ibrav = 3,
+	celldm(1) = $LATPARAM,
+	nat = 1,
+	ntyp = 1,
+	ecutwfc = 40,
+	ecutrho = 320,
+	occupations = 'smearing',
+	smearing = 'm-v',
+	degauss = 0.02,
+/
+&electrons
+	mixing_beta = 0.7,
+	conv_thr = 1.0d-10,
+/
+ATOMIC_SPECIES
+ Na 22.99 Na_pbe_v1.uspp.F.UPF
+ATOMIC_POSITIONS crystal
+ Na 0 0 0
+K_POINTS automatic
+ 20 20 20 1 1 1
+EOF
+	mpirun -np $NUMCORES $PW -nk 4 < na.bcc.scf.$LATPARAM.in | tee na.bcc.scf.$LATPARAM.out
+	cat > na.bcc.ph.$LATPARAM.in << EOF
+Na BCC Phonon Calculation
+&inputph
+	prefix = 'na.bcc',
+	tr2_ph = 1e-16,
+	ldisp = .true.,
+	nq1 = 6,
+	nq2 = 6,
+	nq3 = 6,
+	fildyn = 'na.bcc.dyn',
+/
+EOF
+	mpirun -np $NUMCORES $PH -nk 4 < na.bcc.ph.$LATPARAM.in | tee na.bcc.ph.$LATPARAM.out
+	mkdir -p "$MASTER_DIR$LATPARAM"
+	cp *.in *.out *.dyn* "$MASTER_DIR$LATPARAM"
+done;

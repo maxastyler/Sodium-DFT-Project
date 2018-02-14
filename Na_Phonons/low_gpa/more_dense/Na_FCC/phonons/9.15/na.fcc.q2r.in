@@ -1,0 +1,5 @@
+&input
+	fildyn = 'na.fcc.dyn',
+	zasr = 'simple',
+	flfrc = 'na.fcc.fc',
+/

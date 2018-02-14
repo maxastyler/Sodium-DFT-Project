@@ -1,0 +1,25 @@
+#!/bin/sh
+
+cd `echo $0 | sed 's/\(.*\)\/.*/\1/'` # extract pathname
+MASTER=`pwd`
+
+for dir in `ls -l | grep '^d' | awk '{print $9 }'`; do
+	echo "$dir"
+	cd "$MASTER/$dir"
+	cat > na.fcc.fqha.in << EOF
+na.fcc.303030.simple.dos
+na.fcc.fqha.calc
+0
+20
+40
+60
+80
+100
+120
+140
+160
+180
+EOF
+	fqha.x < na.fcc.fqha.in > na.fcc.fqha.out
+	cd "$MASTER"
+done
