@@ -1,7 +1,7 @@
 #!/bin/bash --login
 #$ -N na-9r-phonon-s1333534
 #$ -V
-#$ -pe mpi 64
+#$ -pe mpi 48
 #$ -q sopa.1.day
 #PBS -l l_hrt=23:58:00
 
@@ -25,7 +25,7 @@ export OMP_NUM_THREADS=1
 cd `echo $0 | sed 's/\(.*\)\/.*/\1/'` # extract pathname
 
 SCRATCH_DIR="/scratch/s1333534/na_9r_phon/"
-NUMCORES=64
+NUMCORES=48
 
 rm -rf $SCRATCH_DIR
 mkdir -p $SCRATCH_DIR
@@ -58,7 +58,7 @@ cat > na.9r.scf.$LATPARAM.in << EOF
 /
 ATOMIC_SPECIES
  Na 22.99 Na_pbe_v1.uspp.F.UPF
-CELL_PARAMETERS (alat)
+CELL_PARAMETERS (alat= 17.00000)
    0.387810316   0.678487001   0.678487001
    0.678487001   0.387810316   0.678487001
    0.678487001   0.678487001   0.387810316
@@ -66,8 +66,10 @@ ATOMIC_POSITIONS (crystal)
 Na       0.722222522   0.722222522   0.722222522
 Na       0.277777478   0.277777478   0.277777478
 Na       0.500000000   0.500000000   0.500000000
+K_POINTS automatic
+ 20 20 20 1 1 1
 EOF
-	mpirun -np $NUMCORES $PW -nk 4 < na.9r.scf.$LATPARAM.in | tee na.9r.scf.$LATPARAM.out
+	mpirun -np $NUMCORES $PW < na.9r.scf.$LATPARAM.in | tee na.9r.scf.$LATPARAM.out
 	cat > na.9r.ph.$LATPARAM.in << EOF
 Na 9R Phonon Calculation
 &inputph
@@ -82,7 +84,7 @@ Na 9R Phonon Calculation
 	fildyn = 'na.9r.dyn',
 /
 EOF
-	mpirun -np $NUMCORES $PH -nk 4 < na.9r.ph.$LATPARAM.in | tee na.9r.ph.$LATPARAM.out
+	mpirun -np $NUMCORES $PH < na.9r.ph.$LATPARAM.in | tee na.9r.ph.$LATPARAM.out
 	mkdir -p "$MASTER_DIR$LATPARAM"
 	cp *.in *.out *.dyn* "$MASTER_DIR$LATPARAM"
 done;

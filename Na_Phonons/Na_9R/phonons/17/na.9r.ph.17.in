@@ -1,0 +1,12 @@
+Na 9R Phonon Calculation
+&inputph
+	prefix = 'na.9r',
+	tr2_ph = 1e-16,
+	ldisp = .true.,
+	nq1 = 6,
+	nq2 = 6,
+	nq3 = 6,
+	start_q = 1,
+	last_q = 1,
+	fildyn = 'na.9r.dyn',
+/
