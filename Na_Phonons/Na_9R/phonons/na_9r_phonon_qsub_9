@@ -1,0 +1,90 @@
+#!/bin/bash --login
+#$ -N na-9r-phonon-s1333534
+#$ -V
+#$ -pe mpi 64
+#$ -q sopa.1.day
+#PBS -l l_hrt=23:58:00
+
+hostname
+
+echo $SGE_O_WORKDIR
+
+export SGE_O_WORKDIR=$(readlink -f $SGE_O_WORKDIR)
+
+MASTER_DIR="/home/s1333534/git/Sodium-DFT-Project/Na_Phonons/Na_9R/phonons/"
+cd "$MASTER_DIR"
+
+pwd
+
+export PW=/home/s1333534/quantum_espresso/qe-6.1/bin/pw.x
+export PH=/home/s1333534/quantum_espresso/qe-6.1/bin/ph.x
+export ESPRESSO_PSEUDO=/home/s1333534/quantum_espresso/qe-6.1/pseudo
+
+export OMP_NUM_THREADS=1
+
+cd `echo $0 | sed 's/\(.*\)\/.*/\1/'` # extract pathname
+
+SCRATCH_DIR="/scratch/s1333534/na_9r_phon/"
+NUMCORES=64
+
+rm -rf $SCRATCH_DIR
+mkdir -p $SCRATCH_DIR
+
+
+for LATPARAM in 17; do #-1 GPa to 10GPa
+	cd "$SCRATCH_DIR"
+	mkdir -p "$LATPARAM"
+	cd "$LATPARAM"
+cat > na.9r.scf.$LATPARAM.in << EOF
+&control 
+	calculation = 'scf',
+	prefix = 'na.9r',
+	tstress = .true.,
+/
+&system
+	ibrav = 0,
+	celldm(1) = $LATPARAM,
+	nat = 3,
+	ntyp = 1,
+	ecutwfc = 40,
+	ecutrho = 320,
+	occupations = 'smearing',
+	smearing = 'm-v',
+	degauss = 0.02,
+/
+&electrons
+	mixing_beta = 0.7,
+	conv_thr = 1.0d-10,
+/
+ATOMIC_SPECIES
+ Na 22.99 Na_pbe_v1.uspp.F.UPF
+CELL_PARAMETERS (alat= 17.00000)
+   0.387810316   0.678487001   0.678487001
+   0.678487001   0.387810316   0.678487001
+   0.678487001   0.678487001   0.387810316
+ATOMIC_POSITIONS (crystal)
+Na       0.722222522   0.722222522   0.722222522
+Na       0.277777478   0.277777478   0.277777478
+Na       0.500000000   0.500000000   0.500000000
+K_POINTS automatic
+ 20 20 20 1 1 1
+EOF
+	mpirun -np $NUMCORES $PW -nk 4 < na.9r.scf.$LATPARAM.in | tee na.9r.scf.$LATPARAM.out
+	cat > na.9r.ph.$LATPARAM.in << EOF
+Na 9R Phonon Calculation
+&inputph
+	prefix = 'na.9r',
+	tr2_ph = 1e-16,
+	ldisp = .true.,
+	nq1 = 4,
+	nq2 = 4,
+	nq3 = 4,
+	start_q = 9,
+	last_q = 9,
+	fildyn = 'na.9r.dyn',
+/
+EOF
+	mpirun -np $NUMCORES $PH -nk 4 < na.9r.ph.$LATPARAM.in | tee na.9r.ph.$LATPARAM.out
+	mkdir -p "$MASTER_DIR$LATPARAM"
+	cp *.in *.out *.dyn* "$MASTER_DIR$LATPARAM"
+done;
