@@ -673,3 +673,8 @@ I think the more dense temperature plotting gives a slightly better graph.
 
 The na PT diagram is looking pretty good now with those added phonons. Have relaxed 9R to 0GPa (~0.01 kbar in the off diagonals in the pressure matrix, but this should be ok?)
 Performing an scf calculation on the structure.
+
+---Meeting with Miguel
+Try fitting the phase line between BCC/FCC with the Clausius-Clapeyron equation, or using critical exponent
+Run the phonons for 9r at low phonon q-points (4x4x4) cause they are just too expensive...
+
