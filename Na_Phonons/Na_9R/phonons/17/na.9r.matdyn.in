@@ -1,0 +1,10 @@
+&input
+	asr = 'simple',
+	flfrc = 'na.9r.fc',
+	flfrq = 'na.9r.freq',
+	nk1 = 30,
+	nk2 = 30,
+	nk3 = 30,
+	dos = .true.,
+	fldos = 'na.9r.303030.simple.dos',
+/

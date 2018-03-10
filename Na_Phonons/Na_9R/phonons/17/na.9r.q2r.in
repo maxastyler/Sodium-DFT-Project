@@ -1,0 +1,5 @@
+&input
+	fildyn = 'na.9r.dyn'
+	zasr = 'simple',
+	flfrc = 'na.9r.fc'
+/
