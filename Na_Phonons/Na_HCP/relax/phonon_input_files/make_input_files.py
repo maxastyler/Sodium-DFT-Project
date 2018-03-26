@@ -58,8 +58,15 @@ p_s = "Na HCP Phonon Calculation\n\
  /"
 
 for (a, ca) in vals:
-    with open("na_hcp_scf_{}_in".format(a), "w") as f:
+    with open("na_hcp_scf_{}.in".format(a), "w") as f:
     	f.write(f_s.format(a=a, ca = ca))
 
-    with open("na_hcp_ph_{}_in".format(a), "w") as f:
+    with open("na_hcp_ph_{}.in".format(a), "w") as f:
     	f.write(p_s.format(a=a, ca = ca))
+
+for f in [6.976382950545051,
+6.998233353524401,
+6.993850699385001,
+6.98348186215975,
+6.99410908717325]:
+    print(f, end=" ")
