@@ -678,3 +678,15 @@ Performing an scf calculation on the structure.
 Try fitting the phase line between BCC/FCC with the Clausius-Clapeyron equation, or using critical exponent
 Run the phonons for 9r at low phonon q-points (4x4x4) cause they are just too expensive...
 
+
+---------------
+Things to finish - check phonon of 9r at 0GPa at dyn8 (wherever that is) and see if it is non negative at higher electron scfs (eg. 30k-points)
+Maybe do an hcp sodium at 0GPa, to check what the energy is like there.
+Sodium is most probably a mix of different stuff down at that temperature/pressure (Transition temp @30K, which the calculations predict ~2x) This is the same situation as lithium though.
+
+
+--------------------------------------------------
+
+Higher quality phonons (scf 30^3 k points) for sodium at dyn8 (the one with negative frequencies from before) still give negative frequencies.
+
+Relaxing sodium in HCP to check phonons of that structure at 0GPa.
