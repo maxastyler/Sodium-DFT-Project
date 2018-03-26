@@ -1,0 +1,14 @@
+&input
+	asr = 'simple',
+	flfrc = 'na_hcp.fc',
+	flfrq = 'na_hcp.disp',
+	q_in_band_form = .true.,
+	q_in_cryst_coord = .true.,
+/
+6
+0 0 0 50
+0 -0.5 0 50
+0 -0.5 0.5 50
+0.33333 -0.66666 0.5 50
+0.33333 -0.66666 0 50
+0 0 0 50

@@ -1,0 +1,5 @@
+&input
+	fildyn = 'na_hcp.dyn',
+	flfrc = 'na_hcp.fc',
+	zasr = 'simple',
+/

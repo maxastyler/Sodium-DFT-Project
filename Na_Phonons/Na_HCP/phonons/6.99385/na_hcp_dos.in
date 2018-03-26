@@ -1,0 +1,7 @@
+&input
+	asr = 'simple',
+	flfrc = 'na_hcp.fc',
+	dos = .true.,
+	nk1 = 30, nk2 = 30, nk3 = 30,
+	fldos = 'na_hcp.dos',
+/
