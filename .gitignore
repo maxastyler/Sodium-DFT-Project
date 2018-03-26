@@ -13,3 +13,4 @@ project_report/.sodium-report.tex.swp
 project_report/figures/rust_drawings/Cargo.lock
 project_report/figures/rust_drawings/src/.main.rs.swp
 project_report/figures/rust_drawings/target/
+*.*.swp
