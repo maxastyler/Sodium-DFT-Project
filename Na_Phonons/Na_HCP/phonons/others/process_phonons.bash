@@ -5,6 +5,7 @@ for v in 6.976382950545051 6.998233353524401 6.993850699385001 6.98348186215975 
 	fildyn = 'na_hcp_$v.dyn',
 	flfrc = 'na_hcp_$v.fc',
 	zasr = 'simple',
+/
 EOF
 
 	mpirun -np 4 matdyn.x > na_hcp_dos_$v.out << EOF
