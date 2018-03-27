@@ -24,7 +24,7 @@ export OMP_NUM_THREADS=1
 
 cd `echo $0 | sed 's/\(.*\)\/.*/\1/'` # extract pathname
 
-SCRATCH_DIR="/scratch/s1333534/na_9r_relax/"
+SCRATCH_DIR="/scratch/s1333534/na_9r_relax/1.5/"
 NUMCORES=64
 
 rm -rf $SCRATCH_DIR
@@ -32,16 +32,14 @@ mkdir -p $SCRATCH_DIR
 
 cd "$SCRATCH_DIR"
 
-for TARGETPRESSURE in 1.5; do #-1 GPa to 10GPa
-cat > na.9r.vcrelax.$TARGETPRESSURE.in << EOF
+cat > na.9r.vcrelax.1.5.r2.in << EOF
 &control 
 	calculation = 'vc-relax',
 	prefix = 'na.9r',
 /
 &system
-	ibrav = -5,
+	ibrav = 0,
 	celldm(1) = 17,
-	celldm(4) = 0.92,
 	nat = 3,
 	ntyp = 1,
 	ecutwfc = 40,
@@ -59,19 +57,22 @@ cat > na.9r.vcrelax.$TARGETPRESSURE.in << EOF
 /
 &CELL
 	cell_dynamics = 'bfgs',
-	press = $TARGETPRESSURE,
+	press = 1.5,
 	press_conv_thr = 0.05D0,
 /
 ATOMIC_SPECIES
  Na 22.99 Na_pbe_v1.uspp.F.UPF
 ATOMIC_POSITIONS crystal
- Na 0.72223 0.72223 0.72223
- Na 0.27777 0.27777 0.27777
- Na 0.5 0.5 0.5
+Na       0.722223402   0.722223402   0.722223402
+Na       0.277776598   0.277776598   0.277776598
+Na       0.500000000   0.500000000   0.500000000
+CELL_PARAMETERS alat 
+   0.383909599   0.672101264   0.672101264
+   0.672101264   0.383909599   0.672101264
+   0.672101264   0.672101264   0.383909599
 K_POINTS automatic
  20 20 20 1 1 1
 EOF
-	mpirun -np $NUMCORES $PW -nk 4 < na.9r.vcrelax.$TARGETPRESSURE.in > na.9r.vcrelax.$TARGETPRESSURE.out
-done;
+	mpirun -np $NUMCORES $PW -nk 4 < na.9r.vcrelax.1.5.r2.in > na.9r.vcrelax.1.5.r2.out
 
 cp *.in *.out "$MASTER_DIR"
