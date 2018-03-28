@@ -1,0 +1,32 @@
+&control
+       calculation='scf',
+       wf_collect=.true.,
+       prefix='na_hcp_7.04',
+       pseudo_dir='./',
+       outdir='./na_hcp_7.04/',
+       disk_io='low',
+       tstress=.true.,
+/
+&system
+        ibrav = 4,
+        celldm(1) = 7.04,
+       celldm(3) = 1.63046,
+        nat = 2,
+        ntyp = 1,
+        ecutwfc = 40,
+        ecutrho = 320,
+        occupations = 'smearing',
+        smearing = 'm-v',
+        degauss = 0.02,
+/
+&electrons
+        mixing_beta = 0.7,
+        conv_thr = 1.0d-10,
+/
+ATOMIC_SPECIES
+ Na 22.99 Na_pbe_v1.uspp.F.UPF
+ATOMIC_POSITIONS (crystal)
+ Na  0.0 0.0 0.0
+ Na  0.6666666 0.3333333 0.5
+K_POINTS automatic
+ 24 24 12 0 0 1

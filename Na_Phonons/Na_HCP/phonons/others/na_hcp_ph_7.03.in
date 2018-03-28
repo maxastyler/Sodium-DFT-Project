@@ -1,0 +1,13 @@
+Na HCP Phonon Calculation
+&inputph
+  prefix='na_hcp_7.03',
+  outdir='./na_hcp_7.03/',
+  fildyn='na_hcp_7.03.dyn',
+
+! Convergence settings:
+  tr2_ph=1e-15,
+
+! Set up regular q-grid for DFPT:
+  ldisp=.true.,
+  nq1=4, nq2=4, nq3=4
+ /
