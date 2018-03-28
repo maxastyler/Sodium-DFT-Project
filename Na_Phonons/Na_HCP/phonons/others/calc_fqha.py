@@ -62,5 +62,5 @@ def pt_fit(temperatures):
 
 #get_fqha(lats)
 #format_for_ev(get_energies(lats))
-pt_fit(get_energies(lats).keys())
+#pt_fit(get_energies(lats).keys())
 #print(get_volumes(lats))
