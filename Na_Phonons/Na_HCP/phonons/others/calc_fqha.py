@@ -60,7 +60,7 @@ def pt_fit(temperatures):
         input_str = "au\nnoncubic\n1\nna.hcp.{:.1f}.ev\nna.hcp.{:.1f}.pt".format(t, t)
         subprocess.run(['ev.x'], input = input_str.encode())
 
-#get_fqha(lats)
-#format_for_ev(get_energies(lats))
-#pt_fit(get_energies(lats).keys())
+get_fqha(lats)
+format_for_ev(get_energies(lats))
+pt_fit(get_energies(lats).keys())
 #print(get_volumes(lats))
