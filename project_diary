@@ -694,3 +694,5 @@ Relaxing sodium in HCP to check phonons of that structure at 0GPa.
 --------------------------------------------------
 
 The HCP volumes might not be correct. Been relaxing the cells and leaving the c/a parameter free to go to where it wants to, as I expect this might change when targetting different pressures. The pressures I had calculated are all higher than 0, going to do some more phonons for the structure at largers volumes.
+
+Still the pressures are greater than 0. Need to do more volumes at higher lats.
