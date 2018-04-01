@@ -14,3 +14,13 @@ project_report/figures/rust_drawings/Cargo.lock
 project_report/figures/rust_drawings/src/.main.rs.swp
 project_report/figures/rust_drawings/target/
 *.*.swp
+project_presentation/sodium-presentation.aux
+project_presentation/sodium-presentation.fls
+project_presentation/sodium-presentation.log
+project_presentation/sodium-presentation.nav
+project_presentation/sodium-presentation.out
+project_presentation/sodium-presentation.pdf
+project_presentation/sodium-presentation.snm
+project_presentation/sodium-presentation.synctex.gz
+project_presentation/sodium-presentation.toc
+project_presentation/sodium-presentation.fdb_latexmk
