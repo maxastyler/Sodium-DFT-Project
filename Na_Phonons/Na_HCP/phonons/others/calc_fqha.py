@@ -15,7 +15,7 @@ def get_volumes(lats):
 volumes = get_volumes(lats)
             
 def get_fqha(lats):
-    tempstr = reduce(lambda a, b: "{}\n{}".format(a, b), range(0, 181, 20))
+    tempstr = reduce(lambda a, b: "{}\n{}".format(a, b), range(0, 181, 10))
     print(tempstr)
     for v in lats:
         fqha_string = "na_hcp_{}.dos\nna_hcp_{}.fe\n".format(v, v)+tempstr
