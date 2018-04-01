@@ -59,8 +59,9 @@ hcp_lower = np.vectorize(lambda x: 1*int(x))(hcp_lower)
 bcc_lower = np.vectorize(lambda x: 2*int(x))(bcc_lower)
 fcc_lower = np.vectorize(lambda x: 3*int(x))(fcc_lower)
 total = hcp_lower+bcc_lower+fcc_lower
-#plt.contourf(p_interp, t_interp, hcp_lower, 1)
-plt.contourf(p_interp, t_interp, total, 2)
+bcc_lower = np.vectorize(lambda x: int(x))(vals["bcc"]["e_interp"]<vals["fcc"]["e_interp"])
+plt.contourf(p_interp, t_interp, bcc_lower, 1)
+#plt.contourf(p_interp, t_interp, total, 2)
 plt.colorbar()
 plt.show()
 
