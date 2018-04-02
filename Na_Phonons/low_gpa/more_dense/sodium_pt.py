@@ -5,6 +5,7 @@ from os import listdir
 from os.path import join
 from fnmatch import fnmatch
 import matplotlib.pyplot as plt
+from matplotlib.colors import LinearSegmentedColormap
 
 #The target values to plot over
 p_interp = np.linspace(-0.5, 5, 500)
@@ -60,8 +61,18 @@ bcc_lower = np.vectorize(lambda x: 2*int(x))(bcc_lower)
 fcc_lower = np.vectorize(lambda x: 3*int(x))(fcc_lower)
 total = hcp_lower+bcc_lower+fcc_lower
 bcc_lower = np.vectorize(lambda x: int(x))(vals["bcc"]["e_interp"]<vals["fcc"]["e_interp"])
-plt.contourf(p_interp, t_interp, bcc_lower, 1)
+cm = LinearSegmentedColormap.from_list("rb", [(1, 0, 0), (0, 0, 1)])
+
+plt.title(r"Sodium PT Diagram")
+plt.contourf(p_interp, t_interp, bcc_lower, 1, cmap = cm)
+plt.xlabel(r'Pressure $(GPa)$')
+plt.ylabel(r'Temperature $(K)$')
+plt.gca().text(0, 20, r'FCC', color=(1, 1, 1), fontsize=19)
+plt.gca().text(2, 100, r'BCC', color=(1, 1, 1), fontsize=19)
 #plt.contourf(p_interp, t_interp, total, 2)
-plt.colorbar()
-plt.show()
+#plt.colorbar()
+plt.gcf().set_size_inches(11, 5)
+plt.gcf().tight_layout()
+plt.savefig('../../../project_presentation/sodium_pt_diagram.png')
+#plt.show()
 
