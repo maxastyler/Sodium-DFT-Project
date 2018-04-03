@@ -26,15 +26,15 @@
  
 \begin{frame}
 	\frametitle{PT Diagrams}
-	Pressure Temperature (PT) diagrams tell us what forms a structure exists in as a function of pressure and temperature.
+	Pressure-Temperature (PT) diagrams tell us what forms a structure exists in as a function of pressure and temperature.
 	\pause
 	\newline
 	\newline
-	Pressure and temperature most easily controllable variables in experiment.
+	Pressure and temperature are the most easily controllable variables in experiment.
 	\pause
 	\newline
 	\newline
-	How do we make them?
+	First obtain $F(T, V)$, then transform $V\rightarrow P$ using an equation of state to get $G(T, P)$.
 \end{frame}
 
 \begin{frame}
@@ -77,12 +77,27 @@
 
 \end{frame}
 \begin{frame}
+	\frametitle{Where's the Temperature Dependence?}
+	From $n(\mathbf r)$ we can now calculate $F_{electron}(V)$, but we have no temperature dependence?
+	\pause
+	\newline
+	\newline
+	Need phonon energy contribution!
+	$$F_{phonon}(T, V) = \int_0^\infty D_V(\omega)\frac{\hbar \omega}{\exp \left(\frac{\hbar\omega}{k_B T}\right) - 1}d\omega$$
+
+	$$F(T, V) = F_{electron}(V) + F_{phonon}(T, V) \rightarrow G(T, P)$$
+\end{frame}
+\begin{frame}
 	\frametitle{Calculating Phonons}
-	Need to use density functional perturbation theory.
+	Need to use density functional perturbation theory (DFPT) to find $D_V(\omega)$.
+	DFPT solves perturbed Kohn-Sham equations to work out the dynamical matrix, $\mathcal{D}(\mathbf q)$.
+
+	$$\mathcal F^{-1}[\mathcal D(\mathbf q)] = \mathcal{C}
 \end{frame}
 
 \begin{frame}
 \frametitle{Silicon}
+\begin{center}Finding silicon's observables\end{center}
 	\begin{figure}[ht]
 	\begin{center}
 	\includegraphics[height=2in]{sidiamond.png}
@@ -167,6 +182,9 @@ Silicon cell in diamond form
 
 \begin{frame}
 	\frametitle{Sodium Crystal Structure}
+	\begin{center}Paper by Ackland et. al.\footnote{DOI: 10.1126/science.aal4886
+	} showed lithium has FCC rather than 9R ground state.
+Sodium was also predicted to exist as 9R.\end{center}
 	\begin{columns}
 \column{0.3\textwidth}
 	\begin{figure}[ht]
@@ -207,12 +225,19 @@ Silicon cell in diamond form
 \end{frame}
 
 \begin{frame}
-	\frametitle{}
+	\frametitle{Where's 9R?}
+	Significant negative phonon frequencies found for 9R at 0GPa.
+	\newline
+	\newline
+	This implies the 9R structure is unstable at this point, and is therefore not the ground state as previously thought.
 \end{frame}
 
 \begin{frame}
 	\frametitle{Further Research}
-	Look into other phases in this region (HCP, etc.)
+	DFT calculations of other sodium structures in this region (HCP, etc.)
+	\newline
+	\newline
+	X-ray diffraction measurements of sodium to verify these findings.
 \end{frame}
 
 \end{document}
