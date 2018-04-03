@@ -1,34 +1,40 @@
 \documentclass{beamer}
 \usetheme{CambridgeUS}
 \usecolortheme{rose}
-
-%\usebackgroundtemplate
-%{
-%	\includegraphics[width=\paperwidth,height=\paperheight]{r9coloured.png}
-%}
+\usepackage{braket}
 
 
 \title{Computing P‐T Diagrams from First Principles}
 \author{Max Tyler}
 \institute{The University of Edinburgh}
-\date{\today}
+\date{April 2018}
  
  
  
 \begin{document}
- 
+{ 
+\usebackgroundtemplate
+{
+	\includegraphics[width=\paperwidth,height=\paperheight]{na9rlarge.png}
+}
 \frame{\titlepage}
+}
  
 \begin{frame}
-	\frametitle{What's this About?}
+	\frametitle{PT Diagrams}
 \end{frame}
 
 \begin{frame}
-	\frametitle{What is DFT?}
-\end{frame}
-
-\begin{frame}
-	\frametitle{How to recreate the P-T diagram of Na?}
+	\frametitle{Density Functional Theory}
+	Aim: Find the electron density, $n(\mathbf r)$ of some system.
+	\begin{block}{Constrained Search for the Energy}<2->
+		$$E_{v}[n] = \min_{\Psi \rightarrow n} \braket{\Psi|\hat T+\hat U + \hat V|\Psi} = F[n] + \int d^3\mathbf r n(\mathbf r) v_{ext}(\mathbf r)$$
+	\end{block}
+	\begin{block}{Kohn-Sham Formulation}<3->
+		$$\left(-\frac{\hbar^2\nabla^2}{2m}+v_s(\mathbf r)\right)\phi_i(\mathbf r) = \epsilon_i \phi_i(\mathbf r),$$
+		$$v_s(\mathbf r) = v_{ext}(\mathbf r) + v_H(\mathbf r) + v_{xc}(\mathbf r)$$
+		$$n(\mathbf r) = \sum_i^N\phi^*_i(\mathbf r)\phi_i(\mathbf r)$$	
+	\end{block}
 \end{frame}
 
 \begin{frame}
@@ -81,7 +87,39 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Sodium}
+	\frametitle{Sodium Crystal Structure}
+	\begin{columns}
+\column{0.3\textwidth}
+	\begin{figure}[ht]
+	\begin{center}
+		\includegraphics[height=1.3in]{nabcccrystal.png}
+	\end{center}
+	\end{figure}
+	\begin{center}
+		BCC
+	\end{center}
+\column{0.3\textwidth}
+	\begin{figure}[ht]
+	\begin{center}
+		\includegraphics[height=1.3in]{nafcccrystal.png}
+	\end{center}
+	\end{figure}
+	\begin{center}
+		FCC
+	\end{center}
+\column{0.3\textwidth}
+	\begin{figure}[ht]
+	\begin{center}
+		\includegraphics[height=1.23in]{na9rcrystal.png}
+	\end{center}
+	\end{figure}
+	\begin{center}
+		9R
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+	\frametitle{Sodium PT Diagram}
 	\begin{figure}[ht]
 	\begin{center}
 		\includegraphics[height=2in]{sodium_pt_diagram.png}
