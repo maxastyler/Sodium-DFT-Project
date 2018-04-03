@@ -2,7 +2,8 @@
 \usetheme{CambridgeUS}
 \usecolortheme{rose}
 \usepackage{braket}
-
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
 
 \title{Computing P‐T Diagrams from First Principles}
 \author{Max Tyler}
@@ -35,6 +36,33 @@
 		$$v_s(\mathbf r) = v_{ext}(\mathbf r) + v_H(\mathbf r) + v_{xc}(\mathbf r)$$
 		$$n(\mathbf r) = \sum_i^N\phi^*_i(\mathbf r)\phi_i(\mathbf r)$$	
 	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Density Functional Theory}
+	\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=6em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+    
+\begin{tikzpicture}[node distance = 3.1cm, auto]
+    % Place nodes
+    \uncover<1->{\node [block] (init) {initial guess at charge density $n(\mathbf r)$};}
+    \uncover<2->{\node [block, right of=init] (potential) {calculate new $v_s(\mathbf r)$ from $n(\mathbf r)$};}
+    \uncover<3->{\node [block, right of=potential] (update) {solve Kohn-Sham equations for new $n(\mathbf r)=\sum_i \phi^*_i\phi_i$};}
+    \uncover<4->{\node [decision, below of=update, node distance = 3.5cm] (decide) {are convergence criteria met?};}
+    \uncover<5->{\node [block, right of=decide, node distance = 3.5cm] (stop) {output converged charge density};}
+    % Draw edges
+    \uncover<2->{\path [line] (init) -- (potential);}
+    \uncover<3->{\path [line] (potential) -- (update);}
+    \uncover<4->{\path [line] (update) -- (decide);}
+    \uncover<5->{\path [line] (decide) -- node {yes} (stop);}
+    \uncover<5->{\path [line] (decide) -| node {no}(potential);}
+\end{tikzpicture}
+
 \end{frame}
 
 \begin{frame}
