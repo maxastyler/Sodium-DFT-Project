@@ -6,7 +6,10 @@
 \usetikzlibrary{shapes,arrows}
 
 \title{Computing P‐T Diagrams from First Principles}
-\author{Max Tyler}
+%\author[me]{Max Tyler}
+%\author[supervisor]{Miguel Martinez-Canales}
+%\author{Max\inst{1}\\[1ex]  {\small supervisor1\inst{1,2}}
+\author[Max Tyler]{Max Tyler\\{\small Supervisor: Dr. Miguel Martinez-Canales}}
 \institute{The University of Edinburgh}
 \date{April 2018}
  
@@ -23,6 +26,15 @@
  
 \begin{frame}
 	\frametitle{PT Diagrams}
+	Pressure Temperature (PT) diagrams tell us what forms a structure exists in as a function of pressure and temperature.
+	\pause
+	\newline
+	\newline
+	Pressure and temperature most easily controllable variables in experiment.
+	\pause
+	\newline
+	\newline
+	How do we make them?
 \end{frame}
 
 \begin{frame}
@@ -32,14 +44,14 @@
 		$$E_{v}[n] = \min_{\Psi \rightarrow n} \braket{\Psi|\hat T+\hat U + \hat V|\Psi} = F[n] + \int d^3\mathbf r n(\mathbf r) v_{ext}(\mathbf r)$$
 	\end{block}
 	\begin{block}{Kohn-Sham Formulation}<3->
-		$$\left(-\frac{\hbar^2\nabla^2}{2m}+v_s(\mathbf r)\right)\phi_i(\mathbf r) = \epsilon_i \phi_i(\mathbf r),$$
+		$$\left(-\frac{\hbar^2}{2m}\nabla^2+v_s(\mathbf r)\right)\phi_i(\mathbf r) = \epsilon_i \phi_i(\mathbf r),$$
 		$$v_s(\mathbf r) = v_{ext}(\mathbf r) + v_H(\mathbf r) + v_{xc}(\mathbf r)$$
 		$$n(\mathbf r) = \sum_i^N\phi^*_i(\mathbf r)\phi_i(\mathbf r)$$	
 	\end{block}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Density Functional Theory}
+	\frametitle{Calculating the Electron Density}
 	\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
     text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
 \tikzstyle{block} = [rectangle, draw, fill=blue!20, 
@@ -64,9 +76,21 @@
 \end{tikzpicture}
 
 \end{frame}
+\begin{frame}
+	\frametitle{Calculating Phonons}
+	Need to use density functional perturbation theory.
+\end{frame}
 
 \begin{frame}
-	\frametitle{Lithium Paper}
+\frametitle{Silicon}
+	\begin{figure}[ht]
+	\begin{center}
+	\includegraphics[height=2in]{sidiamond.png}
+	\end{center}
+	\end{figure}
+\begin{center}
+Silicon cell in diamond form
+\end{center}
 \end{frame}
  
 \begin{frame}
@@ -97,21 +121,48 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Silicon \alpha}
+	\frametitle{Silicon's Coefficient of Linear Thermal Expansion}
 	\begin{figure}[ht]
 	\begin{center}
-		\includegraphics[height=1.8in]{silicon_thermal_expansion.png}
+		\includegraphics[height=2in]{silicon_thermal_expansion.png}
 	\end{center}
 	\end{figure}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Tin}
+\frametitle{Tin}
+\begin{center}Calculating the transition temperature between $\alpha$ and $\beta$ tin\end{center}
+\begin{columns}
+\column{0.4\textwidth}
+	\begin{figure}[ht]
+	\begin{center}
+		\includegraphics[height=1.3in]{alphasn.png}
+	\end{center}
+	\end{figure}
+	\begin{center}
+		$\alpha$-Tin
+	\end{center}
+\column{0.4\textwidth}
+	\begin{figure}[ht]
+	\begin{center}
+		\includegraphics[height=1.3in]{betasn.png}
+	\end{center}
+	\end{figure}
+	\begin{center}
+		$\beta$-Tin
+	\end{center}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Tin Phase Transition}
 	\begin{figure}[ht]
 	\begin{center}
 	\includegraphics[height=2in]{tin_transition_temperature.png}
 	\end{center}
 	\end{figure}
+\pause
+\begin{center}Much larger transition temperature than is observed experimentally $(\approx 290K)$. Problem with PBE functional, which can be fixed with $+U$ correction. \footnote{F. Legrain et. al. AIP Advances 6, 045116 (2016)}\end{center}
 \end{frame}
 
 \begin{frame}
@@ -156,7 +207,7 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Not 9R Any More!}
+	\frametitle{}
 \end{frame}
 
 \begin{frame}
