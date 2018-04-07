@@ -2,10 +2,30 @@ import subprocess
 import glob
 import math
 from functools import reduce
+from scipy.optimize import curve_fit
+import numpy as np
+import matplotlib.pyplot as plt
 
 TEMP_MIN = 0
 TEMP_MAX = 700
 TEMP_STEP = 10
+a1 = np.array([-0.5, 0, 0.5])
+a2 = np.array([0, 0.5, 0.5])
+a3 = np.array([-0.5, 0.5, 0])
+volume = np.cross(a1, a2).dot(a3)
+print(volume)
+
+def vinet_d(v, v0, e0, b0, db0):
+    eta = ((v/v0)**(1/3))
+    e = np.exp((3/2)*(db0-1)*(1-eta)) 
+    return -3*b0*v0*(1-eta)*e*(v0**(-1/3))*(v**(-2/3))
+
+def vinet(v, v0, e0, b0, db0):
+    eta = ((v/v0)**(1/3))
+    bovo_eta = b0*v0/((db0-1)**2)
+    exp_br = (3/2)*(db0-1)*(1-eta)
+    other_br = 3*(db0-1)*(1-eta)-2
+    return e0 + 4*bovo_eta + 2*bovo_eta*np.exp(exp_br)*other_br
 
 def fname_to_latparam(fname):
     nums = fname.split('.')[1:3]
@@ -53,6 +73,67 @@ def pt_fit(temperatures):
         input_str = "au\nfcc\n1\nsilicon.{:.1f}.ev\nsilicon.{:.1f}.pt".format(t, t)
         subprocess.run(['ev.x'], input = input_str.encode())
 
-for lat in lats: run_fqha(lat)
-format_for_ev(get_energies(lats))
-pt_fit(get_energies(lats).keys())
+#put in dictionary of energy[temp][lat] and get fit[temp][fit]
+def get_fits(energies):
+    fits = {}
+    for t, e_lat in energies.items():
+        vols = [l**3*volume for l in sorted(e_lat.keys())]
+        fits[t] = curve_fit(vinet, vols, [e_lat[lat] for lat in lats], p0 = [277, -19, 0.005, 12])[0]
+    return fits
+
+#for lat in lats: run_fqha(lat)
+#format_for_ev(get_energies(lats))
+#pt_fit(get_energies(lats).keys())
+energies = get_energies(lats)
+fits = get_fits(energies)
+ts = sorted(fits.keys())
+vs = [(fits[t][0]/0.25)**(1/3) for t in ts]
+
+def data_for_t(t):
+    ls = sorted(energies[t].keys())
+    return ls, [energies[t][l] for l in ls]
+
+def plot_pressure():
+    print(fits[0])
+    xs = np.linspace(9.8, 10.5, 20)
+    #ls, _ = data_for_t(0)
+    es = [vinet(l**3*0.25, *fits[0]) for l in xs]
+    ps = [-vinet_d(l**3*0.25, *fits[0]) for l in xs]
+    es = [x for _, x in sorted(zip(ps, es))]
+    ps = sorted(ps)
+    plt.plot(ps, es)
+    plt.show()
+
+def plot_two():
+    fig, ax1 = plt.subplots()
+    plt.ticklabel_format(useOffset=False)
+    ax1.get_yaxis().get_major_formatter().set_scientific(False)
+    #x1 = plt.subplots()
+    plt.title(r'Free Energy vs Lattice Parameter in Silicon at $T=0K, T=500K$')
+    ls, es = data_for_t(0)
+    xs = np.linspace(ls[0], ls[-1], 100)
+    ys = [vinet(l**3*0.25, *fits[0]) for l in xs]
+    ax1.scatter(ls, es, c=(0, 0.5, 1), marker='.')
+    ax1.plot(xs, ys, 'b')
+    ax1.set_xlabel('Lattice Paramter (Bohr)')
+    # Make the y-axis label, ticks and tick labels match the line color.
+    ax1.set_ylabel(r'Free energy at $T=0K$ $(Ry)$', color='b')
+    ax1.tick_params('y', colors='b')
+    ax1.set_ylim((-19.18457, -19.18417))
+    
+    ax2 = ax1.twinx()
+    plt.ticklabel_format(useOffset=False)
+    ax2.get_yaxis().get_major_formatter().set_scientific(False)
+    ls, es = data_for_t(500)
+    xs = np.linspace(ls[0], ls[-1], 100)
+    ys = [vinet(l**3*0.25, *fits[500]) for l in xs]
+    ax2.scatter(ls, es, c=(1, 0.5, 0), marker='.')
+    ax2.plot(xs, ys, 'r')
+    ax2.set_ylabel(r'Free energy at $T=500K$ $(Ry)$', color='r')
+    ax2.tick_params('y', colors='r')
+    ax2.set_ylim((-19.1963, -19.1958))
+    
+    fig.set_size_inches(11, 5)
+    fig.tight_layout()
+    plt.show()
+plot_pressure()
