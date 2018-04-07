@@ -258,7 +258,13 @@ We write down the total energy of the quantum system as a functional of the char
 \begin{equation}
 	E[n(\mathbf r)] = \braket{\Psi|\hat T + \hat V_{ee}|\Psi} + \int n(\mathbf r)v_{ext}(\mathbf r)d\mathbf r + E_{nn}
 \end{equation}
-Where $\hat V_{ee}$ is the potential due to the charge density and $E_{nn}$ is the energy from elements of the system that aren't electrons (eg. the nuclei).
+Where $\hat V_{ee}$ is the potential due to the charge density and $E_{nn}$ is the energy from elements of the system that aren't electrons (eg. the nuclei). 
+We now consider the set of wavefunctions $\left\{\ket{\Psi}\right\}$ which reproduce the given electron density $n(\mathbf r)=\int \braket{\Psi|\Psi}d\mathbf{r_2}\mathellipsis d\mathbf{r_n}$, and understand that the energy of the system with this density will be the minimum value of the energies given by the set $\left\{\ket{\Psi}\right\}$:
+\begin{equation}
+E[n(\mathbf r)] = \min_{\ket{\Psi} \rightarrow n(\mathbf r)}\braket{\Psi | \hat T + \hat V_{ee} | \Psi} + \int n(\mathbf r) v_{ext}(\mathbf r) d \mathbf r + E_{nn}
+\end{equation}
+\subsubsection{Kohn-Sham Equations}
+
 \subsubsection{Density Functional Perturbation Theory}
 
 \section{Methods}
