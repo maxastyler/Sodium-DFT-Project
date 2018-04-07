@@ -1,5 +1,5 @@
 
-     Program Q2R v.6.1 (svn rev. 13369) starts on  7Apr2018 at 17:33:48 
+     Program Q2R v.6.1 (svn rev. 13369) starts on  7Apr2018 at 17:37:51 
 
      This program is part of the open-source Quantum ESPRESSO suite
      for quantum simulation of materials; please cite
@@ -11,23 +11,23 @@
      Parallel version (MPI), running on     4 processors
      R & G space division:  proc/nbgrp/npool/nimage =       4
 
-     reading grid info from file silicon.10.304.dyn0    
-  reading force constants from file silicon.10.304.dyn1
+     reading grid info from file silicon.10.364.dyn0    
+  reading force constants from file silicon.10.364.dyn1
  macroscopic fields = T
-  12.94028   0.00000  -0.00000
-   0.00000  12.94028   0.00000
-  -0.00000   0.00000  12.94028
+  13.01918  -0.00000   0.00000
+  -0.00000  13.01918  -0.00000
+  -0.00000  -0.00000  13.01918
   na=            1
-   0.01898   0.00000   0.00000
-   0.00000   0.01898  -0.00000
-   0.00000  -0.00000   0.01898
+   0.02008   0.00000   0.00000
+  -0.00000   0.02008  -0.00000
+   0.00000  -0.00000   0.02008
   na=            2
-   0.01898  -0.00000  -0.00000
-  -0.00000   0.01898  -0.00000
-  -0.00000  -0.00000   0.01898
+   0.02008  -0.00000  -0.00000
+  -0.00000   0.02008  -0.00000
+  -0.00000  -0.00000   0.02008
   nqs=            1
  q=   0.00000000  0.00000000  0.00000000
-  reading force constants from file silicon.10.304.dyn2
+  reading force constants from file silicon.10.364.dyn2
   nqs=            8
  q=  -0.16666667  0.16666667 -0.16666667
  q=   0.16666667  0.16666667  0.16666667
@@ -37,7 +37,7 @@
  q=   0.16666667  0.16666667 -0.16666667
  q=  -0.16666667 -0.16666667  0.16666667
  q=  -0.16666667  0.16666667  0.16666667
-  reading force constants from file silicon.10.304.dyn3
+  reading force constants from file silicon.10.364.dyn3
   nqs=            8
  q=  -0.33333333  0.33333333 -0.33333333
  q=   0.33333333  0.33333333  0.33333333
@@ -47,13 +47,13 @@
  q=   0.33333333  0.33333333 -0.33333333
  q=  -0.33333333 -0.33333333  0.33333333
  q=  -0.33333333  0.33333333  0.33333333
-  reading force constants from file silicon.10.304.dyn4
+  reading force constants from file silicon.10.364.dyn4
   nqs=            4
  q=   0.50000000 -0.50000000  0.50000000
  q=   0.50000000  0.50000000  0.50000000
  q=  -0.50000000  0.50000000  0.50000000
  q=   0.50000000  0.50000000 -0.50000000
-  reading force constants from file silicon.10.304.dyn5
+  reading force constants from file silicon.10.364.dyn5
   nqs=            6
  q=   0.00000000  0.33333333  0.00000000
  q=   0.33333333  0.00000000  0.00000000
@@ -61,7 +61,7 @@
  q=   0.00000000 -0.33333333  0.00000000
  q=  -0.33333333  0.00000000  0.00000000
  q=   0.00000000  0.00000000 -0.33333333
-  reading force constants from file silicon.10.304.dyn6
+  reading force constants from file silicon.10.364.dyn6
   nqs=           24
  q=  -0.16666667  0.50000000 -0.16666667
  q=   0.16666667  0.50000000  0.16666667
@@ -87,7 +87,7 @@
  q=  -0.16666667 -0.16666667 -0.50000000
  q=  -0.50000000  0.16666667  0.16666667
  q=  -0.16666667  0.16666667  0.50000000
-  reading force constants from file silicon.10.304.dyn7
+  reading force constants from file silicon.10.364.dyn7
   nqs=           24
  q=   0.66666667 -0.33333333  0.66666667
  q=  -0.66666667 -0.33333333 -0.66666667
@@ -113,7 +113,7 @@
  q=   0.66666667  0.66666667  0.33333333
  q=   0.33333333 -0.66666667 -0.66666667
  q=   0.66666667 -0.66666667 -0.33333333
-  reading force constants from file silicon.10.304.dyn8
+  reading force constants from file silicon.10.364.dyn8
   nqs=           24
  q=   0.50000000 -0.16666667  0.50000000
  q=  -0.50000000 -0.16666667 -0.50000000
@@ -139,7 +139,7 @@
  q=   0.50000000  0.50000000  0.16666667
  q=   0.16666667 -0.50000000 -0.50000000
  q=   0.50000000 -0.50000000 -0.16666667
-  reading force constants from file silicon.10.304.dyn9
+  reading force constants from file silicon.10.364.dyn9
   nqs=           12
  q=   0.33333333  0.00000000  0.33333333
  q=  -0.33333333  0.00000000  0.33333333
@@ -153,7 +153,7 @@
  q=   0.33333333  0.33333333  0.00000000
  q=  -0.33333333 -0.33333333  0.00000000
  q=   0.00000000 -0.33333333  0.33333333
-  reading force constants from file silicon.10.304.dyn10
+  reading force constants from file silicon.10.364.dyn10
   nqs=            6
  q=   0.00000000  0.66666667  0.00000000
  q=   0.66666667  0.00000000  0.00000000
@@ -161,7 +161,7 @@
  q=   0.00000000 -0.66666667  0.00000000
  q=  -0.66666667  0.00000000  0.00000000
  q=   0.00000000  0.00000000 -0.66666667
-  reading force constants from file silicon.10.304.dyn11
+  reading force constants from file silicon.10.364.dyn11
   nqs=           24
  q=   0.83333333 -0.16666667  0.83333333
  q=  -0.83333333 -0.16666667  0.83333333
@@ -187,7 +187,7 @@
  q=   0.83333333  0.83333333  0.16666667
  q=   0.16666667 -0.83333333 -0.83333333
  q=   0.83333333 -0.83333333 -0.16666667
-  reading force constants from file silicon.10.304.dyn12
+  reading force constants from file silicon.10.364.dyn12
   nqs=           12
  q=   0.66666667  0.00000000  0.66666667
  q=  -0.66666667  0.00000000  0.66666667
@@ -201,12 +201,12 @@
  q=   0.66666667  0.66666667  0.00000000
  q=  -0.66666667 -0.66666667  0.00000000
  q=   0.00000000 -0.66666667  0.66666667
-  reading force constants from file silicon.10.304.dyn13
+  reading force constants from file silicon.10.364.dyn13
   nqs=            3
  q=   0.00000000 -1.00000000  0.00000000
  q=  -1.00000000  0.00000000  0.00000000
  q=   0.00000000  0.00000000  1.00000000
-  reading force constants from file silicon.10.304.dyn14
+  reading force constants from file silicon.10.364.dyn14
   nqs=           24
  q=   0.66666667 -0.33333333  1.00000000
  q=   1.00000000  0.33333333  0.66666667
@@ -232,7 +232,7 @@
  q=  -0.66666667 -1.00000000  0.33333333
  q=   0.66666667  1.00000000 -0.33333333
  q=  -0.66666667 -1.00000000 -0.33333333
-  reading force constants from file silicon.10.304.dyn15
+  reading force constants from file silicon.10.364.dyn15
   nqs=           24
  q=   0.50000000 -0.16666667  0.83333333
  q=   0.83333333  0.16666667  0.50000000
@@ -258,7 +258,7 @@
  q=   0.16666667  0.50000000 -0.83333333
  q=  -0.16666667 -0.50000000 -0.83333333
  q=  -0.50000000  0.83333333  0.16666667
-  reading force constants from file silicon.10.304.dyn16
+  reading force constants from file silicon.10.364.dyn16
   nqs=           12
  q=  -0.33333333 -1.00000000  0.00000000
  q=   0.00000000 -1.00000000 -0.33333333
@@ -277,10 +277,10 @@
 
       fft-check success (sum of imaginary terms < 10^-12)
 
-     Q2R          :     0.03s CPU         0.11s WALL
+     Q2R          :     0.03s CPU         0.10s WALL
 
 
-   This run was terminated on:  17:33:48   7Apr2018            
+   This run was terminated on:  17:37:52   7Apr2018            
 
 =------------------------------------------------------------------------------=
    JOB DONE.

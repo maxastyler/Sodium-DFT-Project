@@ -1,5 +1,5 @@
 
-     Program Q2R v.6.1 (svn rev. 13369) starts on  7Apr2018 at 14:12: 5 
+     Program Q2R v.6.1 (svn rev. 13369) starts on  7Apr2018 at 17:32:10 
 
      This program is part of the open-source Quantum ESPRESSO suite
      for quantum simulation of materials; please cite
@@ -277,10 +277,10 @@
 
       fft-check success (sum of imaginary terms < 10^-12)
 
-     Q2R          :     0.03s CPU         0.08s WALL
+     Q2R          :     0.03s CPU         0.10s WALL
 
 
-   This run was terminated on:  14:12: 5   7Apr2018            
+   This run was terminated on:  17:32:10   7Apr2018            
 
 =------------------------------------------------------------------------------=
    JOB DONE.
