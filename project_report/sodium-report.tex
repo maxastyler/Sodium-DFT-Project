@@ -253,6 +253,12 @@ E_1 = \braket{\psi_1 | \hat H _1 | \psi_1} < \braket{\psi_2 | \hat H _1 | \psi_2
 \end{equation}
 So the energy functional is minimised by this ground state density.
 \subsubsection{Constrained Search}
+There is another method to find the functional $F[n(\mathbf r)]$ which is due to Levy \cite{Levy6062} and Lieb \cite{lieb1985density}. This formulation also has the benefit of applying to systems degenerate in their ground state.
+We write down the total energy of the quantum system as a functional of the charge density of the system:
+\begin{equation}
+	E[n(\mathbf r)] = \braket{\Psi|\hat T + \hat V_{ee}|\Psi} + \int n(\mathbf r)v_{ext}(\mathbf r)d\mathbf r + E_{nn}
+\end{equation}
+Where $\hat V_{ee}$ is the potential due to the charge density and $E_{nn}$ is the energy from elements of the system that aren't electrons (eg. the nuclei).
 \subsubsection{Density Functional Perturbation Theory}
 
 \section{Methods}
