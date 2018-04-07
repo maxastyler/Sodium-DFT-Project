@@ -1,0 +1,12 @@
+silicon diamond phonons
+ &inputph
+ 	prefix = 'silicon.10.376',
+	outdir = './silicon/',
+	ldisp=.true.,
+	tr2_ph=1.0d-16,
+	ldisp = .true.,
+	nq1=6,
+	nq2=6,
+	nq3=6,
+	fildyn = 'silicon.10.376.dyn',
+/
