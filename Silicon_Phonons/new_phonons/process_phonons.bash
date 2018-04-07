@@ -1,5 +1,5 @@
 #!/bin/bash
-for v in `seq 10.28 0.012 10.316`; do
+for v in `seq 10.28 0.012 10.4`; do
 	echo "$v"
 	mpirun -np 4 q2r.x > si.q2r.$v.out << EOF
 &input
