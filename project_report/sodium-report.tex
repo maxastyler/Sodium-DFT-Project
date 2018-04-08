@@ -231,13 +231,13 @@ The proofs to these theorems are relatively simple, making use of the quantum va
 To prove the first theorem, we use proof by contradiction with two different hamiltonians $\hat H_1, \hat H_2$ with ground state wavefunctions $\ket{\psi_1}, \ket{\psi_2}$ which give the respective ground state energies $E^0_n=\braket{\psi_n | \hat H_n | \psi_n}$. 
 The hamiltonians can be separated into:
 \begin{equation}
-\hat H_n = \hat F + \hat V_{n, \mathrm{ext}}
+\hat H_n = \hat F_{HK} + \hat V_{n, \mathrm{ext}}
 \end{equation}
-Where $\hat F$ contains the electron kinetic energy operator, and the electron-electron interaction operator, and is the same for the different hamiltonians. The potential operator $\hat V_{n, \mathrm{ext}}$ contains the information of the external potential on the electrons (caused by the nuclei, and maybe other factors).
+Where $\hat F_{HK}$ contains the electron kinetic energy operator, and the electron-electron interaction operator, and is the same for the different hamiltonians. The potential operator $\hat V_{n, \mathrm{ext}}$ contains the information of the external potential on the electrons (caused by the nuclei, and maybe other factors).
 We then pose that the two different potentials in the hamiltonians give rise to the same ground-state electronic density $n_0(\mathbf r)$.
 The energy of the system can also be written as a functional of the electron density as:
 \begin{equation}\label{eq:energy_functional}
-E[n(\mathbf r)] = F[n(\mathbf r)]+ \int n(\mathbf r)v_{\mathrm{ext}}(\mathbf r)d\mathbf r
+E[n(\mathbf r)] = F_{HK}[n(\mathbf r)]+ \int n(\mathbf r)v_{\mathrm{ext}}(\mathbf r)d\mathbf r
 \end{equation}
 Where $F[n(\mathbf r)]$ contains the electron kinetic energy and the electron-electron interaction energy, and $v_{\mathrm{ext}}(\mathbf r)$ is the external potential.
 Using the variational principle, we have:
@@ -266,7 +266,7 @@ The Hohenberg-Kohn theorems presented in this way rely on what are called $v$-re
 To find the density with the Hohenberg-Kohn approach, we minimise the total energy functional $E[n(\mathbf r)]$ over the set of $v$-representable densities. A problem with this is that the set of $v$-representable densities is not explicitly known \cite{GONIS201623}; it is not possible to know whether some given $n(\mathbf r)$ is a density corresponding to a potential $v_{ext}(\mathbf r)$.
 
 \subsubsection{Constrained Search}
-There is another method to find the functional $F[n(\mathbf r)]$ which is due to Mel Levy \cite{Levy6062} and Elliott Lieb \cite{lieb1985density}. This formulation sidesteps the problem of $v$-representability by instead considering the $N$-representable densities.
+There is another method to find the electron density which is due to Mel Levy \cite{Levy6062} and Elliott Lieb \cite{lieb1985density}. This formulation sidesteps the problem of $v$-representability by instead considering the $N$-representable densities.
 We write down the total energy of the quantum system as a functional of the charge density of the system:
 \begin{equation}
 	E[n(\mathbf r)] = \braket{\Psi|\hat T + \hat V_{ee}|\Psi} + \int n(\mathbf r)v_{ext}(\mathbf r)d\mathbf r + E_{nn}
@@ -274,9 +274,33 @@ We write down the total energy of the quantum system as a functional of the char
 Where $\hat V_{ee}$ is the potential due to the charge density and $E_{nn}$ is the energy from elements of the system that aren't electrons (eg. the nuclei). 
 We now consider the set of wavefunctions $\left\{\ket{\Psi}\right\}$ which reproduce the given electron density $n(\mathbf r)=\int \braket{\Psi|\Psi}d\mathbf{r_2}\mathellipsis d\mathbf{r_n}$, and understand that the energy of the system with this density will be the minimum value of the energies given by the set $\left\{\ket{\Psi}\right\}$:
 \begin{equation}
-E[n(\mathbf r)] = \min_{\ket{\Psi} \rightarrow n(\mathbf r)}\braket{\Psi | \hat T + \hat V_{ee} | \Psi} + \int n(\mathbf r) v_{ext}(\mathbf r) d \mathbf r + E_{nn}
+\begin{split}
+E[n(\mathbf r)] = \min_{\ket{\Psi} \rightarrow n(\mathbf r)}\left\{\braket{\Psi | \hat T + \hat V_{ee} | \Psi}\right\} + \int n(\mathbf r) v_{ext}(\mathbf r) d \mathbf r + E_{nn}\\
+E[n(\mathbf r)] = F_{LL}[n(\mathbf r)] + \int n(\mathbf r) v_{ext}(\mathbf r) d\mathbf r + E_{nn}
+\end{split}
 \end{equation}
+Where the Levy-Lieb energy functional $F_{LL}[n(\mathbf r)]$ contains the minimisation over the wavefunctions reproducing $n(\mathbf r)$.
+To find the correct energy density, a minimisation is then performed over all $N$-representable densities:
+\begin{equation}\label{eq:levylieb}
+ E_0 = \min_{n(\mathbf r)} \left\{ F_{LL}[n(\mathbf r)} + \int n(\mathbf r) v_{ext}(\mathbf r) d \mathbf r\right\} + E_{nn}
+\end{equation}
+This formulation of the search for the correct density changes the search from the unknown domain of $v$-representable densities to the known domain of $N$-representable densities and also allows us to search in systems with degenerate ground states. 
+
+The Hohenberg-Kohn theorems and the Levy-Lieb constrained search give us a theoretical way to find the correct density for a system, but two large questions still remain: 
+\begin{displayquote}
+How do we practically perform the minimisation?
+\\\\
+What form does the energy functional $F[n(\mathbf r)]$ take?
+\end{displayquote}
 \subsubsection{Kohn-Sham Equations}
+Practically, performing the search over all general $N$-representable states is a tough task, we need something to guide us. This comes in the form of the Kohn-Sham equations \cite{kohn1965self}, developed in 1965 by Lu Jeu Sham and Walter Kohn, the year after the H-K theorems were determined. 
+These equations change the problem of solving the Schrodinger equation for many electrons into solving it for a set of non-interacting orbitals $\{\phi_i\}$. 
+These orbitals reproduce the density of the interacting problem: $n(\mathbf r) = \sum \phi^*(\mathbf r)\phi(\mathbf r)$.
+
+The Kohn-Sham equations for the non-interacting orbitals are:
+\begin{equation}
+(-\frac{\hbar^2}{2m}\nabla^2 + v_{ks})\phi_i(\mathbf r) = \epsilon_i \phi_i(\mathbf r)
+\end{equation}
 \subsubsection{Pseudopotentials}
 \subsubsection{Density Functional Perturbation Theory}
 
