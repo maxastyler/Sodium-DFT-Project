@@ -293,15 +293,21 @@ How do we practically perform the minimisation?
 What form does the energy functional $F[n(\mathbf r)]$ take?
 \end{displayquote}
 \subsubsection{Kohn-Sham Equations}
-Practically, performing the search over all general $N$-representable states is a tough task, we need something to guide us. This comes in the form of the Kohn-Sham equations \cite{kohn1965self}, developed in 1965 by Lu Jeu Sham and Walter Kohn, the year after the H-K theorems were determined. 
-These equations change the problem of solving the Schrodinger equation for many electrons into solving it for a set of non-interacting orbitals $\{\phi_i\}$. 
-These orbitals reproduce the density of the interacting problem: $n(\mathbf r) = \sum \phi^*(\mathbf r)\phi(\mathbf r)$.
+Practically, performing the search over all general $N$-representable states is a tough task, we need something to guide us. 
+This comes in the form of the Kohn-Sham equations \cite{kohn1965self}, developed in 1965 by Lu Jeu Sham and Walter Kohn, the year after the H-K theorems were determined. 
+These equations change the problem of solving the Schrodinger equation for many electrons into solving it for a set of non-interacting orbitals $\{\phi_i\}$. This is derived by considering variations in the energy with respect to the orbitals, with the constraint that $n(\mathbf r) = \sum \phi^*(\mathbf r)\phi(\mathbf r)$.
 
 The Kohn-Sham equations for the non-interacting orbitals are:
-\begin{equation}
-(-\frac{\hbar^2}{2m}\nabla^2 + v_{ks})\phi_i(\mathbf r) = \epsilon_i \phi_i(\mathbf r)
+\begin{equation}\label{eq:kohn-sham}
+\left(-\frac{\hbar^2}{2m}\nabla^2 + v_{ks}(\mathbf r)\right)\phi_i(\mathbf r) = \epsilon_i \phi_i(\mathbf r)
 \end{equation}
-\subsubsection{Pseudopotentials}
+Where the Kohn-Sham potential $v_{KS}(\mathbf r)$ is defined as:
+\begin{equation}\label{eq:kohn-shampotential}
+v_{KS}(\mathbf r) = v_{ext}(\mathbf r) + \int \frac{n(\mathbf r')}{\left|\mathbf r - \mathbf {r'}\right|}d\mathbf {r'} + v_{xc}(\mathbf r)
+\end{equation}
+The sum of the external potential, the classical electron self-interaction, and an exchange correlation term coming from quantum effects on the electrons. 
+
+The Kohn-Sham formulation is exact (ignoring relativity), 
 \subsubsection{Density Functional Perturbation Theory}
 
 \section{Methods}
