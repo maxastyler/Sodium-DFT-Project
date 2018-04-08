@@ -211,8 +211,9 @@ Which shows that $u_\mathbf k(\mathbf r)$ has the same periodicity as the lattic
 \subsubsection{Electrons in the Lattice}
 \subsubsection{Phonons}
 \subsection{Density Functional Theory}
+\subsubsection{The Thomas-Fermi Model}
 \subsubsection{The Hohenberg-Kohn Theorems}
-The Hohenberg-Kohn theorems\cite{PhysRev.136.B864} are two theorems, developed in 1964 by Pierre Hohenberg and Walter Kohn, which make density functional theory possible. These theorems relate some given external potential of an atomic system to the ground state charge density that the mobile charged particles will adopt. They are stated as \cite{martin_2004}:
+The Hohenberg-Kohn theorems \cite{PhysRev.136.B864} are two theorems, developed in 1964 by Pierre Hohenberg and Walter Kohn, which make density functional theory possible. These theorems relate some given external potential of an atomic system to the ground state charge density that the mobile charged particles will adopt. They are stated as \cite{martin_2004}:
 \begin{displayquote}
 	\textbf{Theorem I}: For any system of interacting particles in an external potential $v_\mathrm{ext}(\mathbf r)$, the potential $v_\mathrm{ext}(\mathbf r)$ is determined uniquely, except for a constant, by the ground state particle density $n_0(\mathbf{r})$.
 \\
@@ -252,8 +253,13 @@ By the first theorem, the wavefunctions determined by these densities must be di
 E_1 = \braket{\psi_1 | \hat H _1 | \psi_1} < \braket{\psi_2 | \hat H _1 | \psi_2} = E_2
 \end{equation}
 So the energy functional is minimised by this ground state density.
+
+The Hohenberg-Kohn theorems presented in this way rely on what are called $v$-representable densities. The minimisation of the energy in theorem II is perfomed over the set of densities that arise from some external potential $v_{ext}$, hence $v$-representable. There is a larger set of densities: the $N$-representable densities, which is defined as the set of all densities which integrate to $N$, the number of charges in your Schrodinger equation.
+
+To find the density with the Hohenberg-Kohn approach, we minimise the total energy functional $E[n(\mathbf r)]$ over the set of $v$-representable densities. A problem with this is that the set of $v$-representable densities is not explicitly known \cite{GONIS201623}; it is not possible to know whether some given $n(\mathbf r)$ is a density corresponding to a potential $v_{ext}(\mathbf r)$.
+
 \subsubsection{Constrained Search}
-There is another method to find the functional $F[n(\mathbf r)]$ which is due to Levy \cite{Levy6062} and Lieb \cite{lieb1985density}. This formulation also has the benefit of applying to systems degenerate in their ground state.
+There is another method to find the functional $F[n(\mathbf r)]$ which is due to Mel Levy \cite{Levy6062} and Elliott Lieb \cite{lieb1985density}. This formulation sidesteps the problem of $v$-representability by instead considering the $N$-representable densities.
 We write down the total energy of the quantum system as a functional of the charge density of the system:
 \begin{equation}
 	E[n(\mathbf r)] = \braket{\Psi|\hat T + \hat V_{ee}|\Psi} + \int n(\mathbf r)v_{ext}(\mathbf r)d\mathbf r + E_{nn}
