@@ -81,6 +81,12 @@ def get_fits(energies):
         fits[t] = curve_fit(vinet, vols, [e_lat[lat] for lat in lats], p0 = [277, -19, 0.005, 12])[0]
     return fits
 
+def load_frequencies(lat):
+    full = np.loadtxt("silicon.{:.3f}.freq.gp".format(lat))
+    ks = full[:, 0]
+    ws = full[:, 1:]
+    return ks, ws
+
 #for lat in lats: run_fqha(lat)
 #format_for_ev(get_energies(lats))
 #pt_fit(get_energies(lats).keys())
@@ -131,9 +137,41 @@ def plot_two():
     ax2.plot(xs, ys, 'r')
     ax2.set_ylabel(r'Free energy at $T=500K$ $(Ry)$', color='r')
     ax2.tick_params('y', colors='r')
-    ax2.set_ylim((-19.1963, -19.1958))
+    ax2.set_ylim((-19.19626, -19.1958))
     
     fig.set_size_inches(11, 5)
     fig.tight_layout()
     plt.show()
-plot_pressure()
+
+#plot_two()
+def plot_bands():
+    ks, ws = load_frequencies(10.352)
+    dos = np.loadtxt('./silicon.10.352.dos').transpose()
+    special_point_strs = [r"$\Gamma$", r"$X$", r"$W$", r"$K$", r"$\Gamma$", r"$L$"]
+    special_point_dists = [40, 20, 20, 40, 40]
+    special_point_dists = [ks[sum(special_point_dists[:i])] for i in range(len(special_point_dists)+1)]
+    f, (ax1, ax2) = plt.subplots(1, 2, sharey=True, gridspec_kw = {'width_ratios':[3, 1]})
+    print(ks)
+    for i in [0, 1, 2]:
+        ax1.plot(ks, ws.transpose()[i], color = 'blue')
+    for i in [3, 4, 5]:
+        ax1.plot(ks, ws.transpose()[i], color= 'red')
+    ax1.set_xticklabels(special_point_strs)
+    ax1.set_xticks(special_point_dists)
+    ax2.set_xticklabels([])
+    ax2.set_xticks([])
+    ax1.set_ylabel(r"Phonon frequency $\omega$ ($cm^{-1}$)")
+    ax1.set_xlabel(r"Brillouin zone position")
+    ax2.set_xlabel(r"Density of states $g(\omega)$")
+    for p in special_point_dists:
+        ax1.axvline(p, color = 'black')
+    f.subplots_adjust(wspace=0, hspace=0)
+    print(dos[1])
+    ax2.plot(dos[1], dos[0])
+    ax1.set_xlim(special_point_dists[0], special_point_dists[-1])
+    ax1.set_ylim(0, 510)
+    ax2.set_xlim(0, 0.1)
+    plt.tight_layout()
+    plt.savefig('../../project_report/figures/si_band_structure.png')
+    plt.show()
+plot_bands()
