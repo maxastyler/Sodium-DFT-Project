@@ -5,6 +5,8 @@
 % The following package makes the necessary tweaks to comply with the formatting requirements.
 % It also provides a standardised title page, and will warn you if the main text is too long.
 \usepackage{mphysproject}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
 %
 %% DO NOT GO CHANGING THE FONT SIZE OR MARGINS! If your main text doesn't fit within 50 pages,
 %% you will have to cut stuff out.
@@ -306,6 +308,34 @@ Where the Kohn-Sham potential $v_{KS}(\mathbf r)$ is defined as:
 v_{KS}(\mathbf r) = v_{ext}(\mathbf r) + \int \frac{n(\mathbf r')}{\left|\mathbf r - \mathbf {r'}\right|}d\mathbf {r'} + v_{xc}(\mathbf r)
 \end{equation}
 The sum of the external potential, the classical electron self-interaction, and an exchange correlation term coming from quantum effects on the electrons. 
+\begin{figure}
+\centering
+	\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=6em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+    
+\begin{tikzpicture}[node distance = 4cm, auto]
+    % Place nodes
+    {\node [block] (init) {initial guess at charge density $n(\mathbf r)$};}
+    {\node [block, right of=init] (potential) {calculate new $v_s(\mathbf r)$ from $n(\mathbf r)$};}
+    {\node [block, right of=potential] (update) {solve Kohn-Sham equations for new $n(\mathbf r)=\sum_i \phi^*_i\phi_i$};}
+    {\node [decision, below of=update, node distance = 4cm] (decide) {are convergence criteria met?};}
+    {\node [block, right of=decide] (stop) {output converged charge density};}
+    
+    {\path [line] (init) -- (potential);}
+    {\path [line] (potential) -- (update);}
+    {\path [line] (update) -- (decide);}
+    {\path [line] (decide) -- node {yes} (stop);}
+    {\path [line] (decide) -| node {no}(potential);}
+\end{tikzpicture}
+\caption{The process of self-consistently solving the Kohn-Sham equations for the charge density}
+\end{figure}
+
+The Kohn-Sham equations are exact, with the limitation coming from the fact that we don't have an exact form for the exchange correlation potential. If this was known, we would be able to recreate any system's electron density to the precision allowed by our computers.
 
 The Kohn-Sham formulation is exact (ignoring relativity), 
 \subsubsection{Density Functional Perturbation Theory}
