@@ -174,4 +174,20 @@ def plot_bands():
     plt.tight_layout()
     plt.savefig('../../project_report/figures/si_band_structure.png')
     plt.show()
-plot_bands()
+
+def expansion_func(x, a, b, c, d, e):
+    return a*x**4+b*x**3+c*x**2+d*x+e
+
+def linear_expansion(x, a, b, c, d, e):
+    return 4*a*x**3+3*b*x**2+2*c*x+d
+
+def plot_lat_thermal_expansion():
+    ts = sorted(fits.keys())
+    vs = [fits[t][0] for t in ts]
+    vol_fit = curve_fit(expansion_func, ts, vs)[0]
+    alphas = [expansion_func(t, *vol_fit)-vs[i] for i, t in enumerate(ts)]
+    #plt.plot(ts, vs)
+    plt.plot(ts, alphas)
+    plt.show()
+#plot_bands()
+plot_lat_thermal_expansion()
