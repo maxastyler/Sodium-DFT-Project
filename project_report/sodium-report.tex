@@ -212,8 +212,15 @@ Which shows that $u_\mathbf k(\mathbf r)$ has the same periodicity as the lattic
 \subsubsection{Phonons}
 \subsection{Density Functional Theory}
 \subsubsection{The Thomas-Fermi Model}
+The first attempt to determine the distribution of electrons, the density $n(\mathbf r)$, in an atom using the newly developed quantum theory was made simultaneously in 1927 by Llewellyn Thomas \cite{thomas_1927} and Enrico Fermi \cite{fermi1927metodo}. This method provides a method to approximately calculate the energy of some atomic structure, in the form of a functional for the electron density:
+\begin{equation}\label{eq:thomas-fermi}
+	E[n(\mathbf r)] = \frac{3}{10}(3\pi^2)^{\frac{2}{3}}\int n^{\frac{5}{3}}(\mathbf r) d \mathbf r + \frac{1}{2}\int\int\frac{n(\mathbf r_1) n(\mathbf r_2)}{\left| \mathbf r_1 - \mathbf r_2\right|}d\mathbf r_1 d\mathbf r_2 + \int v_{ext}(\mathbf r) n(\mathbf r) d \mathbf r + E_{nn}
+\end{equation}
+Where the first term is the kinetic contribution, the second is the electron charge density self-interaction, the third is the electron's interaction with the external system and the fourth is the energy contained in the atomic nuclei/other elements of the system.
+
+This model has a few large problems: the derivative of the energy when increasing the electron number is continuous; there is no electronic shell structure; and it doesn't predict binding \cite{lieb1977thomas}. This would be improved upon by the Hohenberg-Kohn theorems, which would give a strong theoretical backing to the problem of finding these densities.
 \subsubsection{The Hohenberg-Kohn Theorems}
-The Hohenberg-Kohn theorems \cite{PhysRev.136.B864} are two theorems, developed in 1964 by Pierre Hohenberg and Walter Kohn, which make density functional theory possible. These theorems relate some given external potential of an atomic system to the ground state charge density that the mobile charged particles will adopt. They are stated as \cite{martin_2004}:
+The Hohenberg-Kohn theorems \cite{PhysRev.136.B864} are two theorems, developed in 1964 by Pierre Hohenberg and Walter Kohn, which are the backing to modern density functional theory. These theorems relate some given external potential of an atomic system to the ground state charge density that the mobile charged particles will adopt. They are stated as \cite{martin_2004}:
 \begin{displayquote}
 	\textbf{Theorem I}: For any system of interacting particles in an external potential $v_\mathrm{ext}(\mathbf r)$, the potential $v_\mathrm{ext}(\mathbf r)$ is determined uniquely, except for a constant, by the ground state particle density $n_0(\mathbf{r})$.
 \\
