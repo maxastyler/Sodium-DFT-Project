@@ -6,7 +6,7 @@
 % It also provides a standardised title page, and will warn you if the main text is too long.
 \usepackage{mphysproject}
 \usepackage{tikz}
-\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{shapes,arrows,calc}
 %
 %% DO NOT GO CHANGING THE FONT SIZE OR MARGINS! If your main text doesn't fit within 50 pages,
 %% you will have to cut stuff out.
@@ -87,12 +87,23 @@ The Bravais lattice can then be found by addition of these vectors each multipli
 \begin{equation}\label{eq:bravais_lattice}
 	\mathcal{B} = \left \{\sum_{i=1}^n a_i\mathbf{v}_i \Big | a_i \in \mathbb{Z}, \mathbf{v}_i \in \mathcal{V}  \right \}
 \end{equation}
+
 \begin{figure}
-	\centering
-	\includegraphics[width=0.6\textwidth]{./figures/lattice_basis.png}
-	\caption{A 2-dimensional Bravais lattice.}
-	\label{fig:lattice_basis}
+\centering
+\begin{tikzpicture}
+\def\angle{30}
+\foreach \x in {0,...,4} {
+\foreach \y in {0,...,4} {
+	\filldraw[fill=cyan] ($1.5*\x*(1,0)+1.5*\y*(-{sin(\angle)},{cos(\angle)})$) circle (0.2cm) node (n\x\y);
+}
+}
+\draw[->,very thick] (n22) to node[auto,swap] {$\mathbf v_2$} (n23);
+\draw[->,very thick] (n22) to node[auto] {$\mathbf v_1$} (n32);
+\end{tikzpicture}
+\caption{A 2-dimensional Bravais lattice}
+\label{fig:lattice_basis}
 \end{figure}
+
 Figure \ref{fig:lattice_basis} shows a 2-dimensional lattice with basis vectors $\mathbf{v}_1$ and $\mathbf{v}_2$. Two Bravais lattices are considered equivalent if they are invariant under the same symmetry group. In 2 dimensions, there are 5 different Bravais lattices and in 3 dimensions, there are 14 \cite{kittel2005introduction}. The choice of a lattice basis for a certain Bravais lattice is not unique.
 The Bravais lattice is invariant under translation by any of its basis vectors, meaning it is a periodic structure. 
 
@@ -101,14 +112,31 @@ A simple example is NaCl, which has a face-centred cubic Bravais lattice, and a 
 \begin{figure*}[t!]
     \centering
     \begin{subfigure}[t]{0.5\textwidth}
-        \includegraphics[width=0.7\textwidth]{./figures/na_cl_basis.png}
+    \centering
+        %includegraphics[width=0.7\textwidth]{./figures/na_cl_basis.png}
+\begin{tikzpicture}
+\filldraw[fill=cyan] (0, 0) circle (0.7cm) node {$Na$};
+\filldraw[fill=white] (3, 0) circle (1cm) node {$Cl$};
+\end{tikzpicture}
         \caption{The two basis atoms in NaCl}
 	\label{fig:nacl_basis}
     \end{subfigure}%
     ~ 
     \begin{subfigure}[t]{0.5\textwidth}
         \centering
-        \includegraphics[width=0.6\textwidth]{./figures/na_cl_crosssection.png}
+\begin{tikzpicture}
+\foreach \x in {0, 2} {
+	\foreach \y in {0,2} {
+\filldraw[fill=cyan] ($(0, 0)+2*(\x, \y)$) circle (0.4cm) node (n\x\y) {$Na$};
+}}
+\filldraw[fill=cyan] ($(0, 0)+2*(1, 1)$) circle (0.4cm) node (n11) {$Na$};
+\filldraw[fill=white] (2, 0) circle (0.5cm) node {$Cl$};
+\filldraw[fill=white] (0, 2) circle (0.5cm) node {$Cl$};
+\filldraw[fill=white] (2, 4) circle (0.5cm) node {$Cl$};
+\filldraw[fill=white] (4, 2) circle (0.5cm) node {$Cl$};
+\draw[->,very thick] (n00) to node[auto] {$\mathbf v_2$} (n11);
+\draw[->,very thick] (n00) to node[auto,above=1em] {$\mathbf v_1$} (n20);
+\end{tikzpicture}
         \caption{A cross-section of the NaCl crystal, showing two of the three basis vectors}
 	\label{fig:nacl_crosssection}
     \end{subfigure}
