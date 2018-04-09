@@ -254,7 +254,7 @@ int \px;
 \kmag = sqrt((\kx)^2+(\ky)^2);
 \ukx = \kx/\kmag;
 \uky = \ky/\kmag;
-for \px in {0,...,10}{
+for \px in {0,...,20}{
 for \py in {0,...,10}{
 \dx=\a*sin(\px*\kx+\py*\ky)*\ukx;
 \dy=\a*sin(\px*\kx+\py*\ky)*\uky;
@@ -264,6 +264,7 @@ for \py in {0,...,10}{
 	\filldraw[fill=blue!20] (\vx, \vy) circle (0.1cm) node (n\px\py) {};
 };};
 };
+{\draw[->,very thick] (2.5, 1) to node[auto] {$\mathbf k$} (2.5+\ukx/\s, 1+\uky/\s);};
 }
 \end{tikzpicture}
 \label{fig:phonon:disturbance}
