@@ -238,9 +238,18 @@ e^{-i\mathbf k \cdot \mathbf r}e^{-i\mathbf k \cdot \mathbf B} \psi_\mathbf k(\m
 e^{-i\mathbf k \cdot \mathbf r}e^{i\mathbf k \cdot (\mathbf B - \mathbf B)} \psi_\mathbf k(\mathbf r) = u_\mathbf k(\mathbf r)
 \end{equation}
 Which shows that $u_\mathbf k(\mathbf r)$ has the same periodicity as the lattice. The relation $u_\mathbf k(\mathbf r) = e^{-i \mathbf k \cdot \mathbf r}\psi_\mathbf k(\mathbf r)$ is then inverted to get the result in equation \ref{eq:bloch_wave}.
-\subsubsection{Electrons in the Lattice}
 \subsubsection{Phonons}
 
+The nuclei in a lattice are not completely static, and in fact their ability to move is an important factor in observables of the crystal, like heat capacity and thermal expansion. We can model the nuclei as chains of harmonic oscillators, interacting with their nearest neighbours, and find solutions to the displacements of the nuclei as monochromatic plane waves \cite{landau1980statistical}:
+\begin{equation}
+	\mathbf u(\mathbf n) = \mathbf e(\mathbf k) \exp{[i(\mathbf k \cdot \mathbf r_n - \omega t)]}
+\end{equation}
+Where $\mathbf n$ is the label of some atom, $\mathbf r_n$ is the position of that atom and $\mathbf e(\mathbf k)$ is the polarisation vector and amplitude of the wave. In 3 dimensions, if $\mathbf e(\mathbf k)$ points in the direction of $\mathbf k$ the wave is longitudinal, and if it is perpendicular then the wave is transverse.
+
+In the quantum view, the phonons are goldstone bosons: massless particles which carry quanta of energy through the lattice. We get the free energy:
+\begin{equation}
+	F(T, V) = N\epsilon_0 + TV\sum_{\alpha=1}^{3\nu}\int \ln \left[ 1-\exp\left(-\frac{\hbar \omega_\alpha(\mathbf k)}{T}\right)\right]g_\alpha(\omega)d\omega
+\end{equation}
 
 \begin{figure}
 \centering
@@ -268,9 +277,8 @@ for \py in {0,...,10}{
 }
 \end{tikzpicture}
 \label{fig:phonon:disturbance}
-\caption{A phonon in a 2-dimensional lattice}
+\caption{A longitudinal phonon with wave-vector $\mathbf k$ in a 2-dimensional lattice}
 \end{figure}
-
 
 \subsection{Density Functional Theory}
 \subsubsection{The Thomas-Fermi Model}
