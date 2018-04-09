@@ -204,13 +204,15 @@ def plot_lat_thermal_expansion():
     ts = sorted(fits.keys())
     vs = [(fits[t][0]/0.25)**(1/3) for t in ts]
     vol_fit = curve_fit(einstein_fit, ts, vs, p0=[10.3, 1, 400, -10, 100, -20, 1])[0]
-    alphas = [einstein_fit(t, *vol_fit)-vs[i] for i, t in enumerate(ts)]
+    #alphas = [einstein_fit(t, *vol_fit)-vs[i] for i, t in enumerate(ts)]
+    alphas = [einstein_fit(t, *vol_fit) for i, t in enumerate(ts)]
     #alphas = [d_einstein_fit(t, *vol_fit) for i, t in enumerate(ts)]
     for i, t in enumerate(ts):
         print(i, t)
     #plt.plot(ts, vs)
     plt.plot(ts, alphas)
     #plt.plot(silicon_data[:, 0], 10**(-9) * silicon_data[:, 1])
+    plt.savefig('../../project_report/figures/si_latparam_temp.svg')
     plt.show()
 #plot_bands()
 plot_lat_thermal_expansion()
