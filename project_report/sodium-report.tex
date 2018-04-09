@@ -406,42 +406,38 @@ The Kohn-Sham formulation is exact (ignoring relativity),
 
 \section{Methods}
 \section{Results and Discussion}
+\subsection{Pseudopotential Convergence}
 \begin{figure}
 	\centering
 	\subfloat{
 		\includesvg[width=0.4\textwidth]{./figures/silicon_convergence_e_ecut.svg}
 }\qquad
-	\subfloat{
+\subfloat{
 		\includesvg[width=0.4\textwidth]{./figures/silicon_convergence_p_ecut.svg}
 }\qquad
+\caption{Silicon energy and pressure convergence vs ecutwfc}
 \end{figure}
 \begin{figure}
 	\centering
 	\subfloat{
 		\includesvg[width=0.4\textwidth]{./figures/tin_convergence_e_ecut.svg}
 }\qquad
-	\subfloat{
+\subfloat{
 		\includesvg[width=0.4\textwidth]{./figures/tin_convergence_p_ecut.svg}
 }\qquad
+\caption{Tin energy and pressure convergence vs ecutwfc}
 \end{figure}
 \begin{figure}
 	\centering
 	\subfloat{
-		\includesvg[width=0.4\textwidth]{./figures/silicon_convergence_e_k.svg}
+		\includesvg[width=0.4\textwidth]{./figures/sodium_convergence_e_ecut.svg}
 }\qquad
-	\subfloat{
-		\includesvg[width=0.4\textwidth]{./figures/silicon_convergence_p_k.svg}
+\subfloat{
+		\includesvg[width=0.4\textwidth]{./figures/sodium_convergence_p_ecut.svg}
 }\qquad
+\caption{Sodium energy and pressure convergence vs ecutwfc}
 \end{figure}
-\begin{figure}
-	\centering
-	\subfloat{
-		\includesvg[width=0.4\textwidth]{./figures/silicon_convergence_e_k.svg}
-}\qquad
-	\subfloat{
-		\includesvg[width=0.4\textwidth]{./figures/silicon_convergence_p_k.svg}
-}\qquad
-\end{figure}
+\subsection{Silicon}
 \begin{figure}
 	\centering
 	\subfloat[Silicon lattice parameter fit vs temperature]{
@@ -451,12 +447,37 @@ The Kohn-Sham formulation is exact (ignoring relativity),
 	\includesvg[width=0.4\textwidth]{./figures/si_latparam_residuals.svg}\label{fig:silicon_fit_residuals}
 	}\qquad
 \end{figure}
+
 \begin{figure}
 	\centering
-	\includesvg[width=0.8\textwidth]{./figures/si_two_temps_volume.svg}
+	\includesvg[width=0.8\textwidth]{./figures/si_band_structure.svg}
+	\label{fig:si_band_structure}
+	\caption{Silicon calculated band structure}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includesvg[width=0.8\textwidth]{./figures/si_thermal_expansion.svg}
 	\label{fig:si_thermal_expansion}
 	\caption{Fitted linear thermal expansion coefficient of silicon vs experimental data \cite{middelmann2015thermal}}
 \end{figure}
+\subsection{Tin}
+\begin{figure}
+	\centering
+	\subfloat{
+		\includesvg[width=0.4\textwidth]{./figures/tin_convergence_e_k.svg}
+}\qquad
+\subfloat{
+		\includesvg[width=0.4\textwidth]{./figures/tin_convergence_p_k.svg}
+}\qquad
+\end{figure}
+\begin{figure}
+	\centering
+	\includesvg[width=0.8\textwidth]{./figures/tin_transition_temperature.svg}
+	\label{fig:sn_transition}
+	\caption{Transition between $\alpha$ and $\beta$ tin}
+\end{figure}
+\subsection{Sodium}
 
 \section{Conclusion}
 
