@@ -31,7 +31,8 @@
 %
 % If you want to put figures side by side with separate captions
 %\usepackage{subfigure}
-\usepackage{subcaption}
+%\usepackage{subcaption}
+\usepackage{subfig}
 %
 % If you happen to dislike the standard TeX fonts
 %\usepackage{times}
@@ -113,19 +114,13 @@ Physical crystals also have an atomic basis consisting of a set of atoms and pos
 A simple example is NaCl, which has a face-centred cubic Bravais lattice, and a 2 atom atomic basis (shown in figure \ref{fig:nacl_lattice}).
 \begin{figure}[t!]
     \centering
-    \begin{subfigure}[t]{0.5\linewidth}
-    \centering
-        %includegraphics[width=0.7\textwidth]{./figures/na_cl_basis.png}
+    \subfloat[NaCl basis atoms]{
 \begin{tikzpicture}
 \filldraw[fill=cyan!20] (0, 0) circle (0.7cm) node {$Na$};
 \filldraw[fill=white] (3, 0) circle (1cm) node {$Cl$};
 \end{tikzpicture}
-        \caption{The two basis atoms in NaCl}
-	\label{fig:nacl_basis}
-    \end{subfigure}%
-    ~ 
-    \begin{subfigure}[t]{0.5\linewidth}
-        \centering
+    }\qquad
+    \subfloat[NaCl crystal cross-section showing two of three basis vectors]{
 \begin{tikzpicture}
 \foreach \x in {0, 2} {
 	\foreach \y in {0,2} {
@@ -139,9 +134,7 @@ A simple example is NaCl, which has a face-centred cubic Bravais lattice, and a 
 \draw[->,very thick] (n00) to node[auto] {$\mathbf v_2$} (n11);
 \draw[->,very thick] (n00) to node[auto,above=1em] {$\mathbf v_1$} (n20);
 \end{tikzpicture}
-        \caption{A cross-section of the NaCl crystal, showing two of the three basis vectors}
-	\label{fig:nacl_crosssection}
-    \end{subfigure}
+    }\qquad
     \caption{NaCl atomic basis and crystal cross-section}
 \label{fig:nacl_lattice}
 \end{figure}
@@ -413,7 +406,19 @@ The Kohn-Sham formulation is exact (ignoring relativity),
 
 \section{Methods}
 \begin{figure}
-	\includesvg[width=0.2\textwidth]{./figures/si_latparam_temp.svg}
+	\centering
+	\subfloat[Silicon lattice parameter fit vs temperature]{
+		\includesvg[width=0.4\textwidth]{./figures/si_latparam_temp.svg}\label{fig:silicon_lat_fit}
+}\qquad
+\subfloat[Silicon lattice parameter fit residuals vs temperature]{
+	\includesvg[width=0.4\textwidth]{./figures/si_latparam_residuals.svg}\label{fig:silicon_fit_residuals}
+	}\qquad
+\end{figure}
+\begin{figure}
+	\centering
+	\includesvg[width=0.8\textwidth]{./figures/si_two_temps_volume.svg}
+	\label{fig:si_thermal_expansion}
+	\caption{Fitted linear thermal expansion coefficient of silicon vs experimental data \cite{middelmann2015thermal}}
 \end{figure}
 
 \section{Results and Discussion}
