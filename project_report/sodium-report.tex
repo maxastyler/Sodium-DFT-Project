@@ -286,7 +286,7 @@ Where the first term is the kinetic contribution, the second is the electron cha
 This model has a few large problems: the derivative of the energy when increasing the electron number is continuous; there is no electronic shell structure; and it doesn't predict binding \cite{lieb1977thomas}. This would be improved upon by the Hohenberg-Kohn theorems, which would give a strong theoretical backing to the problem of finding these densities.
 
 \subsubsection{The Hohenberg-Kohn Theorems}
-The Hohenberg-Kohn theorems \cite{PhysRev.136.B864} are two theorems, developed in 1964 by Pierre Hohenberg and Walter Kohn, which are the backing to modern density functional theory. These theorems relate some given external potential of an atomic system to the ground state charge density that the mobile charged particles will adopt. They are stated as \cite{martin_2004}:
+The Hohenberg-Kohn theorems \cite{PhysRev.136.B864} are two theorems, developed in 1964 by Pierre Hohenberg and Walter Kohn, which are the backing to modern density functional theory (DFT). These theorems relate some given external potential of an atomic system to the ground state charge density that the mobile charged particles will adopt. They are stated as \cite{martin_2004}:
 \begin{displayquote}
 	\textbf{Theorem I}: For any system of interacting particles in an external potential $v_\mathrm{ext}(\mathbf r)$, the potential $v_\mathrm{ext}(\mathbf r)$ is determined uniquely, except for a constant, by the ground state particle density $n_0(\mathbf{r})$.
 \\
@@ -399,12 +399,38 @@ The sum of the external potential, the classical electron self-interaction, and 
 \caption{The process of self-consistently solving the Kohn-Sham equations for the charge density}
 \end{figure}
 
-The Kohn-Sham equations are exact, with the limitation coming from the fact that we don't have an exact form for the exchange correlation potential. If this was known, we would be able to recreate any system's electron density to the precision allowed by our computers.
+The Kohn-Sham equations are exact (bar relativity), with the limitation coming from the fact that we don't have an exact form for the exchange correlation potential. 
+If this was known, we would be able to recreate any system's electron density to the precision allowed by our computers.
 
-The Kohn-Sham formulation is exact (ignoring relativity), 
 \subsubsection{Density Functional Perturbation Theory}
 
 \section{Methods}
+All density functional theory were performed using the Quantum Espresso software \cite{0953-8984-21-39-395502}, and data analysis was performed using python.
+
+Ultrasoft pseudopotentials were chosen for the three different elements from the GBRV pseudopotential website \cite{rutgers} and the Standard Solid State Pseudopotential library (SSSP) \cite{SSSPwebsite}. 
+These are shown in table \ref{tab:pseudopotentials}.
+\begin{table}
+\centering
+	\begin{tabular}{|c|c|}
+\hline
+Element & Pseudopotential \\
+\hline
+Silicon & si\_pbe\_v1.uspp.F.UPF \cite{rutgers} \\
+Tin & sn\_pbe\_v1.4.uspp.F.UPF \cite{rutgers} \\
+Sodium & Na\_pbe\_v1.uspp.F.UPF \cite{SSSPwebsite} \\
+\hline
+\end{tabular}
+\caption{Pesudopotentials used}
+\label{tab:pseudopotentials}
+\end{table}
+
+Ultrasoft potentials were chosen because of their fast convergence with wavefunction cutoff compared to norm-conserving potentials \cite{vanderbilt1990soft}. 
+
+The calculations for silicon and tin were performed on the James Clerk Maxwell building computing clusters, and the calculations for sodium were performed on the ARCHER supercomputer \cite{archer}.
+
+For each structure, calculations were performed first to check the dependence of the pseudopotentials on the plane wave cutoff, ecutwfc. This was done by calculating the energy and the pressure at different ecutwfc values, and taking the difference in energy/pressure at each point with the energy/pressure at the highest calculated ecutwfc. This last value is set high enough to assume it is "converged". 
+The charge density and potential cutoff ecutrho was set to $8\times$ ecutwfc as the pseudopotentials were ultrasoft, non conserving potentials.
+
 \section{Results and Discussion}
 \subsection{Pseudopotential Convergence}
 \begin{figure}
@@ -452,7 +478,7 @@ The Kohn-Sham formulation is exact (ignoring relativity),
 	\centering
 	\includesvg[width=0.8\textwidth]{./figures/si_band_structure.svg}
 	\label{fig:si_band_structure}
-	\caption{Silicon calculated band structure}
+	\caption{Silicon calculated phonon band structure}
 \end{figure}
 
 \begin{figure}
@@ -478,6 +504,19 @@ The Kohn-Sham formulation is exact (ignoring relativity),
 	\caption{Transition between $\alpha$ and $\beta$ tin}
 \end{figure}
 \subsection{Sodium}
+\begin{figure}
+	\centering
+	\subfloat{
+		\includesvg[width=0.4\textwidth]{./figures/sodium_convergence_e_k.svg}
+}\qquad
+\subfloat{
+		\includesvg[width=0.4\textwidth]{./figures/sodium_convergence_p_k.svg}
+}\qquad
+\end{figure}
+\begin{figure}
+	\centering
+	\includesvg[width=\textwidth]{./figures/sodium_pt_diagram.svg}
+\end{figure}
 
 \section{Conclusion}
 
