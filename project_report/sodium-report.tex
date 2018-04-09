@@ -6,7 +6,7 @@
 % It also provides a standardised title page, and will warn you if the main text is too long.
 \usepackage{mphysproject}
 \usepackage{tikz}
-\usetikzlibrary{shapes,arrows,calc}
+\usetikzlibrary{shapes,arrows,calc,math}
 %
 %% DO NOT GO CHANGING THE FONT SIZE OR MARGINS! If your main text doesn't fit within 50 pages,
 %% you will have to cut stuff out.
@@ -94,7 +94,7 @@ The Bravais lattice can then be found by addition of these vectors each multipli
 \def\angle{30}
 \foreach \x in {0,...,4} {
 \foreach \y in {0,...,4} {
-	\filldraw[fill=cyan] ($1.5*\x*(1,0)+1.5*\y*(-{sin(\angle)},{cos(\angle)})$) circle (0.2cm) node (n\x\y);
+	\filldraw[fill=cyan!20] ($1.5*\x*(1,0)+1.5*\y*(-{sin(\angle)},{cos(\angle)})$) circle (0.2cm) node (n\x\y);
 }
 }
 \draw[->,very thick] (n22) to node[auto,swap] {$\mathbf v_2$} (n23);
@@ -115,7 +115,7 @@ A simple example is NaCl, which has a face-centred cubic Bravais lattice, and a 
     \centering
         %includegraphics[width=0.7\textwidth]{./figures/na_cl_basis.png}
 \begin{tikzpicture}
-\filldraw[fill=cyan] (0, 0) circle (0.7cm) node {$Na$};
+\filldraw[fill=cyan!20] (0, 0) circle (0.7cm) node {$Na$};
 \filldraw[fill=white] (3, 0) circle (1cm) node {$Cl$};
 \end{tikzpicture}
         \caption{The two basis atoms in NaCl}
@@ -127,9 +127,9 @@ A simple example is NaCl, which has a face-centred cubic Bravais lattice, and a 
 \begin{tikzpicture}
 \foreach \x in {0, 2} {
 	\foreach \y in {0,2} {
-\filldraw[fill=cyan] ($(0, 0)+2*(\x, \y)$) circle (0.4cm) node (n\x\y) {$Na$};
+\filldraw[fill=cyan!20] ($(0, 0)+2*(\x, \y)$) circle (0.4cm) node (n\x\y) {$Na$};
 }}
-\filldraw[fill=cyan] ($(0, 0)+2*(1, 1)$) circle (0.4cm) node (n11) {$Na$};
+\filldraw[fill=cyan!20] ($(0, 0)+2*(1, 1)$) circle (0.4cm) node (n11) {$Na$};
 \filldraw[fill=white] (2, 0) circle (0.5cm) node {$Cl$};
 \filldraw[fill=white] (0, 2) circle (0.5cm) node {$Cl$};
 \filldraw[fill=white] (2, 4) circle (0.5cm) node {$Cl$};
@@ -240,6 +240,37 @@ e^{-i\mathbf k \cdot \mathbf r}e^{i\mathbf k \cdot (\mathbf B - \mathbf B)} \psi
 Which shows that $u_\mathbf k(\mathbf r)$ has the same periodicity as the lattice. The relation $u_\mathbf k(\mathbf r) = e^{-i \mathbf k \cdot \mathbf r}\psi_\mathbf k(\mathbf r)$ is then inverted to get the result in equation \ref{eq:bloch_wave}.
 \subsubsection{Electrons in the Lattice}
 \subsubsection{Phonons}
+
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\tikzmath{
+int \px;
+\a = 0.3;
+\s = 0.4;
+\kx = 50;
+\ky = 50;
+\kmag = sqrt((\kx)^2+(\ky)^2);
+\ukx = \kx/\kmag;
+\uky = \ky/\kmag;
+for \px in {0,...,10}{
+for \py in {0,...,10}{
+\dx=\a*sin(\px*\kx+\py*\ky)*\ukx;
+\dy=\a*sin(\px*\kx+\py*\ky)*\uky;
+\vx = \s*(\px+\dx);
+\vy = \s*(\py+\dy);
+{
+	\filldraw[fill=blue!20] (\vx, \vy) circle (0.1cm) node (n\px\py) {};
+};};
+};
+}
+\end{tikzpicture}
+\label{fig:phonon:disturbance}
+\caption{A phonon in a 2-dimensional lattice}
+\end{figure}
+
+
 \subsection{Density Functional Theory}
 \subsubsection{The Thomas-Fermi Model}
 The first attempt to determine the distribution of electrons, the density $n(\mathbf r)$, in an atom using the newly developed quantum theory was made simultaneously in 1927 by Llewellyn Thomas \cite{thomas_1927} and Enrico Fermi \cite{fermi1927metodo}. This method provides a method to approximately calculate the energy of some atomic structure, in the form of a functional for the electron density:
@@ -318,9 +349,9 @@ This formulation of the search for the correct density changes the search from t
 
 The Hohenberg-Kohn theorems and the Levy-Lieb constrained search give us a theoretical way to find the correct density for a system, but two large questions still remain: 
 \begin{displayquote}
-How do we practically perform the minimisation?
+\textbf{1:} How do we practically perform the minimisation?
 \\\\
-What form does the energy functional $F[n(\mathbf r)]$ take?
+\textbf{2:} What form does the energy functional $F[n(\mathbf r)]$ take?
 \end{displayquote}
 \subsubsection{Kohn-Sham Equations}
 Practically, performing the search over all general $N$-representable states is a tough task, we need something to guide us. 
@@ -329,7 +360,7 @@ These equations change the problem of solving the Schrodinger equation for many 
 
 The Kohn-Sham equations for the non-interacting orbitals are:
 \begin{equation}\label{eq:kohn-sham}
-\left(-\frac{\hbar^2}{2m}\nabla^2 + v_{ks}(\mathbf r)\right)\phi_i(\mathbf r) = \epsilon_i \phi_i(\mathbf r)
+\left(-\frac{\hbar^2}{2m}\nabla^2 + v_{KS}(\mathbf r)\right)\phi_i(\mathbf r) = \epsilon_i \phi_i(\mathbf r)
 \end{equation}
 Where the Kohn-Sham potential $v_{KS}(\mathbf r)$ is defined as:
 \begin{equation}\label{eq:kohn-shampotential}
@@ -349,7 +380,7 @@ The sum of the external potential, the classical electron self-interaction, and 
 \begin{tikzpicture}[node distance = 4cm, auto]
     % Place nodes
     {\node [block] (init) {initial guess at charge density $n(\mathbf r)$};}
-    {\node [block, right of=init] (potential) {calculate new $v_s(\mathbf r)$ from $n(\mathbf r)$};}
+    {\node [block, right of=init] (potential) {calculate new $v_{KS}(\mathbf r)$ from $n(\mathbf r)$};}
     {\node [block, right of=potential] (update) {solve Kohn-Sham equations for new $n(\mathbf r)=\sum_i \phi^*_i\phi_i$};}
     {\node [decision, below of=update, node distance = 4cm] (decide) {are convergence criteria met?};}
     {\node [block, right of=decide] (stop) {output converged charge density};}
