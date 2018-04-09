@@ -23,6 +23,8 @@
 %
 % For a wider variety of mathematical environments, symbols and formatting options:
 \usepackage{amsmath,amssymb}
+
+\usepackage{svg}
 %
 % If you want to use colour in the text
 %\usepackage{color}
@@ -94,11 +96,11 @@ The Bravais lattice can then be found by addition of these vectors each multipli
 \def\angle{30}
 \foreach \x in {0,...,4} {
 \foreach \y in {0,...,4} {
-	\filldraw[fill=cyan!20] ($1.5*\x*(1,0)+1.5*\y*(-{sin(\angle)},{cos(\angle)})$) circle (0.2cm) node (n\x\y);
+	\filldraw[fill=cyan!20] ($1.5*\x*(1,0)+1.5*\y*(-{sin(\angle)},{cos(\angle)})$) circle (0.2cm) node (n\x\y) {}; 
 }
 }
-\draw[->,very thick] (n22) to node[auto,swap] {$\mathbf v_2$} (n23);
-\draw[->,very thick] (n22) to node[auto] {$\mathbf v_1$} (n32);
+\draw[->,very thick] (n22) to node[auto,swap] {$\mathbf v_2$} (n23) {};
+\draw[->,very thick] (n22) to node[auto] {$\mathbf v_1$} (n32) {};
 \end{tikzpicture}
 \caption{A 2-dimensional Bravais lattice}
 \label{fig:lattice_basis}
@@ -109,9 +111,9 @@ The Bravais lattice is invariant under translation by any of its basis vectors, 
 
 Physical crystals also have an atomic basis consisting of a set of atoms and positions for these atoms. The atomic basis is repeated at each point on the underlying Bravais lattice and generates the physical crystal. 
 A simple example is NaCl, which has a face-centred cubic Bravais lattice, and a 2 atom atomic basis (shown in figure \ref{fig:nacl_lattice}).
-\begin{figure*}[t!]
+\begin{figure}[t!]
     \centering
-    \begin{subfigure}[t]{0.5\textwidth}
+    \begin{subfigure}[t]{0.5\linewidth}
     \centering
         %includegraphics[width=0.7\textwidth]{./figures/na_cl_basis.png}
 \begin{tikzpicture}
@@ -122,7 +124,7 @@ A simple example is NaCl, which has a face-centred cubic Bravais lattice, and a 
 	\label{fig:nacl_basis}
     \end{subfigure}%
     ~ 
-    \begin{subfigure}[t]{0.5\textwidth}
+    \begin{subfigure}[t]{0.5\linewidth}
         \centering
 \begin{tikzpicture}
 \foreach \x in {0, 2} {
@@ -142,7 +144,7 @@ A simple example is NaCl, which has a face-centred cubic Bravais lattice, and a 
     \end{subfigure}
     \caption{NaCl atomic basis and crystal cross-section}
 \label{fig:nacl_lattice}
-\end{figure*}
+\end{figure}
 \subsubsection{The Unit Cell}
 The unit cell is the set of points spanned by the lattice basis vectors, and is the repeating unit that the whole crystal is tiled up from (by translating it along all lattice vectors). Specifically, it is the set of points:
 \begin{equation}\label{eq:unit_cell}
@@ -289,6 +291,7 @@ The first attempt to determine the distribution of electrons, the density $n(\ma
 Where the first term is the kinetic contribution, the second is the electron charge density self-interaction, the third is the electron's interaction with the external system and the fourth is the energy contained in the atomic nuclei/other elements of the system.
 
 This model has a few large problems: the derivative of the energy when increasing the electron number is continuous; there is no electronic shell structure; and it doesn't predict binding \cite{lieb1977thomas}. This would be improved upon by the Hohenberg-Kohn theorems, which would give a strong theoretical backing to the problem of finding these densities.
+
 \subsubsection{The Hohenberg-Kohn Theorems}
 The Hohenberg-Kohn theorems \cite{PhysRev.136.B864} are two theorems, developed in 1964 by Pierre Hohenberg and Walter Kohn, which are the backing to modern density functional theory. These theorems relate some given external potential of an atomic system to the ground state charge density that the mobile charged particles will adopt. They are stated as \cite{martin_2004}:
 \begin{displayquote}
@@ -352,14 +355,14 @@ E[n(\mathbf r)] = F_{LL}[n(\mathbf r)] + \int n(\mathbf r) v_{ext}(\mathbf r) d\
 Where the Levy-Lieb energy functional $F_{LL}[n(\mathbf r)]$ contains the minimisation over the wavefunctions reproducing $n(\mathbf r)$.
 To find the correct energy density, a minimisation is then performed over all $N$-representable densities:
 \begin{equation}\label{eq:levylieb}
- E_0 = \min_{n(\mathbf r)} \left\{ F_{LL}[n(\mathbf r)} + \int n(\mathbf r) v_{ext}(\mathbf r) d \mathbf r\right\} + E_{nn}
+ E_0 = \min_{n(\mathbf r)} \left\{ F_{LL}[n(\mathbf r)] + \int n(\mathbf r) v_{ext}(\mathbf r) d \mathbf r\right\} + E_{nn}
 \end{equation}
 This formulation of the search for the correct density changes the search from the unknown domain of $v$-representable densities to the known domain of $N$-representable densities and also allows us to search in systems with degenerate ground states. 
 
 The Hohenberg-Kohn theorems and the Levy-Lieb constrained search give us a theoretical way to find the correct density for a system, but two large questions still remain: 
 \begin{displayquote}
 \textbf{1:} How do we practically perform the minimisation?
-\\\\
+
 \textbf{2:} What form does the energy functional $F[n(\mathbf r)]$ take?
 \end{displayquote}
 \subsubsection{Kohn-Sham Equations}
@@ -409,7 +412,9 @@ The Kohn-Sham formulation is exact (ignoring relativity),
 \subsubsection{Density Functional Perturbation Theory}
 
 \section{Methods}
-
+\begin{figure}
+	\includesvg[width=0.2\textwidth]{./figures/si_latparam_temp.svg}
+\end{figure}
 
 \section{Results and Discussion}
 
