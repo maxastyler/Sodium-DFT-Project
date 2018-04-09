@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 TEMP_MIN = 0
 TEMP_MAX = 700
 TEMP_STEP = 10
+silicon_data = np.loadtxt('./silicon_data_paper')
 a1 = np.array([-0.5, 0, 0.5])
 a2 = np.array([0, 0.5, 0.5])
 a3 = np.array([-0.5, 0.5, 0])
@@ -179,15 +180,37 @@ def expansion_func(x, a, b, c, d, e):
     return a*x**4+b*x**3+c*x**2+d*x+e
 
 def linear_expansion(x, a, b, c, d, e):
-    return 4*a*x**3+3*b*x**2+2*c*x+d
+    return 4*a*x**3+3*b*x**2+2*c*x+d 
+
+#def einstein_fit(x, a, b, c, d, e):
+#    return a + b*c/(-1+np.exp(c/x)) + d*e/(-1+np.exp(e/x))
+#
+#def d_einstein_fit(x, a, b, c, d, e):
+#    s1 = b*(c/x)**2*np.exp(c/x)/(-1+np.exp(c/x))**2
+#    s2 = d*(e/x)**2*np.exp(e/x)/(-1+np.exp(e/x))**2
+#    return (1/a)*(s1+s2)
+
+def einstein_fit(x, a, b, c, d, e, f, g):
+    return a + b*c/(-1+np.exp(c/x)) + d*e/(-1+np.exp(e/x)) + f*g/(-1+np.exp(g/x))
+
+
+def d_einstein_fit(x, a, b, c, d, e, f, g):
+    s1 = b*(c/x)**2*np.exp(c/x)/(-1+np.exp(c/x))**2
+    s2 = d*(e/x)**2*np.exp(e/x)/(-1+np.exp(e/x))**2
+    s3 = f*(g/x)**2*np.exp(g/x)/(-1+np.exp(g/x))**2
+    return (1/a)*(s1+s2+s3)
 
 def plot_lat_thermal_expansion():
     ts = sorted(fits.keys())
-    vs = [fits[t][0] for t in ts]
-    vol_fit = curve_fit(expansion_func, ts, vs)[0]
-    alphas = [expansion_func(t, *vol_fit)-vs[i] for i, t in enumerate(ts)]
+    vs = [(fits[t][0]/0.25)**(1/3) for t in ts]
+    vol_fit = curve_fit(einstein_fit, ts, vs, p0=[10.3, 1, 400, -10, 100, -20, 1])[0]
+    alphas = [einstein_fit(t, *vol_fit)-vs[i] for i, t in enumerate(ts)]
+    #alphas = [d_einstein_fit(t, *vol_fit) for i, t in enumerate(ts)]
+    for i, t in enumerate(ts):
+        print(i, t)
     #plt.plot(ts, vs)
     plt.plot(ts, alphas)
+    #plt.plot(silicon_data[:, 0], 10**(-9) * silicon_data[:, 1])
     plt.show()
 #plot_bands()
 plot_lat_thermal_expansion()
