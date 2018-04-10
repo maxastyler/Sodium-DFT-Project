@@ -272,8 +272,8 @@ for \py in {0,...,10}{
 {\draw[->,very thick] (2.5, 1) to node[auto] {$\mathbf k$} (2.5+\ukx/\sca, 1+\uky/\sca);};
 }
 \end{tikzpicture}
-\label{fig:phonon:disturbance}
 \caption{A longitudinal phonon with wave-vector $\mathbf k$ in a 2-dimensional lattice}
+\label{fig:phonon:disturbance}
 \end{figure}
 
 \subsection{Density Functional Theory}
@@ -614,8 +614,8 @@ Where we can choose some number of terms $m$ to better approximate the fit. In t
 \subfloat[Silicon lattice parameter fit residuals vs temperature]{
 	\includesvg[width=0.4\textwidth]{./figures/si_latparam_residuals.svg}\label{fig:silicon_fit_residuals}
 	}\qquad
-	\label{fig:si_lat_param_temp}
 	\caption{Silicon lattice parameter fit and residuals}
+	\label{fig:si_lat_param_temp}
 \end{figure}
 
 To get the linear coefficient of thermal expansion from this fit, the derivative of $l(T)$ is taken with respect to $T$ and divided by a reference length value. The reference length was chosen as $l(T)|_{T=290K}$ in agreement with \cite{middelmann2015thermal}. The linear coefficient of thermal expansion is then given by:
@@ -625,10 +625,10 @@ To get the linear coefficient of thermal expansion from this fit, the derivative
 Where $l_{ref}$ is $l(T)$ taken at $T=290K$. This data is shown in figure \ref{fig:si_thermal_expansion} along with the fitted data from \cite{middelmann2015thermal}. As is evident from the figure, the fits follow the same path, with the experimental data being shifted by around \SI{20}{\kelvin}.
 
 \begin{figure}
-	\label{fig:si_thermal_expansion}
 	\centering
 	\includesvg[width=0.8\textwidth]{./figures/si_thermal_expansion.svg}
 	\caption{Fitted linear thermal expansion coefficient of silicon vs experimental data \cite{middelmann2015thermal}}
+	\label{fig:si_thermal_expansion}
 \end{figure}
 
 \subsection{Tin}
@@ -642,23 +642,52 @@ The structures of $\alpha$ and $\beta$ tin are shown in figure \ref{fig:alpha_an
 	\subfloat[$\beta$-Tin]{
 		\includegraphics[width=0.4\textwidth]{figures/betasn.png}
 	}\qquad
-	\label{fig:alpha_and_beta_tin}
 	\caption{Structures for $\alpha$ and $\beta$ tin}
+	\label{fig:alpha_and_beta_tin}
 \end{figure}
 
-The free energies for $\alpha$ and $\beta$ tin at constant, relaxed volume are shown in figure \ref{fig:sn_transition}
+The free energies for $\alpha$ and $\beta$-tin at constant, relaxed volume are shown in figure \ref{fig:sn_transition}.
 
 \begin{figure}
 	\centering
 	\includesvg[width=0.8\textwidth]{./figures/tin_transition_temperature.svg}
-	\label{fig:sn_transition}
 	\caption{Transition between $\alpha$ and $\beta$ tin}
+	\label{fig:sn_transition}
 \end{figure}
+
+The crossing point for these structures indicates that the transition temperature for $\alpha$ and $\beta$-tin is \SI{542.88}{\kelvin}. This is more than \SI{200}{\kelvin} higher than the experimental transition temperature of \SI{286}{\kelvin} \cite{Raynor101}. 
+One problem with the method use here is that only the relaxed volume for the electron SCF is considered for the phonon calculations, with pressures assumed to stay close to \SI{0}{\giga\pascal} as the temperature is increased.
+Even if more volumes were inspected this problem would most likely not go away, as it has been observed that DFT calculations with the PBE functional are very inaccurate when calculating the transition pressure between $\alpha$ and $\beta$-tin \cite{legrain2016understanding}. The reason for this overestimation of transition temperature is that in $\beta$-tin the s-bands are more populated than in $\alpha$-tin and, as shown by Legrain et. al. the PBE functional overestimates the s-band energy, leading to an error when comparing the two different phases.
 \subsection{Sodium}
+The three different structures of sodium considered (FCC, BCC and 9R) are shown in figure \ref{fig:sodium_structures}.
+\begin{figure}
+	\centering
+	\subfloat[FCC Sodium]{\includegraphics[width=0.25\textwidth]{figures/nafcccrystal.png}}\qquad
+	\subfloat[BCC Sodium]{\includegraphics[width=0.25\textwidth]{figures/nabcccrystal.png}}\qquad
+	\subfloat[9R Sodium]{\includegraphics[width=0.25\textwidth]{figures/na9rcrystal.png}}\qquad
+	\caption{The sodium structures considered}
+	\label{fig:sodium_structures}
+\end{figure}
+Sodium in the 9R structure was relaxed to \SI{0}{\giga\pascal}, and phonon responses were calculated. For 9R, there were significant negative phonon frequencies at vectors away from $\Gamma$ which indicates that that structure at $T=0$, $P=0$ is not stable \cite{wallace1998thermodynamics}. 
+This is contrary to consensus that the ground state of sodium is the 9R structure \cite{neaton2001constitution}\cite{degtyareva2009structure}\cite{ackland2017quantum}.
+The energies of FCC and BCC sodium were calculated and compared in the temperature range \SI{0}{\kelvin}$\leftrightarrow$\SI{175}{\kelvin} and \SI{-0.5}{\giga\pascal} $\leftrightarrow $\SI{5}{\giga\pascal}, which goes to high enough pressure to contain the transition from FCC sodium to BCC sodium at \SI{0}{\kelvin}. 
+The phase diagram is shown in figure \ref{fig:na_phase_diagram}.
+
 \begin{figure}
 	\centering
 	\includesvg[width=\textwidth]{./figures/sodium_pt_diagram.svg}
+	\caption{Sodium PT phase diagram}
+	\label{fig:na_phase_diagram}
 \end{figure}
+
+This phase diagram indicates that 9R is not the ground state of sodium as previously thought, and also replicates the experimental findings that the martensitic transformation from BCC decreases in temperature as pressure increases \cite{smith1991pressure}.
+\section{Further Work}
+The calculations performed for sodium indicate that it does not have a 9R ground state, as previously though, and instead that it exists in an FCC structure. 
+It would be useful to know where trigonal or HCP sodium lies on the PT phase diagram, so it would be instructive to perform calculations for those structures.
+Thorough calculations for the phonons of 9R were only performed at \SI{0}{\giga\pascal}, and it may be stable at higher pressures, so it would be worth calculating this structure relaxed to higher pressures.
+The 9R instabilities could also be due to the quasi-harmonic approximation use in calculation the phonon frequencies. Molecular dynamics simulations could be used to analyse the phonon responses further than the quasi-harmonic approximation allows.
+
+It is important also to confirm these calculations with experiment. X-ray diffraction in diamond anvil cells could be used to determine whether these results are observable too.
 
 \section{Conclusion}
 
