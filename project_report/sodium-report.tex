@@ -573,23 +573,35 @@ Where, for both $\eta=\frac{V}{V_0}$, $E_0$ is the equilibrium energy, $V_0$ is 
 The fitting of the Vinet equation for silicon was done with SciPy's curve\_fit function \cite{scipy}, and the fitting for sodium was performed with Quantum Espresso's ev.x tool. The ev.x tool outputs a list of pressures for each volume input, so the irregular grid of points $G(T, P)$ was interpolated using SciPy's griddata function.
 \section{Results and Discussion}
 \subsection{Silicon}
-
 The first structure looked at was silicon in diamond cell form, shown in figure \ref{fig:siliconstructure}.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=0.4\textwidth]{figures/sidiamond.png}
 	\caption{Silicon with diamond cell structure}
 	\label{fig:siliconstructure}
 \end{figure}
-
-The 
+ A plot of diamond cell silicon's band structure and density of states is shown in figure \ref{fig:si_band_structure}.
 \begin{figure}
 	\centering
-	\includesvg{./figures/si_two_temps_volume.svg}
-	\label{fig:si_two_temps}
-	\caption{Silicon}
+	\includesvg[width=0.8\textwidth]{./figures/si_band_structure.svg}
+	\caption{Silicon calculated phonon band structure}
+	\label{fig:si_band_structure}
 \end{figure}
+
+The plot in figure \ref{fig:si_two_temps} shows the free energy vs lattice parameter for two different temperatures, and the fits with the Vinet equation of state.
+
+\begin{figure}
+	\centering
+	\includesvg[width=0.9\textwidth]{./figures/si_two_temps_volume.svg}
+	\caption{Silicon free energy vs lattice parameter at $T=0K,500K$}
+	\label{fig:si_two_temps}
+\end{figure}
+
+At each temperature, the fit gives an equilibrium volume $V_0$, and so this volume (or, equivalently the lattice parameter) can be plotted as a function of temperature. These values can be fit to a function:
+\begin{equation}\label{eq:lat_param}
+	l(T) = l_0 + \sum_{k=1}^m a_k\frac{\theta_k}{-1+\exp(\theta_k/T)}
+\end{equation}
+Where we can choose some number of terms $m$ to better approximate the fit. In this case, $m=3$ was chosen as in \cite{middelmann2015thermal}. This fit and its residuals with the data are shown in figure \ref{fig:si_lat_param_temp}. 
 
 \begin{figure}
 	\centering
@@ -599,14 +611,15 @@ The
 \subfloat[Silicon lattice parameter fit residuals vs temperature]{
 	\includesvg[width=0.4\textwidth]{./figures/si_latparam_residuals.svg}\label{fig:silicon_fit_residuals}
 	}\qquad
+	\label{fig:si_lat_param_temp}
+	\caption{Silicon lattice parameter fit and residuals}
 \end{figure}
 
-\begin{figure}
-	\centering
-	\includesvg[width=0.8\textwidth]{./figures/si_band_structure.svg}
-	\label{fig:si_band_structure}
-	\caption{Silicon calculated phonon band structure}
-\end{figure}
+To get the linear coefficient of thermal expansion from this fit, the derivative of $l(T)$ is taken with respect to $T$ and divided by a reference length value. The reference length was chosen as $l(T)|_{T=290K}$ in agreement with \cite{middelmann2015thermal}. The linear coefficient of thermal expansion is then given by:
+\begin{equation}\label{eq:linear_coefficient}
+	\alpha(T) = \frac{1}{l_{ref}}\frac{\partial l(T)}{\partial T} =  \frac{1}{l_{ref}} \sum_{k=1}^{m}a_k \left ( \frac{\theta_k}{T} \right)^2 \frac{\exp(\theta_k/T)}{-1+\exp(\theta_k/T)}
+\end{equation}
+Where $l_{ref}$ is $l(T)$ taken at $T=290K$. This data is shown in figure \ref{fig:si_thermal_expansion} along with the fitted data from \cite{middelmann2015thermal}.
 
 \begin{figure}
 	\centering
@@ -646,8 +659,6 @@ The
 \end{figure}
 
 \section{Conclusion}
-
-\section{References}
 
 % This command tells LaTeX how to format your references in the biblography. The standard plain formatting, with
 % references appearing in the order they are cited, is absolutely fine for our needs.
