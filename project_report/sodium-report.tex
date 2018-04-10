@@ -428,11 +428,9 @@ Ultrasoft potentials were chosen because of their fast convergence with wavefunc
 
 The calculations for silicon and tin were performed on the James Clerk Maxwell building computing clusters, and the calculations for sodium were performed on the ARCHER supercomputer \cite{archer}.
 
-For each structure, calculations were performed first to check the dependence of the pseudopotentials on the plane wave cutoff, ecutwfc. This was done by calculating the energy and the pressure at different ecutwfc values, and taking the difference in energy/pressure at each point with the energy/pressure at the highest calculated ecutwfc. This last value is set high enough to assume it is "converged". 
+For each structure, calculations were performed first to check the dependence of the pseudopotentials on the plane wave cutoff, ecutwfc. This was done by calculating the energy and the pressure at different ecutwfc values, and taking the difference in energy/pressure at each point with the energy/pressure at the highest calculated ecutwfc. This last value is set high enough to assume it is ``converged''. 
 The charge density and potential cutoff ecutrho was set to $8\times$ ecutwfc as the pseudopotentials were ultrasoft, non conserving potentials.
 
-\section{Results and Discussion}
-\subsection{Pseudopotential Convergence}
 \begin{figure}
 	\centering
 	\subfloat{
@@ -442,6 +440,7 @@ The charge density and potential cutoff ecutrho was set to $8\times$ ecutwfc as 
 		\includesvg[width=0.4\textwidth]{./figures/silicon_convergence_p_ecut.svg}
 }\qquad
 \caption{Silicon energy and pressure convergence vs ecutwfc}
+\label{fig:silicon_ecut_convergence}
 \end{figure}
 \begin{figure}
 	\centering
@@ -452,6 +451,7 @@ The charge density and potential cutoff ecutrho was set to $8\times$ ecutwfc as 
 		\includesvg[width=0.4\textwidth]{./figures/tin_convergence_p_ecut.svg}
 }\qquad
 \caption{Tin energy and pressure convergence vs ecutwfc}
+\label{fig:tin_ecut_convergence}
 \end{figure}
 \begin{figure}
 	\centering
@@ -462,7 +462,89 @@ The charge density and potential cutoff ecutrho was set to $8\times$ ecutwfc as 
 		\includesvg[width=0.4\textwidth]{./figures/sodium_convergence_p_ecut.svg}
 }\qquad
 \caption{Sodium energy and pressure convergence vs ecutwfc}
+\label{fig:sodium_ecut_convergence}
 \end{figure}
+
+Figures \ref{fig:silicon_ecut_convergence} to \ref{fig:sodium_ecut_convergence} shows the convergence of energy and pressure for each of the different pseudopotentials used.
+The ecuts chosen for each element are shown in table \ref{tab:chosenecuts}.
+
+\begin{table}
+\centering
+	\begin{tabular}{|c|c|}
+\hline
+Element & chosen ecutwfc (Ry)\\
+\hline
+Silicon &  30\\
+Tin &  50\\
+Sodium &  40\\
+\hline
+\end{tabular}
+\caption{Chosen ecutwfc values for the different elements}
+\label{tab:chosenecuts}
+\end{table}
+
+The next step was to check the convergence of each element with the k-points grid. The convergence tests were performed for diamond cubic silicon, $\alpha$-tin, and face-centred cubic (FCC) sodium. For these convergence tests, the differences in energy and pressure from a ``converged'' reference point were again tested against a changing k-grid resolution. This grid had a resolution $k\times k \times k$ for all three elements.
+
+\begin{figure}
+	\centering
+	\subfloat{
+		\includesvg[width=0.4\textwidth]{./figures/silicon_convergence_e_k.svg}
+}\qquad
+\subfloat{
+		\includesvg[width=0.4\textwidth]{./figures/silicon_convergence_p_k.svg}
+}\qquad
+\caption{Silicon energy and pressure convergence vs k-grid}
+\label{fig:silicon_k_convergence}
+\end{figure}
+\begin{figure}
+	\centering
+	\subfloat{
+		\includesvg[width=0.4\textwidth]{./figures/tin_convergence_e_k.svg}
+}\qquad
+\subfloat{
+		\includesvg[width=0.4\textwidth]{./figures/tin_convergence_p_k.svg}
+}\qquad
+\caption{Tin energy and pressure convergence vs k-grid}
+\label{fig:tin_k_convergence}
+\end{figure}
+\begin{figure}
+	\centering
+	\subfloat{
+		\includesvg[width=0.4\textwidth]{./figures/sodium_convergence_e_k.svg}
+}\qquad
+\subfloat{
+		\includesvg[width=0.4\textwidth]{./figures/sodium_convergence_p_k.svg}
+}\qquad
+\caption{Sodium energy and pressure convergence vs k-grid}
+\label{fig:sodium_k_convergence}
+\end{figure}
+
+From these convergences the k-grids for each element were chosen, and the k-grids for the different structures of each element were chosen to have as similar as possible sampling in k-space. The chosen k-grids and their offsets are shown in table \ref{tab:k-grids}.
+
+\begin{table}
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Structure & k-grid & k-grid offset \\
+		\hline
+		Diamond cell silicon & $(12, 12, 12)$ & $(1, 1, 1)$ \\
+		$\alpha$-tin & $(16, 16, 16)$ & $(1, 1, 1)$ \\
+		$\beta$-tin & $(12, 12, 20)$ & $(1, 1, 1)$ \\
+		FCC sodium & $(20, 20, 20)$ & $(1, 1, 1)$ \\
+		BCC sodium & $(20, 20, 20)$ & $(1, 1, 1)$ \\
+		9R sodium & $(20, 20, 20)$ & $(1, 1, 1)$ \\
+		\hline
+	\end{tabular}
+	\caption{Structure SCF k-grids and offsets}
+	\label{tab:k-grids}
+\end{table}
+
+The SCF calculations for $\alpha$ and $\beta$-tin and FCC, BCC and 9R sodium were performed using Marzari-Vanderbilt cold smearing \cite{marzari1999thermal} with a smearing width of $0.02$ Ry, as they are not insulators. 
+The $\alpha$-tin and $\beta$-tin structures were calculated at their $T=0K$ equilibrium volume. This was done by performing variable-cell relaxations on the structures targetting a pressure of $0$GPa. The calculations on silicon were performed over a linearly spaced range of lattice constants from 10.28 Bohr to 10.4 Bohr in steps of 12 Bohr. The sodium FCC calculations were performed over a lattice constant range of 8.65 Bohr to 10.28 Bohr with 16 different points. The sodium BCC calculations were performed over a lattice constant range of 6.88 Bohr to 8.4 Bohr with 18 different points. The 9R sodium structure was relaxed to 0GPa. The scf and variable-cell relaxation calculations were all performed with the pw.x tool from Quantum Espresso.
+
+The density functional perturbation calculations were performed with the Quantum Espresso ph.x tool
+\section{Results and Discussion}
+\subsection{Pseudopotential Convergence}
 \subsection{Silicon}
 \begin{figure}
 	\centering
