@@ -560,15 +560,17 @@ This is then transformed into the Gibb's free energy potential using a Legendre 
 \end{equation}
 For each of the different materials compared, the free energy surfaces were overlaid on the same coordinates, and the minimum surface at each point gives the preferred structure. The intersections of the surfaces give the transition curves.
 
-Silicon was fitted with the Vinet equation of state:
-
-\begin{equation}\begin{eq:vinet}
+Silicon's energy was fitted with the Vinet equation of state:
+\begin{equation}\label{eq:vinet}
 E(\eta) = E_0 + \frac{4B_0V_0}{(B'_0-1)^2} + \frac{2B_0V_0}{(B'_0-1)^2}\exp{\left(\frac{3}{2}(B'_0-1)(1-\eta)\right)}[3(B'_0-1)(1-\eta)-2]
 \end{equation}
-
-\begin{equation}\begin{eq:bm}
+Sodium's energy was fitted to the Murnaghan equation of state:
+\begin{equation}\label{eq:bm}
 E(\eta) = E_0+\frac{B_0V_0}{B'_0}\eta^3\left( \frac{\eta^{-3B'_0}}{B'_0-1}+1\right)-\frac{B_0V_0}{B'_0-1}
 \end{equation}
+Where, for both $\eta=\frac{V}{V_0}$, $E_0$ is the equilibrium energy, $V_0$ is the equilibrium volume, and $B_0, B'_0$ are the equilibrium bulk modulus and the bulk modulus pressure derivative respectively.
+
+The fitting of the Vinet equation for silicon was done with SciPy's curve\_fit function \cite{scipy}, and the fitting for sodium was performed with Quantum Espresso's ev.x tool. The ev.x tool outputs a list of pressures for each volume input, so the irregular grid of points $G(T, P)$ was interpolated using SciPy's griddata function.
 \section{Results and Discussion}
 \subsection{Pseudopotential Convergence}
 \subsection{Silicon}
