@@ -572,8 +572,25 @@ Where, for both $\eta=\frac{V}{V_0}$, $E_0$ is the equilibrium energy, $V_0$ is 
 
 The fitting of the Vinet equation for silicon was done with SciPy's curve\_fit function \cite{scipy}, and the fitting for sodium was performed with Quantum Espresso's ev.x tool. The ev.x tool outputs a list of pressures for each volume input, so the irregular grid of points $G(T, P)$ was interpolated using SciPy's griddata function.
 \section{Results and Discussion}
-\subsection{Pseudopotential Convergence}
 \subsection{Silicon}
+
+The first structure looked at was silicon in diamond cell form, shown in figure \ref{fig:siliconstructure}.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/sidiamond.png}
+	\caption{Silicon with diamond cell structure}
+	\label{fig:siliconstructure}
+\end{figure}
+
+The 
+\begin{figure}
+	\centering
+	\includesvg{./figures/si_two_temps_volume.svg}
+	\label{fig:si_two_temps}
+	\caption{Silicon}
+\end{figure}
+
 \begin{figure}
 	\centering
 	\subfloat[Silicon lattice parameter fit vs temperature]{
