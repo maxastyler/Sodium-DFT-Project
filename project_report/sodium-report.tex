@@ -66,12 +66,12 @@
 
 \textit{In the Project Report, you must submit a `Personal Statement' describing your project. The Personal Statement is to help the assessors understand what the different parts of the report represent in terms of the work you actually did. Inaccuracy in or lack of a Personal Statement may hinder the assessors and therefore lead to a reduced grade, and should be a maximum of about one page.  A real example follows.}
 
+
 % If you have anyone that needs to be acknowledged (e.g., anyone who provided assistance with your project work,
 % provided data etc) please do so here. Delete this (or comment it out) if you have no-one to acknowledge.
 \acknowledgments
 
-\textit{Please acknowledge any assistance that you received during your MPhys project from anyone other than your supervisor. Please also disclose here any work conducted by yourself prior to the MPhys project that is relevant to the project (e.g., summer project work). Speak to your supervisor or the course organiser if you are not sure about what might be relevant to include here.}
-
+Dr Martinez-Canales ran the calculation for one q-point in the 9R structure at \SI{0}{\giga\pascal}. I wrote the quantum espresso input scripts, and sent them to him to run on his account.
 % This command inserts a table of contents, and sets things up for the main text of your report.
 % The page count starts from here. DO NOT DELETE OR DISABLE THIS COMMAND!
 \maintext
@@ -576,7 +576,9 @@ Where, for both $\eta=\frac{V}{V_0}$, $E_0$ is the equilibrium energy, $V_0$ is 
 The fitting of the Vinet equation for silicon was done with SciPy's curve\_fit function \cite{scipy}, and the fitting for sodium was performed with Quantum Espresso's ev.x tool. The ev.x tool outputs a list of pressures for each volume input, so the irregular grid of points $G(T, P)$ was interpolated using SciPy's griddata function.
 \section{Results and Discussion}
 \subsection{Silicon}
+
 The first structure looked at was silicon in diamond cell form, shown in figure \ref{fig:siliconstructure}.
+
 \begin{figure}
 	\centering
 	\includegraphics[width=0.4\textwidth]{figures/sidiamond.png}
@@ -631,6 +633,7 @@ Where $l_{ref}$ is $l(T)$ taken at $T=290K$. This data is shown in figure \ref{f
 	\label{fig:si_thermal_expansion}
 \end{figure}
 
+The negative coefficient of thermal expansion is due to the ``softening'' of the optical bands, and the ``hardening'' of the acoustic bands as shown in \cite{biernacki1989negative}.
 \subsection{Tin}
 
 The structures of $\alpha$ and $\beta$ tin are shown in figure \ref{fig:alpha_and_beta_tin}. The aim here was to calculate the transition temperature between $\alpha$ and $\beta$ tin at $P=0$ GPa.
