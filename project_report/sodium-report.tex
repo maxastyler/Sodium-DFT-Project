@@ -540,9 +540,35 @@ From these convergences the k-grids for each element were chosen, and the k-grid
 \end{table}
 
 The SCF calculations for $\alpha$ and $\beta$-tin and FCC, BCC and 9R sodium were performed using Marzari-Vanderbilt cold smearing \cite{marzari1999thermal} with a smearing width of $0.02$ Ry, as they are not insulators. 
-The $\alpha$-tin and $\beta$-tin structures were calculated at their $T=0K$ equilibrium volume. This was done by performing variable-cell relaxations on the structures targetting a pressure of $0$GPa. The calculations on silicon were performed over a linearly spaced range of lattice constants from 10.28 Bohr to 10.4 Bohr in steps of 12 Bohr. The sodium FCC calculations were performed over a lattice constant range of 8.65 Bohr to 10.28 Bohr with 16 different points. The sodium BCC calculations were performed over a lattice constant range of 6.88 Bohr to 8.4 Bohr with 18 different points. The 9R sodium structure was relaxed to 0GPa. The scf and variable-cell relaxation calculations were all performed with the pw.x tool from Quantum Espresso.
+The $\alpha$-tin and $\beta$-tin structures were calculated at their $T=0K$ equilibrium volume. This was done by performing variable-cell relaxations on the structures targetting a pressure of $0$GPa. The calculations on silicon were performed over a linearly spaced range of lattice constants from 10.28 Bohr to 10.4 Bohr in steps of 12 Bohr. The sodium FCC calculations were performed over a lattice constant range of 8.65 Bohr to 10.28 Bohr with 16 different points. The sodium BCC calculations were performed over a lattice constant range of 6.88 Bohr to 8.4 Bohr with 18 different points. The 9R sodium structure was relaxed to 0GPa. The scf and variable-cell relaxation calculations were all performed with the pw.x tool from Quantum Espresso. For all structures the scf convergence threshold (conv\_thr) was set to \num{1e-10} Ry.
 
-The density functional perturbation calculations were performed with the Quantum Espresso ph.x tool
+The density functional perturbation calculations were performed with the Quantum Espresso ph.x tool. Silicon and the sodium structures were calculated with q-grids of $6\times 6\times 6$, with the exception of 9R which was calculated with a q-grid of $4\times4\times4$ and the two tin allotropes were calculated with an $8\times8\times8$ q-grid. A self-consistency threshold of \num{1e-16} (tr2\_ph) was set for all calculations.
+
+After a full set of phonon perturbations was calculated for each structure, these were Fourier transformed into the force constants matrix using the quantum espresso tool q2r.x. The matdyn.x tool was then used to create the band structure and density of states of the different structures. One the density of states $g(\omega)$ is obtained, the free energy phonon contribution can be calculated. This done by the Quantum Espresso fqha.x tool, which performs the integral:
+\begin{equation}
+	\label{eq:phononfreeenergy}
+	F(V, T) = \int_0^\infty \left[\frac{\hbar\omega}{2} + k_bT \ln\left(1-\exp\left\{\frac{\hbar \omega}{k_bT}\right\} \right) \right]g_V(\omega) d\omega
+\end{equation}
+Where $g_V(\omega)$ is the density of states at the volume $V$. The free energy can then be written as the sum of the contribution from the electrons and the phonons: 
+\begin{equation}\label{eq:total_free_energy}
+F(V, T) = F_{scf}(V)|_{T=0} + F_{phon}(V, T)
+\end{equation}
+
+This is then transformed into the Gibb's free energy potential using a Legendre transform from volume to pressure. The free energy $F(V)|_T$ at each temperature was fit to an empirical equation of state, $E(V)$, and the pressure $P(V)$ was recovered as $-\frac{\partial E(V)}{\partial V}$. The legendre transform is then:
+\begin{equation}
+	G(T, P) = PV(P) + F(T, V(P))
+\end{equation}
+For each of the different materials compared, the free energy surfaces were overlaid on the same coordinates, and the minimum surface at each point gives the preferred structure. The intersections of the surfaces give the transition curves.
+
+Silicon was fitted with the Vinet equation of state:
+
+\begin{equation}\begin{eq:vinet}
+E(\eta) = E_0 + \frac{4B_0V_0}{(B'_0-1)^2} + \frac{2B_0V_0}{(B'_0-1)^2}\exp{\left(\frac{3}{2}(B'_0-1)(1-\eta)\right)}[3(B'_0-1)(1-\eta)-2]
+\end{equation}
+
+\begin{equation}\begin{eq:bm}
+E(\eta) = E_0+\frac{B_0V_0}{B'_0}\eta^3\left( \frac{\eta^{-3B'_0}}{B'_0-1}+1\right)-\frac{B_0V_0}{B'_0-1}
+\end{equation}
 \section{Results and Discussion}
 \subsection{Pseudopotential Convergence}
 \subsection{Silicon}
