@@ -41,6 +41,7 @@
 % two lines
 \usepackage{hyperref}  % This enables hyperlinks but leaves them in black, which is best for printing
 %\usepackage[colorlinks=true]{hyperref} % This colours the hyperlinks, which is better for screen reading
+\usepackage{siunitx}
 
 \usepackage{csquotes}
 \usepackage{braket}
@@ -97,12 +98,12 @@ The Bravais lattice can then be found by addition of these vectors each multipli
 \def\angle{30}
 \foreach \x in {0,...,4} {
 \foreach \y in {0,...,4} {
-	\filldraw[fill=cyan!20] ($1.5*\x*(1,0)+1.5*\y*(-{sin(\angle)},{cos(\angle)})$) circle (0.2cm) node (n\x\y) {}; 
-}
-}
-\draw[->,very thick] (n22) to node[auto,swap] {$\mathbf v_2$} (n23) {};
-\draw[->,very thick] (n22) to node[auto] {$\mathbf v_1$} (n32) {};
-\end{tikzpicture}
+	\filldraw[fill=cyan!20] ($1.5*\x*(1,0)+1.5*\y*(-{sin(\angle)},{cos(\angle)})$) circle (0.2cm) node (n\x\y) {};%
+}%
+}%
+\draw[->,very thick] (n22) to node[auto,swap] {$\mathbf v_2$} (n23) {};%
+\draw[->,very thick] (n22) to node[auto] {$\mathbf v_1$} (n32) {};%
+\end{tikzpicture}%
 \caption{A 2-dimensional Bravais lattice}
 \label{fig:lattice_basis}
 \end{figure}
@@ -252,7 +253,7 @@ In the quantum view, the phonons are goldstone bosons: massless particles which 
 \tikzmath{
 int \px;
 \a = 0.3;
-\s = 0.4;
+\sca = 0.4;
 \kx = 50;
 \ky = 50;
 \kmag = sqrt((\kx)^2+(\ky)^2);
@@ -262,13 +263,13 @@ for \px in {0,...,20}{
 for \py in {0,...,10}{
 \dx=\a*sin(\px*\kx+\py*\ky)*\ukx;
 \dy=\a*sin(\px*\kx+\py*\ky)*\uky;
-\vx = \s*(\px+\dx);
-\vy = \s*(\py+\dy);
+\vx = \sca*(\px+\dx);
+\vy = \sca*(\py+\dy);
 {
 	\filldraw[fill=blue!20] (\vx, \vy) circle (0.1cm) node (n\px\py) {};
 };};
 };
-{\draw[->,very thick] (2.5, 1) to node[auto] {$\mathbf k$} (2.5+\ukx/\s, 1+\uky/\s);};
+{\draw[->,very thick] (2.5, 1) to node[auto] {$\mathbf k$} (2.5+\ukx/\sca, 1+\uky/\sca);};
 }
 \end{tikzpicture}
 \label{fig:phonon:disturbance}
@@ -540,7 +541,9 @@ From these convergences the k-grids for each element were chosen, and the k-grid
 \end{table}
 
 The SCF calculations for $\alpha$ and $\beta$-tin and FCC, BCC and 9R sodium were performed using Marzari-Vanderbilt cold smearing \cite{marzari1999thermal} with a smearing width of $0.02$ Ry, as they are not insulators. 
-The $\alpha$-tin and $\beta$-tin structures were calculated at their $T=0K$ equilibrium volume. This was done by performing variable-cell relaxations on the structures targetting a pressure of $0$GPa. The calculations on silicon were performed over a linearly spaced range of lattice constants from 10.28 Bohr to 10.4 Bohr in steps of 12 Bohr. The sodium FCC calculations were performed over a lattice constant range of 8.65 Bohr to 10.28 Bohr with 16 different points. The sodium BCC calculations were performed over a lattice constant range of 6.88 Bohr to 8.4 Bohr with 18 different points. The 9R sodium structure was relaxed to 0GPa. The scf and variable-cell relaxation calculations were all performed with the pw.x tool from Quantum Espresso. For all structures the scf convergence threshold (conv\_thr) was set to \num{1e-10} Ry.
+The $\alpha$-tin and $\beta$-tin structures were calculated at their $T=0K$ equilibrium volume. This was done by performing variable-cell relaxations on the structures targetting a pressure of $0$GPa. The calculations on silicon were performed over a linearly spaced range of lattice constants from 10.28 Bohr to 10.4 Bohr in steps of 12 Bohr. 
+The sodium FCC calculations were performed over a lattice constant range of 8.65 Bohr to 10.28 Bohr with 16 different points. The sodium BCC calculations were performed over a lattice constant range of 6.88 Bohr to 8.4 Bohr with 18 different points. 
+The 9R sodium structure was relaxed to 0GPa. The scf and variable-cell relaxation calculations were all performed with the pw.x tool from Quantum Espresso. For all structures the scf convergence threshold (conv\_thr) was set to \num{1e-10} Ry.
 
 The density functional perturbation calculations were performed with the Quantum Espresso ph.x tool. Silicon and the sodium structures were calculated with q-grids of $6\times 6\times 6$, with the exception of 9R which was calculated with a q-grid of $4\times4\times4$ and the two tin allotropes were calculated with an $8\times8\times8$ q-grid. A self-consistency threshold of \num{1e-16} (tr2\_ph) was set for all calculations.
 
@@ -619,24 +622,32 @@ To get the linear coefficient of thermal expansion from this fit, the derivative
 \begin{equation}\label{eq:linear_coefficient}
 	\alpha(T) = \frac{1}{l_{ref}}\frac{\partial l(T)}{\partial T} =  \frac{1}{l_{ref}} \sum_{k=1}^{m}a_k \left ( \frac{\theta_k}{T} \right)^2 \frac{\exp(\theta_k/T)}{-1+\exp(\theta_k/T)}
 \end{equation}
-Where $l_{ref}$ is $l(T)$ taken at $T=290K$. This data is shown in figure \ref{fig:si_thermal_expansion} along with the fitted data from \cite{middelmann2015thermal}.
+Where $l_{ref}$ is $l(T)$ taken at $T=290K$. This data is shown in figure \ref{fig:si_thermal_expansion} along with the fitted data from \cite{middelmann2015thermal}. As is evident from the figure, the fits follow the same path, with the experimental data being shifted by around \SI{20}{\kelvin}.
 
 \begin{figure}
+	\label{fig:si_thermal_expansion}
 	\centering
 	\includesvg[width=0.8\textwidth]{./figures/si_thermal_expansion.svg}
-	\label{fig:si_thermal_expansion}
 	\caption{Fitted linear thermal expansion coefficient of silicon vs experimental data \cite{middelmann2015thermal}}
 \end{figure}
+
 \subsection{Tin}
+
+The structures of $\alpha$ and $\beta$ tin are shown in figure \ref{fig:alpha_and_beta_tin}. The aim here was to calculate the transition temperature between $\alpha$ and $\beta$ tin at $P=0$ GPa.
 \begin{figure}
 	\centering
-	\subfloat{
-		\includesvg[width=0.4\textwidth]{./figures/tin_convergence_e_k.svg}
-}\qquad
-\subfloat{
-		\includesvg[width=0.4\textwidth]{./figures/tin_convergence_p_k.svg}
-}\qquad
+	\subfloat[$\alpha$-Tin]{
+		\includegraphics[width=0.4\textwidth]{figures/alphasn.png}
+	}\qquad
+	\subfloat[$\beta$-Tin]{
+		\includegraphics[width=0.4\textwidth]{figures/betasn.png}
+	}\qquad
+	\label{fig:alpha_and_beta_tin}
+	\caption{Structures for $\alpha$ and $\beta$ tin}
 \end{figure}
+
+The free energies for $\alpha$ and $\beta$ tin at constant, relaxed volume are shown in figure \ref{fig:sn_transition}
+
 \begin{figure}
 	\centering
 	\includesvg[width=0.8\textwidth]{./figures/tin_transition_temperature.svg}
@@ -644,15 +655,6 @@ Where $l_{ref}$ is $l(T)$ taken at $T=290K$. This data is shown in figure \ref{f
 	\caption{Transition between $\alpha$ and $\beta$ tin}
 \end{figure}
 \subsection{Sodium}
-\begin{figure}
-	\centering
-	\subfloat{
-		\includesvg[width=0.4\textwidth]{./figures/sodium_convergence_e_k.svg}
-}\qquad
-\subfloat{
-		\includesvg[width=0.4\textwidth]{./figures/sodium_convergence_p_k.svg}
-}\qquad
-\end{figure}
 \begin{figure}
 	\centering
 	\includesvg[width=\textwidth]{./figures/sodium_pt_diagram.svg}
@@ -671,6 +673,6 @@ Where $l_{ref}$ is $l(T)$ taken at $T=290K$. This data is shown in figure \ref{f
 % This command switches to appendices. The page count ends here.
 % NOTE: the material contained in appendices will NOT count towards the assessment of your report.
 % Consequently the main text should be self-contained.
-\appendix
+%\appendix
 
 \end{document}
