@@ -198,7 +198,7 @@ def d_einstein_fit(x, a, b, c, d, e, f, g):
     s1 = b*(c/x)**2*np.exp(c/x)/(-1+np.exp(c/x))**2
     s2 = d*(e/x)**2*np.exp(e/x)/(-1+np.exp(e/x))**2
     s3 = f*(g/x)**2*np.exp(g/x)/(-1+np.exp(g/x))**2
-    return (1/a)*(s1+s2+s3)
+    return (s1+s2+s3)
 
 def plot_lat_thermal_expansion():
     ts = sorted(fits.keys())
@@ -228,7 +228,7 @@ def plot_lat_thermal_expansion():
     #plt.savefig('../../project_report/figures/si_latparam_residuals.svg')
     #plt.show()
     plt.clf()
-    plt.plot(ts, d_alphas, color='blue')
+    plt.plot(ts, [i/vs[29] for i in d_alphas], color='blue') # vs[29] is lat param at T=290K
     plt.plot(silicon_data[:, 0], 10**(-9) * silicon_data[:, 1], color = 'red')
     plt.xlabel(r'Temperature $(K)$')
     plt.ylabel(r'Linear thermal expansion coefficient $(T^{-1})$')
