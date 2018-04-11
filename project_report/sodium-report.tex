@@ -245,7 +245,7 @@ Since the lattices are related to each other through a Fourier transform, the du
 In 3 dimensions, the reciprocal lattice of the simple cubic lattice is the simple cubic lattice 
 (with each vector having a reciprocal length), the reciprocal lattice of the FCC lattice is BCC, and vice versa.
 \subsubsection{Bloch's Theorem}
-The periodicity of the lattice leads to a constraint on the wavefunction of electrons in the crystal:
+The periodicity of the lattice leads to a constraint on the wave function of electrons in the crystal:
 \begin{equation}\label{eq:bloch_wave}
 	\psi_\mathbf k(\mathbf r) = e^{i\mathbf{k}\cdot \mathbf{r}}u_\mathbf k(\mathbf r)
 \end{equation}
@@ -322,7 +322,7 @@ The Hohenberg-Kohn theorems \cite{PhysRev.136.B864} are two theorems, developed 
 For any particular $V_\mathrm{ext}(\mathbf r)$, the exact ground state energy of the system is the global minimum value of this functional, and the density $n(\mathbf r)$ that minimises the functional is the exact ground state density $n_0(\mathbf r)$.
 \end{displayquote}
 The proofs to these theorems are relatively simple, making use of the quantum variational principle \cite{shankar2012principles}. We need to make a restriction though, that the ground state of the Hamiltonians in the proofs are non-degenerate.
-To prove the first theorem, we use proof by contradiction with two different Hamiltonians $\hat H_1, \hat H_2$ with ground state wavefunctions $\ket{\psi_1}, \ket{\psi_2}$ which give the respective ground state energies $E^0_n=\braket{\psi_n | \hat H_n | \psi_n}$. 
+To prove the first theorem, we use proof by contradiction with two different Hamiltonians $\hat H_1, \hat H_2$ with ground state wave functions $\ket{\psi_1}, \ket{\psi_2}$ which give the respective ground state energies $E^0_n=\braket{\psi_n | \hat H_n | \psi_n}$. 
 The Hamiltonians can be separated into:
 \begin{equation}
 \hat H_n = \hat F_{HK} + \hat V_{n, \mathrm{ext}}
@@ -349,7 +349,7 @@ E^0_1 - E^0_2 > \int n_0(\mathbf r)(v_{1,\mathrm{ext}}(\mathbf r)-v_{2,\mathrm{e
 These equations are in contradiction with each other, and therefore, up to an additive constant, the external potential must be determined uniquely by the ground state electron density and vice versa.
 
 To prove the second theorem, we use an energy functional $E[n(\mathbf r)]$, with some external potential $v_{\mathrm{ext}}$ that is minimised by a density $n_1(\mathbf r)$ and we consider some different density $n_2(\mathbf r)$. 
-By the first theorem, the wavefunctions determined by these densities must be different ($\ket{\psi_1}, \ket{\psi_2}$) and so, using the variational principle we have:
+By the first theorem, the wave functions determined by these densities must be different ($\ket{\psi_1}, \ket{\psi_2}$) and so, using the variational principle we have:
 \begin{equation}\label{eq:hk_2}
 E_1 = \braket{\psi_1 | \hat H _1 | \psi_1} < \braket{\psi_2 | \hat H _1 | \psi_2} = E_2
 \end{equation}
@@ -366,14 +366,14 @@ We write down the total energy of the quantum system as a functional of the char
 	E[n(\mathbf r)] = \braket{\Psi|\hat T + \hat V_{ee}|\Psi} + \int n(\mathbf r)v_{ext}(\mathbf r)d\mathbf r + E_{nn}
 \end{equation}
 Where $\hat V_{ee}$ is the potential due to the charge density and $E_{nn}$ is the energy from elements of the system that aren't electrons (e.g. the nuclei). 
-We now consider the set of wavefunctions $\left\{\ket{\Psi}\right\}$ which reproduce the given electron density $n(\mathbf r)=\int \braket{\Psi|\Psi}d\mathbf{r_2}\mathellipsis d\mathbf{r_n}$, and understand that the energy of the system with this density will be the minimum value of the energies given by the set $\left\{\ket{\Psi}\right\}$:
+We now consider the set of wave functions $\left\{\ket{\Psi}\right\}$ which reproduce the given electron density $n(\mathbf r)=\int \braket{\Psi|\Psi}d\mathbf{r_2}\mathellipsis d\mathbf{r_n}$, and understand that the energy of the system with this density will be the minimum value of the energies given by the set $\left\{\ket{\Psi}\right\}$:
 \begin{equation}
 \begin{split}
 E[n(\mathbf r)] = \min_{\ket{\Psi} \rightarrow n(\mathbf r)}\left\{\braket{\Psi | \hat T + \hat V_{ee} | \Psi}\right\} + \int n(\mathbf r) v_{ext}(\mathbf r) d \mathbf r + E_{nn}\\
 E[n(\mathbf r)] = F_{LL}[n(\mathbf r)] + \int n(\mathbf r) v_{ext}(\mathbf r) d\mathbf r + E_{nn}
 \end{split}
 \end{equation}
-Where the Levy-Lieb energy functional $F_{LL}[n(\mathbf r)]$ contains the minimisation over the wavefunctions reproducing $n(\mathbf r)$.
+Where the Levy-Lieb energy functional $F_{LL}[n(\mathbf r)]$ contains the minimisation over the wave functions reproducing $n(\mathbf r)$.
 To find the correct energy density, a minimisation is then performed over all $N$-representable densities:
 \begin{equation}\label{eq:levylieb}
  E_0 = \min_{n(\mathbf r)} \left\{ F_{LL}[n(\mathbf r)] + \int n(\mathbf r) v_{ext}(\mathbf r) d \mathbf r\right\} + E_{nn}
@@ -452,7 +452,7 @@ Sodium & Na\_pbe\_v1.uspp.F.UPF \cite{SSSPwebsite} \\
 \label{tab:pseudopotentials}
 \end{table}
 
-Ultrasoft potentials were chosen because of their fast convergence with wavefunction cut-off compared to norm-conserving potentials \cite{vanderbilt1990soft}. 
+Ultrasoft potentials were chosen because of their fast convergence with wave function cut-off compared to norm-conserving potentials \cite{vanderbilt1990soft}. 
 
 The calculations for silicon and tin were performed on the James Clerk Maxwell building computing clusters, and the calculations for sodium were performed on the ARCHER supercomputer \cite{archer}.
 
