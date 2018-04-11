@@ -56,6 +56,9 @@
 
 % Insert your abstract below
 \begin{abstract}
+	P-T diagrams of elements give us fundamental information on what structures these elements take, including in the ground state. Using density functional theory it is possible to perform ab initio calculations on these elements, and recreate the P-T diagrams seen experimentally. 
+	Here I perform such calculations on sodium, silicon and tin and calculate various pressure and temperature dependent effects. 
+	I calculate the P-T diagram of sodium at low temperatures and give evidence that 9R is not the ground state as previously believed, suggesting it instead takes an FCC structure.
 \end{abstract}
 
 % This command is essential to make the title page appear
@@ -68,8 +71,26 @@ I spent the first 4 weeks learning how to use quantum espresso to perform DFT ca
 
 In the 6th week I started on calculations on the silicon and $\alpha$,$\beta$-tin structures. I also started to think about how to get the Gibbs free energy from the density of states. I got an account on the condensed matter cluster to perform higher quality calculations. 
 
-I wrote a shell script to split up a DFPT calculation between multiple computers, running a single point on each. 
+I wrote a shell script to split up a DFPT calculation between multiple computers, running a single q-point on each. Had some problems with the silicon calculations giving out not very converged values. This was due to using a USPP and not having a high enough charge density cutoff. Upped this and the calculations came out much better.
 
+Calculated the equlibrium lattice parameter of $\alpha$-tin by varying the lattice parameter and finding the point of the scf minimum. Performed the relaxations for $\beta$-tin. 
+Had problems in the SCF calculation of $\beta$-tin, this was due to the shape of scf FFT grid I was using. 
+
+I spent the next few weeks working on the $\alpha$ and $\beta$-tin phonons. Getting better values for $\alpha$-tin when I used smearing for it.
+Miguel gave me his previously calculated scf and phonon data for lithium. I used this data to test my equation of state and PT diagram script.
+
+Week 9 I started on the sodium calculations. I selected a sodium pseudopotential, and started to check convergence and initial tests of BCC sodium. 
+
+Week 10 I started on the FCC phonons, and relaxed both BCC and FCC structures to a range of pressures.
+
+Over Christmas I performed phonon calculations on BCC and FCC sodium.
+
+On coming back from the Christmas break, I performed more phonon calculations for BCC and FCC sodium, as the previous ones weren't converged well enough.
+During the first 4 weeks of term I was performing calculations on BCC and FCC sodium, trying to get good enough calculations. 
+I needed to calculate the phonons at quite a few points for the PT fits to work.
+
+On the 5th week I started to work on 9R. Relaxed to 0GPa. I also started to write the report. 
+The remaining weeks I spent analysing the data and working on the report.
 % If you have anyone that needs to be acknowledged (e.g., anyone who provided assistance with your project work,
 % provided data etc) please do so here. Delete this (or comment it out) if you have no-one to acknowledge.
 \acknowledgments
