@@ -67,17 +67,19 @@
 % This command introduces the Personal Statement
 \personalstatement
 
-I spent the first 4 weeks learning how to use quantum espresso to perform DFT calculations. The first structure I performed calculations on was FCC Aluminium. I learnt how to do SCF and DFPT calculations to create a band structure. I read up on density functional theory in Richard Martin's ``Electronic Structure'', Capelle's ``A bird's-eye view of density-functional theory'' and phonons in DFT in Baroni et al's ``Phonons and related properties of extended systems from density-functonal perturbation theory''. I also read up on bash scripting, which I found very useful in speeding up the running of calculations.
+I spent the first 4 weeks learning how to use quantum espresso to perform DFT calculations. The first structure I performed calculations on was FCC Aluminium. I learnt how to do SCF and DFPT calculations to create a band structure. 
+I read up on density functional theory in Richard Martin's ``Electronic Structure'', Capelle's ``A bird's-eye view of density-functional theory'' and phonons in DFT in Baroni et al's ``Phonons and related properties of extended systems from density-functional perturbation theory''. 
+I also read up on bash scripting, which I found very useful in speeding up the running of calculations.
 
 In the 6th week I started on calculations on the silicon and $\alpha$,$\beta$-tin structures. I also started to think about how to get the Gibbs free energy from the density of states. I got an account on the condensed matter cluster to perform higher quality calculations. 
 
 I wrote a shell script to split up a DFPT calculation between multiple computers, running a single q-point on each. Had some problems with the silicon calculations giving out not very converged values. This was due to using a USPP and not having a high enough charge density cutoff. Upped this and the calculations came out much better.
 
-Calculated the equlibrium lattice parameter of $\alpha$-tin by varying the lattice parameter and finding the point of the scf minimum. Performed the relaxations for $\beta$-tin. 
-Had problems in the SCF calculation of $\beta$-tin, this was due to the shape of scf FFT grid I was using. 
+Calculated the equilibrium lattice parameter of $\alpha$-tin by varying the lattice parameter and finding the point of the SCF minimum. Performed the relaxations for $\beta$-tin. 
+Had problems in the SCF calculation of $\beta$-tin, this was due to the shape of SCF FFT grid I was using. 
 
 I spent the next few weeks working on the $\alpha$ and $\beta$-tin phonons. Getting better values for $\alpha$-tin when I used smearing for it.
-Miguel gave me his previously calculated scf and phonon data for lithium. I used this data to test my equation of state and PT diagram script.
+Miguel gave me his previously calculated SCF and phonon data for lithium. I used this data to test my equation of state and PT diagram script.
 
 Week 9 I started on the sodium calculations. I selected a sodium pseudopotential, and started to check convergence and initial tests of BCC sodium. 
 
@@ -89,7 +91,7 @@ On coming back from the Christmas break, I performed more phonon calculations fo
 During the first 4 weeks of term I was performing calculations on BCC and FCC sodium, trying to get good enough calculations. 
 I needed to calculate the phonons at quite a few points for the PT fits to work.
 
-On the 5th week I started to work on 9R. Relaxed to 0GPa. I also started to write the report. 
+On the 5th week I started to work on 9R. Relaxed to \SI{0}{\giga\pascal}. I also started to write the report. 
 The remaining weeks I spent analysing the data and working on the report.
 % If you have anyone that needs to be acknowledged (e.g., anyone who provided assistance with your project work,
 % provided data etc) please do so here. Delete this (or comment it out) if you have no-one to acknowledge.
@@ -102,6 +104,7 @@ Dr Martinez-Canales ran the calculation for one q-point in the 9R structure at \
 
 
 \section{Introduction}
+Density functional theory is an incredibly 
 
 \section{Background}
 \subsection{Crystal Structure}
@@ -191,12 +194,12 @@ Since these observables will be periodic we have:
 \begin{equation}\label{eq:periodic_observable}
 	f(\mathbf r) = f(\mathbf r + \mathbf B) \text{ where } \mathbf B \in \mathcal B
 \end{equation}
-We can consider the fourier expansion of this function:
+We can consider the Fourier expansion of this function:
 \begin{equation}\label{eq:f_fourier_expansion}
 	f(\mathbf r + \mathbf B) = \sum_k f_k e ^ {i \mathbf G_k\cdot(\mathbf r + \mathbf B)} 
 	= \sum _k f_k e ^ {i \mathbf G_k \cdot \mathbf r} e ^ {i \mathbf G_k \cdot \mathbf B}
 \end{equation}
-Where $\mathbf G_k \in \mathcal G$, $\sum_k$ is the sum over all vectors in $\mathcal G$ and the fourier component $f_k$ is given by:
+Where $\mathbf G_k \in \mathcal G$, $\sum_k$ is the sum over all vectors in $\mathcal G$ and the Fourier component $f_k$ is given by:
 \begin{equation}
 	f_k = \frac{1}{V}\int_Cd\mathbf rf(\mathbf r)e^{-i\mathbf G_k\cdot \mathbf r}
 \end{equation}
@@ -238,7 +241,7 @@ Since equation \ref{eq:f_fourier_expansion} is true for $\mathbf{B} = \mathbf{0}
 		\mathbf{v}_n
 	\end{bmatrix} ^{-1}
 \end{gather}
-Since the lattices are related to each other through a fourier transform, the dual lattice to the dual lattice is the original lattice.
+Since the lattices are related to each other through a Fourier transform, the dual lattice to the dual lattice is the original lattice.
 In 3 dimensions, the reciprocal lattice of the simple cubic lattice is the simple cubic lattice 
 (with each vector having a reciprocal length), the reciprocal lattice of the FCC lattice is BCC, and vice versa.
 \subsubsection{Bloch's Theorem}
@@ -266,7 +269,7 @@ The nuclei in a lattice are not completely static, and in fact their ability to 
 \end{equation}
 Where $\mathbf n$ is the label of some atom, $\mathbf r_n$ is the position of that atom and $\mathbf e(\mathbf k)$ is the polarisation vector and amplitude of the wave. In 3 dimensions, if $\mathbf e(\mathbf k)$ points in the direction of $\mathbf k$ the wave is longitudinal, and if it is perpendicular then the wave is transverse.
 
-In the quantum view, the phonons are goldstone bosons: massless particles which carry quanta of energy through the lattice. We get the free energy:
+In the quantum view, the phonons are Goldstone bosons: massless particles which carry quanta of energy through the lattice. We get the free energy:
 \begin{equation}
 	F(T, V) = N\epsilon_0 + TV\sum_{\alpha=1}^{3\nu}\int \ln \left[ 1-\exp\left(-\frac{\hbar \omega_\alpha(\mathbf k)}{T}\right)\right]g_\alpha(\omega)d\omega
 \end{equation}
@@ -318,14 +321,14 @@ The Hohenberg-Kohn theorems \cite{PhysRev.136.B864} are two theorems, developed 
 	\textbf{Theorem II}: A \textit{universal functional} for the energy $E[n]$ in terms of the density $n(\mathbf r)$ can be defined, valid for any external potential $v_\mathrm{ext}(\mathbf r)$.
 For any particular $V_\mathrm{ext}(\mathbf r)$, the exact ground state energy of the system is the global minimum value of this functional, and the density $n(\mathbf r)$ that minimises the functional is the exact ground state density $n_0(\mathbf r)$.
 \end{displayquote}
-The proofs to these theorems are relatively simple, making use of the quantum variational principle \cite{shankar2012principles}. We need to make a restriction though, that the ground state of the hamiltonians in the proofs are non-degenerate.
-To prove the first theorem, we use proof by contradiction with two different hamiltonians $\hat H_1, \hat H_2$ with ground state wavefunctions $\ket{\psi_1}, \ket{\psi_2}$ which give the respective ground state energies $E^0_n=\braket{\psi_n | \hat H_n | \psi_n}$. 
-The hamiltonians can be separated into:
+The proofs to these theorems are relatively simple, making use of the quantum variational principle \cite{shankar2012principles}. We need to make a restriction though, that the ground state of the Hamiltonians in the proofs are non-degenerate.
+To prove the first theorem, we use proof by contradiction with two different Hamiltonians $\hat H_1, \hat H_2$ with ground state wavefunctions $\ket{\psi_1}, \ket{\psi_2}$ which give the respective ground state energies $E^0_n=\braket{\psi_n | \hat H_n | \psi_n}$. 
+The Hamiltonians can be separated into:
 \begin{equation}
 \hat H_n = \hat F_{HK} + \hat V_{n, \mathrm{ext}}
 \end{equation}
-Where $\hat F_{HK}$ contains the electron kinetic energy operator, and the electron-electron interaction operator, and is the same for the different hamiltonians. The potential operator $\hat V_{n, \mathrm{ext}}$ contains the information of the external potential on the electrons (caused by the nuclei, and maybe other factors).
-We then pose that the two different potentials in the hamiltonians give rise to the same ground-state electronic density $n_0(\mathbf r)$.
+Where $\hat F_{HK}$ contains the electron kinetic energy operator, and the electron-electron interaction operator, and is the same for the different Hamiltonians. The potential operator $\hat V_{n, \mathrm{ext}}$ contains the information of the external potential on the electrons (caused by the nuclei, and maybe other factors).
+We then pose that the two different potentials in the Hamiltonians give rise to the same ground-state electronic density $n_0(\mathbf r)$.
 The energy of the system can also be written as a functional of the electron density as:
 \begin{equation}\label{eq:energy_functional}
 E[n(\mathbf r)] = F_{HK}[n(\mathbf r)]+ \int n(\mathbf r)v_{\mathrm{ext}}(\mathbf r)d\mathbf r
@@ -352,7 +355,7 @@ E_1 = \braket{\psi_1 | \hat H _1 | \psi_1} < \braket{\psi_2 | \hat H _1 | \psi_2
 \end{equation}
 So the energy functional is minimised by this ground state density.
 
-The Hohenberg-Kohn theorems presented in this way rely on what are called $v$-representable densities. The minimisation of the energy in theorem II is perfomed over the set of densities that arise from some external potential $v_{ext}$, hence $v$-representable. There is a larger set of densities: the $N$-representable densities, which is defined as the set of all densities which integrate to $N$, the number of charges in your Schrodinger equation.
+The Hohenberg-Kohn theorems presented in this way rely on what are called $v$-representable densities. The minimisation of the energy in theorem II is performed over the set of densities that arise from some external potential $v_{ext}$, hence $v$-representable. There is a larger set of densities: the $N$-representable densities, which is defined as the set of all densities which integrate to $N$, the number of charges in your Schrödinger equation.
 
 To find the density with the Hohenberg-Kohn approach, we minimise the total energy functional $E[n(\mathbf r)]$ over the set of $v$-representable densities. A problem with this is that the set of $v$-representable densities is not explicitly known \cite{GONIS201623}; it is not possible to know whether some given $n(\mathbf r)$ is a density corresponding to a potential $v_{ext}(\mathbf r)$.
 
@@ -362,7 +365,7 @@ We write down the total energy of the quantum system as a functional of the char
 \begin{equation}
 	E[n(\mathbf r)] = \braket{\Psi|\hat T + \hat V_{ee}|\Psi} + \int n(\mathbf r)v_{ext}(\mathbf r)d\mathbf r + E_{nn}
 \end{equation}
-Where $\hat V_{ee}$ is the potential due to the charge density and $E_{nn}$ is the energy from elements of the system that aren't electrons (eg. the nuclei). 
+Where $\hat V_{ee}$ is the potential due to the charge density and $E_{nn}$ is the energy from elements of the system that aren't electrons (e.g. the nuclei). 
 We now consider the set of wavefunctions $\left\{\ket{\Psi}\right\}$ which reproduce the given electron density $n(\mathbf r)=\int \braket{\Psi|\Psi}d\mathbf{r_2}\mathellipsis d\mathbf{r_n}$, and understand that the energy of the system with this density will be the minimum value of the energies given by the set $\left\{\ket{\Psi}\right\}$:
 \begin{equation}
 \begin{split}
@@ -386,7 +389,7 @@ The Hohenberg-Kohn theorems and the Levy-Lieb constrained search give us a theor
 \subsubsection{Kohn-Sham Equations}
 Practically, performing the search over all general $N$-representable states is a tough task, we need something to guide us. 
 This comes in the form of the Kohn-Sham equations \cite{kohn1965self}, developed in 1965 by Lu Jeu Sham and Walter Kohn, the year after the H-K theorems were determined. 
-These equations change the problem of solving the Schrodinger equation for many electrons into solving it for a set of non-interacting orbitals $\{\phi_i\}$. This is derived by considering variations in the energy with respect to the orbitals, with the constraint that $n(\mathbf r) = \sum \phi^*(\mathbf r)\phi(\mathbf r)$.
+These equations change the problem of solving the Schrödinger equation for many electrons into solving it for a set of non-interacting orbitals $\{\phi_i\}$. This is derived by considering variations in the energy with respect to the orbitals, with the constraint that $n(\mathbf r) = \sum \phi^*(\mathbf r)\phi(\mathbf r)$.
 
 The Kohn-Sham equations for the non-interacting orbitals are:
 \begin{equation}\label{eq:kohn-sham}
@@ -445,16 +448,16 @@ Tin & sn\_pbe\_v1.4.uspp.F.UPF \cite{rutgers} \\
 Sodium & Na\_pbe\_v1.uspp.F.UPF \cite{SSSPwebsite} \\
 \hline
 \end{tabular}
-\caption{Pesudopotentials used}
+\caption{Pseudopotentials used}
 \label{tab:pseudopotentials}
 \end{table}
 
-Ultrasoft potentials were chosen because of their fast convergence with wavefunction cutoff compared to norm-conserving potentials \cite{vanderbilt1990soft}. 
+Ultrasoft potentials were chosen because of their fast convergence with wavefunction cut-off compared to norm-conserving potentials \cite{vanderbilt1990soft}. 
 
 The calculations for silicon and tin were performed on the James Clerk Maxwell building computing clusters, and the calculations for sodium were performed on the ARCHER supercomputer \cite{archer}.
 
-For each structure, calculations were performed first to check the dependence of the pseudopotentials on the plane wave cutoff, ecutwfc. This was done by calculating the energy and the pressure at different ecutwfc values, and taking the difference in energy/pressure at each point with the energy/pressure at the highest calculated ecutwfc. This last value is set high enough to assume it is ``converged''. 
-The charge density and potential cutoff ecutrho was set to $8\times$ ecutwfc as the pseudopotentials were ultrasoft, non conserving potentials.
+For each structure, calculations were performed first to check the dependence of the pseudopotentials on the plane wave cut-off, ecutwfc. This was done by calculating the energy and the pressure at different ecutwfc values, and taking the difference in energy/pressure at each point with the energy/pressure at the highest calculated ecutwfc. This last value is set high enough to assume it is ``converged''. 
+The charge density and potential cut-off ecutrho was set to $8\times$ ecutwfc as the pseudopotentials were ultrasoft, non conserving potentials.
 
 \begin{figure}
 	\centering
@@ -564,10 +567,11 @@ From these convergences the k-grids for each element were chosen, and the k-grid
 	\label{tab:k-grids}
 \end{table}
 
-The SCF calculations for $\alpha$ and $\beta$-tin and FCC, BCC and 9R sodium were performed using Marzari-Vanderbilt cold smearing \cite{marzari1999thermal} with a smearing width of $0.02$ Ry, as they are not insulators. 
-The $\alpha$-tin and $\beta$-tin structures were calculated at their $T=0K$ equilibrium volume. This was done by performing variable-cell relaxations on the structures targetting a pressure of $0$GPa. The calculations on silicon were performed over a linearly spaced range of lattice constants from 10.28 Bohr to 10.4 Bohr in steps of 12 Bohr. 
-The sodium FCC calculations were performed over a lattice constant range of 8.65 Bohr to 10.28 Bohr with 16 different points. The sodium BCC calculations were performed over a lattice constant range of 6.88 Bohr to 8.4 Bohr with 18 different points. 
-The 9R sodium structure was relaxed to 0GPa. The scf and variable-cell relaxation calculations were all performed with the pw.x tool from Quantum Espresso. For all structures the scf convergence threshold (conv\_thr) was set to \num{1e-10} Ry.
+The SCF calculations for $\alpha$ and $\beta$-tin and FCC, BCC and 9R sodium were performed using Marzari-Vanderbilt cold smearing \cite{marzari1999thermal} with a smearing width of \SI{0.02}{Ry}, as they are not insulators. 
+The $\alpha$-tin and $\beta$-tin structures were calculated at their $T=0K$ equilibrium volume. This was done by performing variable-cell relaxations on the structures targeting a pressure of \SI{0}{\giga\pascal}. 
+The calculations on silicon were performed over a linearly spaced range of lattice constants from 10.28 Bohr to 10.4 Bohr in steps of 12 Bohr. 
+The sodium FCC calculations were performed over a lattice constant range of 8.65 Bohr to 10.28 Bohr with 16 different points. The sodium BCC calculations were performed over a lattice constant range of 6.88 Bohr to 8.4 Bohr with 18 different points.
+The 9R sodium structure was relaxed to \SI{0}{\giga\pascal}. The SCF and variable-cell relaxation calculations were all performed with the pw.x tool from Quantum Espresso. For all structures the scf convergence threshold (conv\_thr) was set to \SI{1e-10}{Ry}.
 
 The density functional perturbation calculations were performed with the Quantum Espresso ph.x tool. Silicon and the sodium structures were calculated with q-grids of $6\times 6\times 6$, with the exception of 9R which was calculated with a q-grid of $4\times4\times4$ and the two tin allotropes were calculated with an $8\times8\times8$ q-grid. A self-consistency threshold of \num{1e-16} (tr2\_ph) was set for all calculations.
 
@@ -581,7 +585,7 @@ Where $g_V(\omega)$ is the density of states at the volume $V$. The free energy 
 F(V, T) = F_{scf}(V)|_{T=0} + F_{phon}(V, T)
 \end{equation}
 
-This is then transformed into the Gibb's free energy potential using a Legendre transform from volume to pressure. The free energy $F(V)|_T$ at each temperature was fit to an empirical equation of state, $E(V)$, and the pressure $P(V)$ was recovered as $-\frac{\partial E(V)}{\partial V}$. The legendre transform is then:
+This is then transformed into the Gibbs free energy potential using a Legendre transform from volume to pressure. The free energy $F(V)|_T$ at each temperature was fit to an empirical equation of state, $E(V)$, and the pressure $P(V)$ was recovered as $-\frac{\partial E(V)}{\partial V}$. The Legendre transform is then:
 \begin{equation}
 	G(T, P) = PV(P) + F(T, V(P))
 \end{equation}
@@ -660,7 +664,7 @@ Where $l_{ref}$ is $l(T)$ taken at $T=290K$. This data is shown in figure \ref{f
 The negative coefficient of thermal expansion is due to the ``softening'' of the optical bands, and the ``hardening'' of the acoustic bands as shown in \cite{biernacki1989negative}.
 \subsection{Tin}
 
-The structures of $\alpha$ and $\beta$ tin are shown in figure \ref{fig:alpha_and_beta_tin}. The aim here was to calculate the transition temperature between $\alpha$ and $\beta$ tin at $P=0$ GPa.
+The structures of $\alpha$ and $\beta$ tin are shown in figure \ref{fig:alpha_and_beta_tin}. The aim here was to calculate the transition temperature between $\alpha$ and $\beta$ tin at $P=$\SI{0}{\giga\pascal}.
 \begin{figure}
 	\centering
 	\subfloat[$\alpha$-Tin]{
