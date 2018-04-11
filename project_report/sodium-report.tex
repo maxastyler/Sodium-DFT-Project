@@ -104,7 +104,10 @@ Dr Martinez-Canales ran the calculation for one q-point in the 9R structure at \
 
 
 \section{Introduction}
-Density functional theory (DFT) is an incredibly technique that allows us to recreate.
+Pressure-Temperature (P-T) diagrams are an icredibly useful map of a structure's behaviour over a range of conditions. They give information on what states an element takes over the ranges of pressure and temperatures. The ground states of elements, in particular, are of very high interest to scientists where there can exists quantum-driven states such as superconductors and Bose-Einstein condensates. It was believed until very recently that lithium exists in a 9R ground state - a relatively complex crystal structure. Ackland et al \cite{ackland2017quantum} showed that lithium instead takes an FCC ground state, a much simpler structure than the 9R previously though. Sodium is believed to take this 9R structure in its ground state as well.
+
+Over this project I perform calculations on silicon, tin and sodium to recreate various pressure and temperature related effects. For silicon, I recreate the coefficient of linear thermal expansion in its diamond cell phase. For tin I calculate the transition temperature between $\alpha$-tin and $\beta$-tin - overestimating this value, and illustrating a current problem with the pseudopotentials used for tin. 
+I recreate the P-T diagram for sodium, looking at the BCC, FCC and 9R phases. I find that the 9R phase in sodium is unstable at the ground state, and instead the FCC phase is favourable. I find as well that the martensitic transformation between BCC and FCC decreases in temperature as the pressure increases.
 
 \section{Background}
 \subsection{Crystal Structure}
@@ -428,9 +431,7 @@ The sum of the external potential, the classical electron self-interaction, and 
 \end{figure}
 
 The Kohn-Sham equations are exact (bar relativity), with the limitation coming from the fact that we don't have an exact form for the exchange correlation potential. 
-If this was known, we would be able to recreate any system's electron density to the precision allowed by our computers.
-
-\subsubsection{Density Functional Perturbation Theory}
+If this was known, through use of the Kohn-Sham equations we would be able to recreate any system's electron density to the precision allowed by our computers.
 
 \section{Methods}
 All density functional theory were performed using the Quantum Espresso software \cite{0953-8984-21-39-395502}, and data analysis was performed using python.
@@ -721,6 +722,9 @@ The 9R instabilities could also be due to the quasi-harmonic approximation use i
 It is important also to confirm these calculations with experiment. X-ray diffraction in diamond anvil cells could be used to determine whether these results are observable too.
 
 \section{Conclusion}
+To conclude, various temperature and pressure related results have been calculated with the use of DFT, including the P-T diagram of sodium. The simulation for silicon was very successful, showing good agreement with the experimental data for linear coefficient of thermal expansion. For tin, the $\alpha$-tin $\leftrightarrow$ $\beta$-tin transition temperature was overestimated by the DFT calculations, which is a problem with the PBE functional used and has been observed and resolved before.
+The P-T diagram of sodium was created and the complicated 9R structure previously believed to be the ground state has been shown, within the quasi-harmonic approximation, to be unstable in there. 
+Instead, FCC is found to be the most stable structure probed and proposed to be the actual ground state of sodium.
 
 % This command tells LaTeX how to format your references in the biblography. The standard plain formatting, with
 % references appearing in the order they are cited, is absolutely fine for our needs.
