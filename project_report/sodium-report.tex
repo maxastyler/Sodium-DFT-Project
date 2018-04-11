@@ -264,6 +264,7 @@ e^{-i\mathbf k \cdot \mathbf r}e^{-i\mathbf k \cdot \mathbf B} \psi_\mathbf k(\m
 e^{-i\mathbf k \cdot \mathbf r}e^{i\mathbf k \cdot (\mathbf B - \mathbf B)} \psi_\mathbf k(\mathbf r) = u_\mathbf k(\mathbf r)
 \end{equation}
 Which shows that $u_\mathbf k(\mathbf r)$ has the same periodicity as the lattice. The relation $u_\mathbf k(\mathbf r) = e^{-i \mathbf k \cdot \mathbf r}\psi_\mathbf k(\mathbf r)$ is then inverted to get the result in equation \ref{eq:bloch_wave}.
+
 \subsubsection{Phonons}
 
 The nuclei in a lattice are not completely static, and in fact their ability to move is an important factor in observables of the crystal, like heat capacity and thermal expansion. We can model the nuclei as chains of harmonic oscillators, interacting with their nearest neighbours, and find solutions to the displacements of the nuclei as monochromatic plane waves \cite{landau1980statistical}:
@@ -358,7 +359,7 @@ E_1 = \braket{\psi_1 | \hat H _1 | \psi_1} < \braket{\psi_2 | \hat H _1 | \psi_2
 \end{equation}
 So the energy functional is minimised by this ground state density.
 
-The Hohenberg-Kohn theorems presented in this way rely on what are called $v$-representable densities. The minimisation of the energy in theorem II is performed over the set of densities that arise from some external potential $v_{ext}$, hence $v$-representable. There is a larger set of densities: the $N$-representable densities, which is defined as the set of all densities which integrate to $N$, the number of charges in your Schrödinger equation.
+The Hohenberg-Kohn theorems presented in this way rely on what are called $v$-representable densities. The minimisation of the energy in theorem II is performed over the set of densities that arise from some external potential $v_{ext}$, hence $v$-representable. There is a larger set of densities: the $N$-representable densities, which is defined as the set of all densities which integrate to $N$, the number of charges in your Schr\"{o}dinger equation.
 
 To find the density with the Hohenberg-Kohn approach, we minimise the total energy functional $E[n(\mathbf r)]$ over the set of $v$-representable densities. A problem with this is that the set of $v$-representable densities is not explicitly known \cite{GONIS201623}; it is not possible to know whether some given $n(\mathbf r)$ is a density corresponding to a potential $v_{ext}(\mathbf r)$.
 
@@ -390,9 +391,9 @@ The Hohenberg-Kohn theorems and the Levy-Lieb constrained search give us a theor
 \textbf{2:} What form does the energy functional $F[n(\mathbf r)]$ take?
 \end{displayquote}
 \subsubsection{Kohn-Sham Equations}
-Practically, performing the search over all general $N$-representable states is a tough task, we need something to guide us. 
+Practically, performing the search over all general $N$-representable states is a tough task; we need something to guide us. 
 This comes in the form of the Kohn-Sham equations \cite{kohn1965self}, developed in 1965 by Lu Jeu Sham and Walter Kohn, the year after the H-K theorems were determined. 
-These equations change the problem of solving the Schrödinger equation for many electrons into solving it for a set of non-interacting orbitals $\{\phi_i\}$. This is derived by considering variations in the energy with respect to the orbitals, with the constraint that $n(\mathbf r) = \sum \phi^*(\mathbf r)\phi(\mathbf r)$.
+These equations change the problem of solving the Schr\"{o}dinger equation for many electrons into solving it for a set of non-interacting orbitals $\{\phi_i\}$. This is derived by considering variations in the energy with respect to the orbitals, with the constraint that $n(\mathbf r) = \sum \phi^*(\mathbf r)\phi(\mathbf r)$.
 
 The Kohn-Sham equations for the non-interacting orbitals are:
 \begin{equation}\label{eq:kohn-sham}
@@ -430,8 +431,28 @@ The sum of the external potential, the classical electron self-interaction, and 
 \caption{The process of self-consistently solving the Kohn-Sham equations for the charge density}
 \end{figure}
 
-The Kohn-Sham equations are exact (bar relativity), with the limitation coming from the fact that we don't have an exact form for the exchange correlation potential. 
-If this was known, through use of the Kohn-Sham equations we would be able to recreate any system's electron density to the precision allowed by our computers.
+The Kohn-Sham equations are exact (bar relativity), with the limitation coming from the fact that we don't have an exact form for the exchange correlation functional.
+If this was known, then through use of the Kohn-Sham equations we would be able to recreate any system's electron density to the precision allowed by our computers.
+Improving the exchange correlation functional is a very important goal in density functional theory, as it allows better approximation to physical reality when performing the calculations.
+
+The calculations described so far are ``all electron'', which means they consider the behaviour of every electron in the unit cell. We can cut down on the amount of computational effort required by using the fact that the atom can be split into two sets of electrons: valence electrons, and core electrons. 
+When considering electron interactions, it is the valence electrons that we are talking about. The core electrons are relatively static, so we approximate by including them and the nucleus in a modified core potential. 
+This method is the method of pseudopotentials \cite{schwerdtfeger2011pseudopotential}.
+We also use pseudo wavefunctions $\{\tilde \phi_i\}$ to describe the valence electrons, which are nodeless wavefunctions that are equal to the all-electron wavefunctions outside a certain cut-off radius, $r_c$:
+\begin{equation}\label{eq:pseudo_wavefunction}
+	\tilde \phi_i(r)|_{r>r_c} = \phi_i(r)|_{r>r_c}
+\end{equation}
+
+And are nodeless. This allows for a much sparser fourier grid to approximate the wavefunctions, as they have less high-frequency components.
+
+``Norm conserving'' pseudopotentials also satisfy the property that inside the cut-off radius $r_c$ their norm equals the norm of the wavefunctions they are approximating:
+\begin{equation}\label{eq:norm_conserving}
+	\braket{\tilde \phi_i | \tilde \phi_j} = \braket{\phi_i | \phi_j}
+\end{equation}
+
+Another type of pseudopotential, the ultrasoft pseudopotential \cite{vanderbilt1990soft} does not satisfy this norm-conserving condition. They relax on this condition to a smaller wavefunction basis set to be used, and instead change the eigenvalues of the Kohn-Sham pseudo-Hamiltonian.
+\subsubsection{Density Functional Perturbation Theory}
+Density functional perturbation theory (DFPT) \cite{baroni2001phonons} is a technique that uses DFT to calculate phonon frequencies in a material.
 
 \section{Methods}
 All density functional theory were performed using the Quantum Espresso software \cite{0953-8984-21-39-395502}, and data analysis was performed using python.
