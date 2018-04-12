@@ -267,15 +267,29 @@ Which shows that $u_\mathbf k(\mathbf r)$ has the same periodicity as the lattic
 
 \subsubsection{Phonons}
 
-The nuclei in a lattice are not completely static, and in fact their ability to move is an important factor in observables of the crystal, like heat capacity and thermal expansion. We can model the nuclei as chains of harmonic oscillators, interacting with their nearest neighbours, and find solutions to the displacements of the nuclei as monochromatic plane waves \cite{landau1980statistical}:
-\begin{equation}
+The nuclei in a lattice are not completely static, and in fact their ability to move is an important factor in observables of the crystal, like heat capacity and thermal expansion. We can model the nuclei as chains of harmonic oscillators, interacting with their nearest neighbours, and find solutions to the displacements of the nuclei as monochromatic plane waves \cite{landau1980statistical}, as illustrated in figure \ref{fig:phonon:disturbance}:
+\begin{equation}\label{eq:monochromatic_phonon}
 	\mathbf u(\mathbf n) = \mathbf e(\mathbf k) \exp{[i(\mathbf k \cdot \mathbf r_n - \omega t)]}
 \end{equation}
 Where $\mathbf n$ is the label of some atom, $\mathbf r_n$ is the position of that atom and $\mathbf e(\mathbf k)$ is the polarisation vector and amplitude of the wave. In 3 dimensions, if $\mathbf e(\mathbf k)$ points in the direction of $\mathbf k$ the wave is longitudinal, and if it is perpendicular then the wave is transverse.
+In the quasi-harmonic approximation, where we assume the forces between atoms are harmonic and the force constants are dependent on volume, we get the force constants matrix:
+\begin{equation}\label{eq:force_constants}
+	C^{\alpha\beta}_{\mu\nu}(i, j) = \frac{\partial E}{\partial u_\alpha^\mu(i)\partial u_\beta^\nu(j)}\Big |_{\mathbf {u_\gamma}=\mathbf 0}=C^{\alpha\beta}_{\mu\nu}(\mathbf R_{i, j})
+\end{equation}
+Where $\mu$ and $\nu$ index the components of the matrix, $\alpha$ and $\beta$ are the indices of the atom in the unit cell, and $i$ and $j$ index the cells (so $\mu,\nu$ are the only proper tensor indices). The fourier transform of this matrix gives the dynamical matrix:
+\begin{equation}\label{eq:dynamical_matrix}
+	D^{\alpha\beta}_{\mu\nu}(\mathbf q) = \sum_le^{i\mathbf q \cdot \mathbf{R_l}}C^{\alpha\beta}_{\mu\nu}(\mathbf{R_l})
+\end{equation}
+Where the sum is over all unit cell vectors. This dynamical then gives an eigenvalue equation for the phonon frequencies and directions:
+\begin{equation}\label{eq:phonon_frequencies}
+	D^{\alpha\beta}_{\mu\nu}(\mathbf q)U^\nu_\beta(\mathbf q) = M^\alpha \omega^2(\mathbf q) U_\mu^\alpha(\mathbf q)
+\end{equation}
 
-In the quantum view, the phonons are Goldstone bosons: massless particles which carry quanta of energy through the lattice. We get the free energy:
+Where Einstein summation is used on pairs of repeated up and down indices. $M^\alpha$ is the mass of the $\alpha$th atom and $U^\alpha_\mu(\mathbf q)$ is the eigenvector corresponding to the frequency $\omega$.
+
+In the quantum view, the phonons are Goldstone bosons: massless particles which carry quanta of energy through the lattice. If we know the density of states of the phonons, then we can work out the free energy from the partition function \cite{yoshioka2007partition} and the Bose-Einstein distribution:
 \begin{equation}
-	F(T, V) = N\epsilon_0 + TV\sum_{\alpha=1}^{3\nu}\int \ln \left[ 1-\exp\left(-\frac{\hbar \omega_\alpha(\mathbf k)}{T}\right)\right]g_\alpha(\omega)d\omega
+	F(T, V) = -k_bT\ln \mathcal Z = N\epsilon_0 + TV\sum_{\alpha=1}^{3\nu}\int \ln \left[ 1-\exp\left(-\frac{\hbar \omega_\alpha(\mathbf k)}{T}\right)\right]g_\alpha(\omega)d\omega
 \end{equation}
 
 \begin{figure}
@@ -450,9 +464,19 @@ And are nodeless. This allows for a much sparser fourier grid to approximate the
 	\braket{\tilde \phi_i | \tilde \phi_j} = \braket{\phi_i | \phi_j}
 \end{equation}
 
-Another type of pseudopotential, the ultrasoft pseudopotential \cite{vanderbilt1990soft} does not satisfy this norm-conserving condition. They relax on this condition to a smaller wavefunction basis set to be used, and instead change the eigenvalues of the Kohn-Sham pseudo-Hamiltonian.
+Another type of pseudopotential, the ultrasoft pseudopotential \cite{vanderbilt1990soft} does not satisfy this norm-conserving condition. They relax on this condition to allow a smaller wavefunction basis set to be used, and instead change the eigenvalues of the Kohn-Sham pseudo-Hamiltonian.
 \subsubsection{Density Functional Perturbation Theory}
-Density functional perturbation theory (DFPT) \cite{baroni2001phonons} is a technique that uses DFT to calculate phonon frequencies in a material.
+Density functional perturbation theory (DFPT) is a technique that uses DFT to calculate phonon frequencies in a material. It does this by calculating the change of the electron charge density with respect to some monochromatic perturbation in the atomic positions of the form in equation \ref{eq:monochromatic_phonon} and combining this with the change in the nuclei with these same perturbations. The dynamical matrix is then calculated as \cite{baroni2001phonons}:
+\begin{equation}\label{eq:DFPT_dynmat}
+	\begin{split}
+	\mathbf {D^{\alpha\beta}(\mathbf q)} = ^{\mathrm{el}}\mathbf {D^{\alpha\beta}(\mathbf q)}+^{\mathrm{ion}}\mathbf{D^{\alpha\beta}(\mathbf q)}\\
+	\mathbf {D^{\alpha\beta}(\mathbf q)} = \frac{1}{N_c}\left\{\int\left[\left(\frac{\partial n(\mathbf r)}{\partial\mathbf{u_\alpha(\mathbf q)}}\right)^*\frac{\partial V(\mathbf r)}{\partial \mathbf {u_\beta(\mathbf q)}}+\delta_\alpha^\beta n(\mathbf r)\frac{\partial V(\mathbf r)}{\partial \mathbf {u_\alpha^*(\mathbf q)}\partial \mathbf u_\beta(\mathbf q)} \right]d\mathbf r \right\} + ^{\mathrm{ion}}\mathbf{D^{\alpha\beta}(\mathbf q)}
+\end{split}
+\end{equation}
+
+With the changes in $V(\mathbf r)$ being changes to the potential with respect to a monochromatic perturbation.
+
+The dynamical matrix is then Fourier transformed into the force constants matrix, and this can be interpolated to give phonon frequencies at any point throughout the Brillouin zone.
 
 \section{Methods}
 All density functional theory were performed using the Quantum Espresso software \cite{0953-8984-21-39-395502}, and data analysis was performed using python.
