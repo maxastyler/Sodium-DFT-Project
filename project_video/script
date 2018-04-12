@@ -18,7 +18,7 @@ We can't get there easily in a lab, but we can simulate it on a computer.
 
 So, how do we do this? 
 
-We use density functional theory.
+We use DFT. Density functional theory.
 
 Density functional theory is a way to turn the complicated quantum mechanical behaviour of the electrons in a crystal into some much simpler equations, solveable by a computer.
 
