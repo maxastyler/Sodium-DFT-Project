@@ -1,0 +1,32 @@
+Creating Maps of Materials -- Aimed at high school level?
+
+P-T diagrams are maps of elements, or molecules which tell us how they behave at different temperatures and pressures.
+
+For example, water's p-t diagram tells us at which pressures and temperatures it exists as a solid - ice, a liquid - water, and a gas - steam.
+
+Why do these different phases occur? Well, in the same way that a ball likes to roll down a hill to reduce its energy, the phase that occurs is the one which reduces the energy. This energy is the energy that you'd have to use to pull all the little atoms apart. The structure that's hardest to pull apart is the one that it will be.
+
+There are loads of different types of solids that an element can exist as, for example crystals like FCC BCC
+
+Which exist in lithium's phase diagram
+
+If we want to create these P-T diagrams for some molecule, usually we can just go to a lab with some of the stuff and heat it and crush it and see how it behaves.
+
+But what if we want to go to extreme pressures, or cool it down to absolute z e r o?
+
+We can't get there easily in a lab, but we can simulate it on a computer.
+
+So, how do we do this? 
+
+We use density functional theory.
+
+Density functional theory is a way to turn the complicated quantum mechanical behaviour of the electrons into something solveable by a computer.
+
+These simulations spit out where the electrons will be in a crystal, and from this we can get the energy.
+
+To probe the different pressures, we squash and pull our different structures. To probe different temperatures, we wiggle the atoms. The harder they wiggle, the hotter it gets.
+
+From these calculations of the different structures, we can look at each point which one's energy is lower, and if the energy is lower, it'll choose that. 
+
+Here's one I made earlier
+Looking at sodium FCC and BCC
