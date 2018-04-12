@@ -205,8 +205,8 @@
   <property name="kdenlive:file_size">46765</property>
   <property name="kdenlive:file_hash">9b86ee21f580bf1e76a5e067acd61519</property>
  </producer>
- <producer id="14" in="0" out="2510">
-  <property name="length">2511</property>
+ <producer id="14" in="0" out="3764">
+  <property name="length">3765</property>
   <property name="eof">pause</property>
   <property name="resource">0xffffffff</property>
   <property name="aspect_ratio">1</property>
@@ -933,8 +933,8 @@
   <property name="kdenlive:file_size">142030</property>
   <property name="kdenlive:file_hash">56ba3aa541f73be83e7c79680c275618</property>
  </producer>
- <producer id="56" in="0" out="124">
-  <property name="length">125</property>
+ <producer id="56" in="0" out="163">
+  <property name="length">164</property>
   <property name="eof">pause</property>
   <property name="resource">frames/li-diagram.svg</property>
   <property name="ttl">25</property>
@@ -1205,7 +1205,7 @@
   <property name="kdenlive:file_size">46765</property>
   <property name="kdenlive:file_hash">9b86ee21f580bf1e76a5e067acd61519</property>
  </producer>
- <producer id="73" in="0" out="152">
+ <producer title="Anonymous Submission" id="73" in="0" out="152">
   <property name="length">153</property>
   <property name="eof">pause</property>
   <property name="resource">audio/cold1.WAV</property>
@@ -1230,6 +1230,7 @@
   <property name="kdenlive:folderid">-1</property>
   <property name="kdenlive:file_size">1109760</property>
   <property name="kdenlive:file_hash">7d13b069d009a41176832a124f19f040</property>
+  <property name="global_feed">1</property>
  </producer>
  <producer id="74" in="0" out="211">
   <property name="length">212</property>
@@ -1257,7 +1258,7 @@
   <property name="kdenlive:file_size">1530112</property>
   <property name="kdenlive:file_hash">ccc7d35525ebc71d0610dacf5045956c</property>
  </producer>
- <producer id="75" in="0" out="928">
+ <producer title="Anonymous Submission" id="75" in="0" out="928">
   <property name="length">929</property>
   <property name="eof">pause</property>
   <property name="resource">audio/dft_pt1.WAV</property>
@@ -1282,8 +1283,9 @@
   <property name="kdenlive:folderid">-1</property>
   <property name="kdenlive:file_size">6588928</property>
   <property name="kdenlive:file_hash">d36cb3a80cad528bc0dc7e2979087b6c</property>
+  <property name="global_feed">1</property>
  </producer>
- <producer id="76" in="0" out="353">
+ <producer title="Anonymous Submission" id="76" in="0" out="353">
   <property name="length">354</property>
   <property name="eof">pause</property>
   <property name="resource">audio/dft_pt2.WAV</property>
@@ -1308,8 +1310,9 @@
   <property name="kdenlive:folderid">-1</property>
   <property name="kdenlive:file_size">2528000</property>
   <property name="kdenlive:file_hash">47810a92a32d3e0de0053b98ed83e37c</property>
+  <property name="global_feed">1</property>
  </producer>
- <producer id="77" in="0" out="127">
+ <producer title="Anonymous Submission" id="77" in="0" out="127">
   <property name="length">128</property>
   <property name="eof">pause</property>
   <property name="resource">audio/get_out_of_room.WAV</property>
@@ -1334,8 +1337,9 @@
   <property name="kdenlive:folderid">-1</property>
   <property name="kdenlive:file_size">938240</property>
   <property name="kdenlive:file_hash">0bfe2a82dd2828b3f1fea5c42bba747d</property>
+  <property name="global_feed">1</property>
  </producer>
- <producer id="78" in="0" out="197">
+ <producer title="Anonymous Submission" id="78" in="0" out="197">
   <property name="length">198</property>
   <property name="eof">pause</property>
   <property name="resource">audio/grunt.WAV</property>
@@ -1360,8 +1364,9 @@
   <property name="kdenlive:folderid">-1</property>
   <property name="kdenlive:file_size">1431552</property>
   <property name="kdenlive:file_hash">da1e942b2422895221bb330ede0b11fd</property>
+  <property name="global_feed">1</property>
  </producer>
- <producer id="79" in="0" out="131">
+ <producer title="Anonymous Submission" id="79" in="0" out="131">
   <property name="length">132</property>
   <property name="eof">pause</property>
   <property name="resource">audio/how_simulations.WAV</property>
@@ -1386,6 +1391,7 @@
   <property name="kdenlive:folderid">-1</property>
   <property name="kdenlive:file_size">966656</property>
   <property name="kdenlive:file_hash">9a3a34efab4971ff1195f1d7d74d5f13</property>
+  <property name="global_feed">1</property>
  </producer>
  <producer title="Anonymous Submission" id="80" in="0" out="1192">
   <property name="length">1193</property>
@@ -1414,7 +1420,7 @@
   <property name="kdenlive:file_hash">898ea748bea120cfc22b01d29ced1e7d</property>
   <property name="global_feed">1</property>
  </producer>
- <producer id="81" in="0" out="912">
+ <producer title="Anonymous Submission" id="81" in="0" out="912">
   <property name="length">913</property>
   <property name="eof">pause</property>
   <property name="resource">audio/main_pt2.WAV</property>
@@ -1439,6 +1445,7 @@
   <property name="kdenlive:folderid">-1</property>
   <property name="kdenlive:file_size">6474496</property>
   <property name="kdenlive:file_hash">49ed4948f890adf12a9d4649193baaad</property>
+  <property name="global_feed">1</property>
  </producer>
  <producer title="Anonymous Submission" id="82" in="0" out="176">
   <property name="length">177</property>
@@ -1493,7 +1500,7 @@
   <property name="kdenlive:file_size">1434368</property>
   <property name="kdenlive:file_hash">85dd4d4955eefe9b66ae89bd9999aff4</property>
  </producer>
- <producer id="84" in="0" out="175">
+ <producer title="Anonymous Submission" id="84" in="0" out="175">
   <property name="length">176</property>
   <property name="eof">pause</property>
   <property name="resource">audio/rather_complicated.WAV</property>
@@ -1518,8 +1525,9 @@
   <property name="kdenlive:folderid">-1</property>
   <property name="kdenlive:file_size">1271296</property>
   <property name="kdenlive:file_hash">46511b061763285be4588308fb7a1afa</property>
+  <property name="global_feed">1</property>
  </producer>
- <producer id="85" in="0" out="733">
+ <producer title="Anonymous Submission" id="85" in="0" out="733">
   <property name="length">734</property>
   <property name="eof">pause</property>
   <property name="resource">audio/sodium.WAV</property>
@@ -1544,6 +1552,7 @@
   <property name="kdenlive:folderid">-1</property>
   <property name="kdenlive:file_size">5209600</property>
   <property name="kdenlive:file_hash">5ce1ce6230f0c18e4a6f1d38cb364ac2</property>
+  <property name="global_feed">1</property>
  </producer>
  <producer id="86" in="0" out="139">
   <property name="length">140</property>
@@ -1571,6 +1580,23 @@
   <property name="kdenlive:file_size">1018368</property>
   <property name="kdenlive:file_hash">06f6351f8067d274f89594460a78a44e</property>
  </producer>
+ <producer id="87" in="0" out="488">
+  <property name="length">489</property>
+  <property name="eof">pause</property>
+  <property name="resource">/home/max/git/Sodium-DFT-Project/project_report/figures/sodium_pt_diagram.svg</property>
+  <property name="ttl">25</property>
+  <property name="aspect_ratio">1</property>
+  <property name="progressive">1</property>
+  <property name="seekable">1</property>
+  <property name="loop">1</property>
+  <property name="meta.media.width">810</property>
+  <property name="meta.media.height">360</property>
+  <property name="mlt_service">pixbuf</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="kdenlive:duration">125</property>
+  <property name="kdenlive:file_size">135526</property>
+  <property name="kdenlive:file_hash">df6eeef51733bbf26b99f4e980bea89c</property>
+ </producer>
  <playlist id="main bin">
   <property name="kdenlive:docproperties.audiotargettrack">2</property>
   <property name="kdenlive:docproperties.decimalPoint">.</property>
@@ -1581,7 +1607,7 @@
   <property name="kdenlive:docproperties.generateimageproxy">0</property>
   <property name="kdenlive:docproperties.generateproxy">0</property>
   <property name="kdenlive:docproperties.kdenliveversion">17.12.3</property>
-  <property name="kdenlive:docproperties.position">1211</property>
+  <property name="kdenlive:docproperties.position">3748</property>
   <property name="kdenlive:docproperties.previewchunks"/>
   <property name="kdenlive:docproperties.previewextension"/>
   <property name="kdenlive:docproperties.previewparameters"/>
@@ -1684,6 +1710,7 @@
   <entry producer="84" in="0" out="175"/>
   <entry producer="85" in="0" out="733"/>
   <entry producer="86" in="0" out="139"/>
+  <entry producer="87" in="0" out="124"/>
  </playlist>
  <producer id="black" in="0" out="500">
   <property name="length">15000</property>
@@ -1694,11 +1721,72 @@
   <property name="set.test_audio">0</property>
  </producer>
  <playlist id="black_track">
-  <entry producer="black" in="0" out="2510"/>
+  <entry producer="black" in="0" out="3748"/>
  </playlist>
+ <producer title="Anonymous Submission" id="78_playlist1" in="0" out="197">
+  <property name="length">198</property>
+  <property name="eof">pause</property>
+  <property name="resource">audio/grunt.WAV</property>
+  <property name="audio_index">0</property>
+  <property name="video_index">-1</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="kdenlive:file_size">1431552</property>
+  <property name="kdenlive:file_hash">da1e942b2422895221bb330ede0b11fd</property>
+  <property name="global_feed">1</property>
+  <property name="xml">was here</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">audio</property>
+  <property name="meta.media.0.codec.sample_fmt">s16</property>
+  <property name="meta.media.0.codec.sample_rate">44100</property>
+  <property name="meta.media.0.codec.channels">2</property>
+  <property name="meta.media.0.codec.name">pcm_s16le</property>
+  <property name="meta.media.0.codec.long_name">PCM signed 16-bit little-endian</property>
+  <property name="meta.media.0.codec.bit_rate">1411200</property>
+  <property name="meta.attr.encoded_by.markup">ZOOM Handy Recorder H2n</property>
+  <property name="meta.attr.date.markup">2012-05-27</property>
+  <property name="meta.attr.creation_time.markup">21:18:32</property>
+  <property name="meta.attr.time_reference.markup">3382999200</property>
+  <property name="meta.attr.coding_history.markup">A=PCM,F=44100,W=16,M=stereo,T=ZOOM Handy Recorder H2n XY STEREO             </property>
+ </producer>
+ <producer title="Anonymous Submission" id="73_playlist1" in="0" out="152">
+  <property name="length">153</property>
+  <property name="eof">pause</property>
+  <property name="resource">audio/cold1.WAV</property>
+  <property name="audio_index">0</property>
+  <property name="video_index">-1</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="kdenlive:file_size">1109760</property>
+  <property name="kdenlive:file_hash">7d13b069d009a41176832a124f19f040</property>
+  <property name="global_feed">1</property>
+  <property name="xml">was here</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">audio</property>
+  <property name="meta.media.0.codec.sample_fmt">s16</property>
+  <property name="meta.media.0.codec.sample_rate">44100</property>
+  <property name="meta.media.0.codec.channels">2</property>
+  <property name="meta.media.0.codec.name">pcm_s16le</property>
+  <property name="meta.media.0.codec.long_name">PCM signed 16-bit little-endian</property>
+  <property name="meta.media.0.codec.bit_rate">1411200</property>
+  <property name="meta.attr.encoded_by.markup">ZOOM Handy Recorder H2n</property>
+  <property name="meta.attr.date.markup">2012-05-27</property>
+  <property name="meta.attr.creation_time.markup">21:18:49</property>
+  <property name="meta.attr.time_reference.markup">3383748900</property>
+  <property name="meta.attr.coding_history.markup">A=PCM,F=44100,W=16,M=stereo,T=ZOOM Handy Recorder H2n XY STEREO             </property>
+ </producer>
  <playlist id="playlist1">
   <property name="kdenlive:audio_track">1</property>
   <property name="kdenlive:track_name">Audio 2</property>
+  <property name="kdenlive:locked_track">1</property>
+  <blank length="1030"/>
+  <entry producer="78_playlist1" in="18" out="197"/>
+  <blank length="585"/>
+  <entry producer="73_playlist1" in="29" out="142"/>
  </playlist>
  <producer title="Anonymous Submission" id="82_playlist2" in="0" out="176">
   <property name="length">177</property>
@@ -1756,18 +1844,285 @@
   <property name="meta.attr.time_reference.markup">3372547500</property>
   <property name="meta.attr.coding_history.markup">A=PCM,F=44100,W=16,M=stereo,T=ZOOM Handy Recorder H2n XY STEREO             </property>
  </producer>
+ <producer title="Anonymous Submission" id="81_playlist2" in="0" out="912">
+  <property name="length">913</property>
+  <property name="eof">pause</property>
+  <property name="resource">audio/main_pt2.WAV</property>
+  <property name="audio_index">0</property>
+  <property name="video_index">-1</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="kdenlive:file_size">6474496</property>
+  <property name="kdenlive:file_hash">49ed4948f890adf12a9d4649193baaad</property>
+  <property name="global_feed">1</property>
+  <property name="xml">was here</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">audio</property>
+  <property name="meta.media.0.codec.sample_fmt">s16</property>
+  <property name="meta.media.0.codec.sample_rate">44100</property>
+  <property name="meta.media.0.codec.channels">2</property>
+  <property name="meta.media.0.codec.name">pcm_s16le</property>
+  <property name="meta.media.0.codec.long_name">PCM signed 16-bit little-endian</property>
+  <property name="meta.media.0.codec.bit_rate">1411200</property>
+  <property name="meta.attr.encoded_by.markup">ZOOM Handy Recorder H2n</property>
+  <property name="meta.attr.date.markup">2012-05-27</property>
+  <property name="meta.attr.creation_time.markup">21:15:25</property>
+  <property name="meta.attr.time_reference.markup">3374752500</property>
+  <property name="meta.attr.coding_history.markup">A=PCM,F=44100,W=16,M=stereo,T=ZOOM Handy Recorder H2n XY STEREO             </property>
+ </producer>
+ <producer title="Anonymous Submission" id="79_playlist2" in="0" out="131">
+  <property name="length">132</property>
+  <property name="eof">pause</property>
+  <property name="resource">audio/how_simulations.WAV</property>
+  <property name="audio_index">0</property>
+  <property name="video_index">-1</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="kdenlive:file_size">966656</property>
+  <property name="kdenlive:file_hash">9a3a34efab4971ff1195f1d7d74d5f13</property>
+  <property name="global_feed">1</property>
+  <property name="xml">was here</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">audio</property>
+  <property name="meta.media.0.codec.sample_fmt">s16</property>
+  <property name="meta.media.0.codec.sample_rate">44100</property>
+  <property name="meta.media.0.codec.channels">2</property>
+  <property name="meta.media.0.codec.name">pcm_s16le</property>
+  <property name="meta.media.0.codec.long_name">PCM signed 16-bit little-endian</property>
+  <property name="meta.media.0.codec.bit_rate">1411200</property>
+  <property name="meta.attr.encoded_by.markup">ZOOM Handy Recorder H2n</property>
+  <property name="meta.attr.date.markup">2012-05-27</property>
+  <property name="meta.attr.creation_time.markup">21:16:18</property>
+  <property name="meta.attr.time_reference.markup">3377089800</property>
+  <property name="meta.attr.coding_history.markup">A=PCM,F=44100,W=16,M=stereo,T=ZOOM Handy Recorder H2n XY STEREO             </property>
+ </producer>
+ <producer title="Anonymous Submission" id="75_playlist2" in="0" out="928">
+  <property name="length">929</property>
+  <property name="eof">pause</property>
+  <property name="resource">audio/dft_pt1.WAV</property>
+  <property name="audio_index">0</property>
+  <property name="video_index">-1</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="kdenlive:file_size">6588928</property>
+  <property name="kdenlive:file_hash">d36cb3a80cad528bc0dc7e2979087b6c</property>
+  <property name="global_feed">1</property>
+  <property name="xml">was here</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">audio</property>
+  <property name="meta.media.0.codec.sample_fmt">s16</property>
+  <property name="meta.media.0.codec.sample_rate">44100</property>
+  <property name="meta.media.0.codec.channels">2</property>
+  <property name="meta.media.0.codec.name">pcm_s16le</property>
+  <property name="meta.media.0.codec.long_name">PCM signed 16-bit little-endian</property>
+  <property name="meta.media.0.codec.bit_rate">1411200</property>
+  <property name="meta.attr.encoded_by.markup">ZOOM Handy Recorder H2n</property>
+  <property name="meta.attr.date.markup">2012-05-27</property>
+  <property name="meta.attr.creation_time.markup">21:16:39</property>
+  <property name="meta.attr.time_reference.markup">3378015900</property>
+  <property name="meta.attr.coding_history.markup">A=PCM,F=44100,W=16,M=stereo,T=ZOOM Handy Recorder H2n XY STEREO             </property>
+ </producer>
+ <producer title="Anonymous Submission" id="76_playlist2" in="0" out="353">
+  <property name="length">354</property>
+  <property name="eof">pause</property>
+  <property name="resource">audio/dft_pt2.WAV</property>
+  <property name="audio_index">0</property>
+  <property name="video_index">-1</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="kdenlive:file_size">2528000</property>
+  <property name="kdenlive:file_hash">47810a92a32d3e0de0053b98ed83e37c</property>
+  <property name="global_feed">1</property>
+  <property name="xml">was here</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">audio</property>
+  <property name="meta.media.0.codec.sample_fmt">s16</property>
+  <property name="meta.media.0.codec.sample_rate">44100</property>
+  <property name="meta.media.0.codec.channels">2</property>
+  <property name="meta.media.0.codec.name">pcm_s16le</property>
+  <property name="meta.media.0.codec.long_name">PCM signed 16-bit little-endian</property>
+  <property name="meta.media.0.codec.bit_rate">1411200</property>
+  <property name="meta.attr.encoded_by.markup">ZOOM Handy Recorder H2n</property>
+  <property name="meta.attr.date.markup">2012-05-27</property>
+  <property name="meta.attr.creation_time.markup">21:17:18</property>
+  <property name="meta.attr.time_reference.markup">3379735800</property>
+  <property name="meta.attr.coding_history.markup">A=PCM,F=44100,W=16,M=stereo,T=ZOOM Handy Recorder H2n XY STEREO             </property>
+ </producer>
+ <producer title="Anonymous Submission" id="84_playlist2" in="0" out="175">
+  <property name="length">176</property>
+  <property name="eof">pause</property>
+  <property name="resource">audio/rather_complicated.WAV</property>
+  <property name="audio_index">0</property>
+  <property name="video_index">-1</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="kdenlive:file_size">1271296</property>
+  <property name="kdenlive:file_hash">46511b061763285be4588308fb7a1afa</property>
+  <property name="global_feed">1</property>
+  <property name="xml">was here</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">audio</property>
+  <property name="meta.media.0.codec.sample_fmt">s16</property>
+  <property name="meta.media.0.codec.sample_rate">44100</property>
+  <property name="meta.media.0.codec.channels">2</property>
+  <property name="meta.media.0.codec.name">pcm_s16le</property>
+  <property name="meta.media.0.codec.long_name">PCM signed 16-bit little-endian</property>
+  <property name="meta.media.0.codec.bit_rate">1411200</property>
+  <property name="meta.attr.encoded_by.markup">ZOOM Handy Recorder H2n</property>
+  <property name="meta.attr.date.markup">2012-05-27</property>
+  <property name="meta.attr.creation_time.markup">21:17:45</property>
+  <property name="meta.attr.time_reference.markup">3380926500</property>
+  <property name="meta.attr.coding_history.markup">A=PCM,F=44100,W=16,M=stereo,T=ZOOM Handy Recorder H2n XY STEREO             </property>
+ </producer>
+ <producer title="Anonymous Submission" id="85_playlist2" in="0" out="733">
+  <property name="length">734</property>
+  <property name="eof">pause</property>
+  <property name="resource">audio/sodium.WAV</property>
+  <property name="audio_index">0</property>
+  <property name="video_index">-1</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="kdenlive:file_size">5209600</property>
+  <property name="kdenlive:file_hash">5ce1ce6230f0c18e4a6f1d38cb364ac2</property>
+  <property name="global_feed">1</property>
+  <property name="xml">was here</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">audio</property>
+  <property name="meta.media.0.codec.sample_fmt">s16</property>
+  <property name="meta.media.0.codec.sample_rate">44100</property>
+  <property name="meta.media.0.codec.channels">2</property>
+  <property name="meta.media.0.codec.name">pcm_s16le</property>
+  <property name="meta.media.0.codec.long_name">PCM signed 16-bit little-endian</property>
+  <property name="meta.media.0.codec.bit_rate">1411200</property>
+  <property name="meta.attr.encoded_by.markup">ZOOM Handy Recorder H2n</property>
+  <property name="meta.attr.date.markup">2012-05-27</property>
+  <property name="meta.attr.creation_time.markup">21:17:54</property>
+  <property name="meta.attr.time_reference.markup">3381323400</property>
+  <property name="meta.attr.coding_history.markup">A=PCM,F=44100,W=16,M=stereo,T=ZOOM Handy Recorder H2n XY STEREO             </property>
+ </producer>
+ <producer title="Anonymous Submission" id="77_playlist2" in="0" out="127">
+  <property name="length">128</property>
+  <property name="eof">pause</property>
+  <property name="resource">audio/get_out_of_room.WAV</property>
+  <property name="audio_index">0</property>
+  <property name="video_index">-1</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="kdenlive:file_size">938240</property>
+  <property name="kdenlive:file_hash">0bfe2a82dd2828b3f1fea5c42bba747d</property>
+  <property name="global_feed">1</property>
+  <property name="xml">was here</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">audio</property>
+  <property name="meta.media.0.codec.sample_fmt">s16</property>
+  <property name="meta.media.0.codec.sample_rate">44100</property>
+  <property name="meta.media.0.codec.channels">2</property>
+  <property name="meta.media.0.codec.name">pcm_s16le</property>
+  <property name="meta.media.0.codec.long_name">PCM signed 16-bit little-endian</property>
+  <property name="meta.media.0.codec.bit_rate">1411200</property>
+  <property name="meta.attr.encoded_by.markup">ZOOM Handy Recorder H2n</property>
+  <property name="meta.attr.date.markup">2012-05-27</property>
+  <property name="meta.attr.creation_time.markup">21:18:25</property>
+  <property name="meta.attr.time_reference.markup">3382690500</property>
+  <property name="meta.attr.coding_history.markup">A=PCM,F=44100,W=16,M=stereo,T=ZOOM Handy Recorder H2n XY STEREO             </property>
+ </producer>
  <playlist id="playlist2">
   <property name="kdenlive:audio_track">1</property>
   <property name="kdenlive:track_name">Audio 1</property>
-  <property name="kdenlive:locked_track">1</property>
+  <property name="kdenlive:locked_track">0</property>
   <blank length="13"/>
   <entry producer="82_playlist2" in="26" out="142"/>
-  <entry producer="80_playlist2" in="65" out="1167"/>
+  <entry producer="80_playlist2" in="65" out="1097"/>
+  <blank length="10"/>
+  <entry producer="81_playlist2" in="34" out="809"/>
+  <blank length="11"/>
+  <entry producer="79_playlist2" in="42" out="96"/>
+  <blank length="5"/>
+  <entry producer="75_playlist2" in="38" out="773"/>
+  <blank length="16"/>
+  <entry producer="76_playlist2" in="45" out="285">
+   <filter id="fadein" in="45" out="73">
+    <property name="window">75</property>
+    <property name="max_gain">20dB</property>
+    <property name="mlt_service">volume</property>
+    <property name="kdenlive_id">fadein</property>
+    <property name="tag">volume</property>
+    <property name="kdenlive_ix">1</property>
+    <property name="gain">0</property>
+    <property name="end">1</property>
+    <property name="kdenlive_info"/>
+   </filter>
+   <filter id="fadeout" in="259" out="285">
+    <property name="window">75</property>
+    <property name="max_gain">20dB</property>
+    <property name="mlt_service">volume</property>
+    <property name="kdenlive_id">fadeout</property>
+    <property name="tag">volume</property>
+    <property name="kdenlive_ix">2</property>
+    <property name="gain">1</property>
+    <property name="end">0</property>
+    <property name="kdenlive_info"/>
+   </filter>
+  </entry>
+  <entry producer="84_playlist2" in="27" out="140">
+   <filter id="filter0" in="27" out="36">
+    <property name="window">75</property>
+    <property name="max_gain">20dB</property>
+    <property name="mlt_service">volume</property>
+    <property name="kdenlive_id">fadein</property>
+    <property name="tag">volume</property>
+    <property name="kdenlive_ix">1</property>
+    <property name="gain">0</property>
+    <property name="end">1</property>
+    <property name="kdenlive_info"/>
+   </filter>
+   <filter id="filter1" in="132" out="140">
+    <property name="window">75</property>
+    <property name="max_gain">20dB</property>
+    <property name="mlt_service">volume</property>
+    <property name="kdenlive_id">fadeout</property>
+    <property name="tag">volume</property>
+    <property name="kdenlive_ix">2</property>
+    <property name="gain">1</property>
+    <property name="end">0</property>
+    <property name="kdenlive_info"/>
+   </filter>
+  </entry>
+  <entry producer="85_playlist2" in="61" out="604">
+   <filter id="filter2" in="61" out="67">
+    <property name="window">75</property>
+    <property name="max_gain">20dB</property>
+    <property name="mlt_service">volume</property>
+    <property name="kdenlive_id">fadein</property>
+    <property name="tag">volume</property>
+    <property name="kdenlive_ix">1</property>
+    <property name="gain">0</property>
+    <property name="end">1</property>
+    <property name="kdenlive_info"/>
+   </filter>
+  </entry>
+  <entry producer="77_playlist2" in="13" out="89"/>
  </playlist>
  <playlist id="playlist3">
   <property name="kdenlive:track_name">Video 1</property>
-  <property name="kdenlive:locked_track">1</property>
-  <entry producer="14" in="0" out="2509"/>
+  <property name="kdenlive:locked_track">0</property>
+  <entry producer="14" in="0" out="1688"/>
+  <blank length="71"/>
+  <entry producer="14" in="1760" out="3747"/>
  </playlist>
  <playlist id="playlist4">
   <property name="kdenlive:track_name">Video 2</property>
@@ -1789,12 +2144,55 @@
   <blank length="35"/>
   <entry producer="15" in="0" out="45"/>
   <entry producer="16" in="0" out="39"/>
-  <entry producer="17" in="0" out="66"/>
+  <entry producer="17" in="0" out="64"/>
+  <blank length="134"/>
+  <entry producer="43" in="0" out="20"/>
+  <entry producer="44" in="0" out="58"/>
+  <entry producer="56" in="0" out="78"/>
+  <blank length="44"/>
+  <entry producer="24" in="0" out="74"/>
+  <entry producer="25" in="0" out="19"/>
+  <entry producer="26" in="0" out="52"/>
+  <blank length="41"/>
+  <entry producer="55" in="0" out="70"/>
+  <entry producer="27" in="0" out="26"/>
+  <entry producer="28" in="0" out="18"/>
+  <entry producer="29" in="0" out="124"/>
+  <blank length="172"/>
+  <entry producer="32" in="0" out="26"/>
+  <entry producer="33" in="0" out="10"/>
+  <entry producer="34" in="0" out="10"/>
+  <entry producer="35" in="0" out="84"/>
+  <entry producer="65" in="0" out="93"/>
+  <entry producer="66" in="0" out="124"/>
+  <entry producer="31" in="0" out="93"/>
+  <entry producer="67" in="0" out="12"/>
+  <entry producer="68" in="0" out="12"/>
+  <entry producer="69" in="0" out="11"/>
+  <entry producer="70" in="0" out="10"/>
+  <entry producer="69" in="0" out="11"/>
+  <entry producer="68" in="0" out="12"/>
+  <entry producer="67" in="0" out="12"/>
+  <entry producer="45" in="0" out="14"/>
+  <entry producer="46" in="0" out="16"/>
+  <entry producer="47" in="0" out="14"/>
+  <entry producer="48" in="0" out="16"/>
+  <entry producer="49" in="0" out="14"/>
+  <entry producer="50" in="0" out="15"/>
+  <entry producer="51" in="0" out="16"/>
+  <blank length="28"/>
+  <entry producer="18" in="0" out="67"/>
+  <entry producer="19" in="0" out="38"/>
+  <entry producer="21" in="0" out="26"/>
+  <entry producer="22" in="0" out="21"/>
+  <entry producer="23" in="0" out="85"/>
+  <blank length="164"/>
+  <entry producer="87" in="0" out="487"/>
  </playlist>
  <playlist id="playlist5">
   <property name="kdenlive:track_name">Video 3</property>
  </playlist>
- <tractor title="Anonymous Submission" id="maintractor" global_feed="1" in="0" out="2510">
+ <tractor title="Anonymous Submission" id="maintractor" global_feed="1" in="0" out="3748">
   <track producer="black_track"/>
   <track hide="video" producer="playlist1"/>
   <track hide="video" producer="playlist2"/>
