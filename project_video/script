@@ -1,4 +1,4 @@
-Creating Maps of Materials -- Aimed at high school level?
+reating Maps of Materials -- Aimed at high school level?
 
 P-T diagrams are maps of elements, or molecules which tell us how they behave at different temperatures and pressures.
 
@@ -20,7 +20,7 @@ So, how do we do this?
 
 We use density functional theory.
 
-Density functional theory is a way to turn the complicated quantum mechanical behaviour of the electrons into something solveable by a computer.
+Density functional theory is a way to turn the complicated quantum mechanical behaviour of the electrons in a crystal into some much simpler equations, solveable by a computer.
 
 These simulations spit out where the electrons will be in a crystal, and from this we can get the energy.
 
