@@ -56,7 +56,7 @@
 
 % Insert your abstract below
 \begin{abstract}
-	P-T diagrams are fundamental information on what structure a molecule or element takes in different conditions. Of special interest are the P-T diagrams around the zero temperature, zero pressure ``ground state'' of light elements where quantum effects take a strong hold. Using density functional theory it is possible to perform ab initio calculations on these elements and recreate the P-T diagrams seen experimentally. Here I perform such calculations on silicon, tin and sodium. For silicon I calculate the phonon band structure and linear coefficient of thermal expansion. I calculate the transition temperature between $\alpha$ and $\beta$-tin, illustrating a problem with the current PBE pseudopotentials. Finally, I calculate the P-T diagram of sodium at low temperatures and give evidence that 9R is not the ground state as previously believed, and it instead exists as the simpler FCC structure.
+	P-T diagrams contain fundamental information on what structure a molecule or element takes in different conditions. Of special interest are the P-T diagrams around the zero temperature, zero pressure ``ground state'' of light elements where quantum effects take a strong hold. Using density functional theory it is possible to perform ab initio calculations on these elements and recreate the P-T diagrams seen experimentally. Here I perform such calculations on silicon, tin and sodium. For silicon I calculate the phonon band structure and linear coefficient of thermal expansion. I calculate the transition temperature between $\alpha$ and $\beta$-tin, illustrating a problem with the current PBE pseudopotentials. Finally, I calculate the P-T diagram of sodium at low temperatures and give evidence that 9R is not the ground state as previously believed, and it instead exists as the simpler FCC structure.
 \end{abstract}
 
 % This command is essential to make the title page appear
@@ -71,7 +71,7 @@ I also read up on bash scripting, which I found very useful in speeding up the r
 
 In the 6th week I started on calculations on the silicon and $\alpha$,$\beta$-tin structures. I also started to think about how to get the Gibbs free energy from the density of states. I got an account on the condensed matter cluster to perform higher quality calculations. 
 
-I wrote a shell script to split up a DFPT calculation between multiple computers, running a single q-point on each. Had some problems with the silicon calculations giving out not very converged values. This was due to using a USPP and not having a high enough charge density cutoff. Upped this and the calculations came out much better.
+I wrote a shell script to split up a DFPT calculation between multiple computers, running a single q-point on each. Had some problems with the silicon calculations giving out not very converged values. This was due to using a USPP and not having a high enough charge density cut-off. Upped this and the calculations came out much better.
 
 Calculated the equilibrium lattice parameter of $\alpha$-tin by varying the lattice parameter and finding the point of the SCF minimum. Performed the relaxations for $\beta$-tin. 
 Had problems in the SCF calculation of $\beta$-tin, this was due to the shape of SCF FFT grid I was using. 
@@ -275,7 +275,7 @@ In the quasi-harmonic approximation, where we assume the forces between atoms ar
 \begin{equation}\label{eq:force_constants}
 	C^{\alpha\beta}_{\mu\nu}(i, j) = \frac{\partial E}{\partial u_\alpha^\mu(i)\partial u_\beta^\nu(j)}\Big |_{\mathbf {u_\gamma}=\mathbf 0}=C^{\alpha\beta}_{\mu\nu}(\mathbf R_{i, j})
 \end{equation}
-Where $\mu$ and $\nu$ index the components of the matrix, $\alpha$ and $\beta$ are the indices of the atom in the unit cell, and $i$ and $j$ index the cells (so $\mu,\nu$ are the only proper tensor indices). The fourier transform of this matrix gives the dynamical matrix:
+Where $\mu$ and $\nu$ index the components of the matrix, $\alpha$ and $\beta$ are the indices of the atom in the unit cell, and $i$ and $j$ index the cells (so $\mu,\nu$ are the only proper tensor indices). The Fourier transform of this matrix gives the dynamical matrix:
 \begin{equation}\label{eq:dynamical_matrix}
 	D^{\alpha\beta}_{\mu\nu}(\mathbf q) = \sum_le^{i\mathbf q \cdot \mathbf{R_l}}C^{\alpha\beta}_{\mu\nu}(\mathbf{R_l})
 \end{equation}
@@ -384,7 +384,7 @@ We write down the total energy of the quantum system as a functional of the char
 	E[n(\mathbf r)] = \braket{\Psi|\hat T + \hat V_{ee}|\Psi} + \int n(\mathbf r)v_{ext}(\mathbf r)d\mathbf r + E_{nn}
 \end{equation}
 Where $\hat V_{ee}$ is the potential due to the charge density and $E_{nn}$ is the energy from elements of the system that are not electrons (e.g. the nuclei). 
-We now consider the set of wave functions $\left\{\ket{\Psi}\right\}$ which reproduce the given electron density $n(\mathbf r)=\int \braket{\Psi|\Psi}d\mathbf{r_2}\mathellipsis d\mathbf{r_n}$, and understand that the energy of the system with this density will be the minimum value of the energies given by the set $\left\{\ket{\Psi}\right\}$:
+We now consider the set of wave functions $\left\{\ket{\Psi}\right\}$ which reproduce the given electron density $n(\mathbf r)=\int \Psi^*\Psi d\mathbf{r_2}\mathellipsis d\mathbf{r_n}$, and understand that the energy of the system with this density will be the minimum value of the energies given by the set $\left\{\ket{\Psi}\right\}$:
 \begin{equation}
 \begin{split}
 E[n(\mathbf r)] = \min_{\ket{\Psi} \rightarrow n(\mathbf r)}\left\{\braket{\Psi | \hat T + \hat V_{ee} | \Psi}\right\} + \int n(\mathbf r) v_{ext}(\mathbf r) d \mathbf r + E_{nn}\\
@@ -452,19 +452,19 @@ Improving the exchange correlation functional is a very important goal in densit
 The calculations described so far are ``all electron'', which means they consider the behaviour of every electron in the unit cell. We can cut down on the amount of computational effort required by using the fact that the atom can be split into two sets of electrons: valence electrons, and core electrons. 
 When considering electron interactions, it is the valence electrons that we are concerned with. The core electrons are relatively static, so we approximate by including them and the nucleus in a modified core potential. 
 This is the method of pseudopotentials \cite{schwerdtfeger2011pseudopotential}.
-We also use pseudo wavefunctions $\{\tilde \phi_i\}$ to describe the valence electrons, which are nodeless wavefunctions that are equal to the all-electron wavefunctions outside a certain cut-off radius, $r_c$:
+We also use pseudo wave functions $\{\tilde \phi_i\}$ to describe the valence electrons, which are nodeless wave functions that are equal to the all-electron wave functions outside a certain cut-off radius, $r_c$:
 \begin{equation}\label{eq:pseudo_wavefunction}
 	\tilde \phi_i(r)|_{r>r_c} = \phi_i(r)|_{r>r_c}
 \end{equation}
 
-This allows for a much sparser Fourier grid to approximate the wavefunctions, as they have less high-frequency components.
+This allows for a much sparser Fourier grid to approximate the wave functions, as they have less high-frequency components.
 
-``Norm conserving'' pseudopotentials also satisfy the property that inside the cut-off radius $r_c$ their norm equals the norm of the wavefunctions they are approximating:
+``Norm conserving'' pseudopotentials also satisfy the property that inside the cut-off radius $r_c$ their norm equals the norm of the wave functions they are approximating:
 \begin{equation}\label{eq:norm_conserving}
 	\braket{\tilde \phi_i | \tilde \phi_j} = \braket{\phi_i | \phi_j}
 \end{equation}
 
-Another type of pseudopotential, the ultrasoft pseudopotential \cite{vanderbilt1990soft} does not satisfy this norm-conserving condition. They relax this to allow a smaller wavefunction basis set to be used, and instead change the eigenvalues of the Kohn-Sham pseudo-Hamiltonian.
+Another type of pseudopotential, the ultrasoft pseudopotential \cite{vanderbilt1990soft} does not satisfy this norm-conserving condition. They relax this to allow a smaller wave function basis set to be used, and instead change the eigenvalues of the Kohn-Sham pseudo-Hamiltonian.
 \subsubsection{Density Functional Perturbation Theory}
 Density functional perturbation theory (DFPT) is a technique that uses DFT to calculate phonon frequencies in a material. It does this by calculating the change of the electron charge density with respect to some monochromatic perturbation in the atomic positions of the form in equation \ref{eq:monochromatic_phonon} and combining this with the change in the nuclei with these same perturbations. The dynamical matrix is then calculated as \cite{baroni2001phonons}:
 \begin{equation}\label{eq:DFPT_dynmat}
@@ -539,7 +539,7 @@ The charge density and potential cut-off ecutrho was set to $8\times$ ecutwfc as
 \end{figure}
 
 Figures \ref{fig:silicon_ecut_convergence} to \ref{fig:sodium_ecut_convergence} show the convergence of energy and pressure for each of the different pseudopotentials used.
-The ecuts chosen for each element are shown in table \ref{tab:chosenecuts}.
+The ecutwfcs chosen for each element are shown in table \ref{tab:chosenecuts}.
 
 \begin{table}
 \centering
@@ -763,7 +763,7 @@ It would be useful to know where trigonal or HCP sodium lies on the PT phase dia
 Thorough calculations for the phonons of 9R were only performed at \SI{0}{\giga\pascal}, and it may be stable at higher pressures, so it would be worth calculating this structure relaxed to higher pressures.
 The 9R instabilities could also be due to the quasi-harmonic approximation used in the calculation of the phonon frequencies. Molecular dynamics simulations could be used to analyse the phonon responses further than the quasi-harmonic approximation allows.
 
-It is important also to confirm these calculations with experiment. X-ray diffraction in diamond anvil cells could be used to determine whether these results are observable too.
+It is important also to confirm these calculations with experiment. X-ray diffraction on sodium in diamond anvil cells could be used to determine whether these results are observable in reality as well.
 
 \section{Conclusion}
 To conclude, various temperature and pressure related results have been calculated with the use of DFT, including the P-T diagram of sodium. The simulation for silicon was very successful, showing good agreement with the experimental data for linear coefficient of thermal expansion. For tin, the $\alpha$-tin $\leftrightarrow$ $\beta$-tin transition temperature was overestimated by the DFT calculations, which is a problem with the PBE functional used and has been observed and resolved before.
