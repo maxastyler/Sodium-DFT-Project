@@ -466,7 +466,7 @@ This allows for a much sparser Fourier grid to approximate the wave functions, a
 
 Another type of pseudopotential, the ultrasoft pseudopotential \cite{vanderbilt1990soft} does not satisfy this norm-conserving condition. They relax this to allow a smaller wave function basis set to be used, and instead change the eigenvalues of the Kohn-Sham pseudo-Hamiltonian.
 \subsubsection{Density Functional Perturbation Theory}
-Density functional perturbation theory (DFPT) is a technique that uses DFT to calculate phonon frequencies in a material. It does this by calculating the change of the electron charge density with respect to some monochromatic perturbation in the atomic positions of the form in equation \ref{eq:monochromatic_phonon} and combining this with the change in the nuclei with these same perturbations. The dynamical matrix is then calculated as \cite{baroni2001phonons}:
+Density functional perturbation theory (DFPT) is a technique that uses DFT to calculate phonon frequencies in a material. It does this by calculating the change of the electron charge density with respect to some monochromatic perturbation in the atomic positions of the form in equation \ref{eq:monochromatic_phonon}, and combining this with the change in the nuclei with these same perturbations. The dynamical matrix is then calculated as \cite{baroni2001phonons}:
 \begin{equation}\label{eq:DFPT_dynmat}
 	\begin{split}
 	\mathbf {D^{\alpha\beta}(\mathbf q)} = ^{\mathrm{el}}\mathbf {D^{\alpha\beta}(\mathbf q)}+^{\mathrm{ion}}\mathbf{D^{\alpha\beta}(\mathbf q)}\\
@@ -709,7 +709,7 @@ Where $l_{ref}$ is $l(T)$ taken at $T=290K$. This data is shown in figure \ref{f
 The negative coefficient of thermal expansion is due to the ``softening'' of the optical bands, and the ``hardening'' of the acoustic bands as shown in \cite{biernacki1989negative}.
 \subsection{Tin}
 
-The structures of $\alpha$ and $\beta$ tin are shown in figure \ref{fig:alpha_and_beta_tin}. The aim here was to calculate the transition temperature between $\alpha$ and $\beta$ tin at $P=$\SI{0}{\giga\pascal}.
+The structures of $\alpha$ and $\beta$-tin are shown in figure \ref{fig:alpha_and_beta_tin}. The aim here was to calculate the transition temperature between $\alpha$ and $\beta$-tin at $P=$\SI{0}{\giga\pascal}.
 \begin{figure}
 	\centering
 	\subfloat[$\alpha$-Tin]{
@@ -718,7 +718,7 @@ The structures of $\alpha$ and $\beta$ tin are shown in figure \ref{fig:alpha_an
 	\subfloat[$\beta$-Tin]{
 		\includegraphics[width=0.4\textwidth]{figures/betasn.png}
 	}\qquad
-	\caption{Structures for $\alpha$ and $\beta$ tin}
+	\caption{Structures for $\alpha$ and $\beta$-tin}
 	\label{fig:alpha_and_beta_tin}
 \end{figure}
 
@@ -727,7 +727,7 @@ The free energies for $\alpha$ and $\beta$-tin at constant, relaxed volume are s
 \begin{figure}
 	\centering
 	\includesvg[width=0.8\textwidth]{./figures/tin_transition_temperature.svg}
-	\caption{Transition between $\alpha$ and $\beta$ tin}
+	\caption{Transition between $\alpha$ and $\beta$-tin}
 	\label{fig:sn_transition}
 \end{figure}
 
